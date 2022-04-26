@@ -28,7 +28,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          url: "http://toolkit-wordpress.local/",
+          url: "https://ux-wp.codeforhealth.de",
           "homepage": "home",
           "postsPage": "/methodology",
           "categoryBase": "/methodology/category",
