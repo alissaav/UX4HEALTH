@@ -62,37 +62,39 @@ const Home = ({ state }) => {
             <img src={Bulb}></img>
           </div>
         </div>
-
+        <div class="phase-buttons">
         <button
-          onClick={() => setPhase(1)}
-          opened={selectedPhase == 1 ? "true" : "false"}
-        >
-          Empathise
-        </button>
-        <button
-          onClick={() => setPhase(2)}
-          opened={selectedPhase == 2 ? "true" : "false"}
-        >
-          Define
-        </button>
-        <button
-          onClick={() => setPhase(3)}
-          opened={selectedPhase == 3 ? "true" : "false"}
-        >
-          Ideate
-        </button>
-        <button
-          onClick={() => setPhase(4)}
-          opened={selectedPhase == 4 ? "true" : "false"}
-        >
-          Prototype
-        </button>
-        <button
-          onClick={() => setPhase(5)}
-          opened={selectedPhase == 5 ? "true" : "false"}
-        >
-          Test
-        </button>
+            onClick={() => setPhase(1)}
+            opened={selectedPhase == 1 ? "true" : "false"}
+          >
+            Empathise
+          </button>
+          <button
+            onClick={() => setPhase(2)}
+            opened={selectedPhase == 2 ? "true" : "false"}
+          >
+            Define
+          </button>
+          <button
+            onClick={() => setPhase(3)}
+            opened={selectedPhase == 3 ? "true" : "false"}
+          >
+            Ideate
+          </button>
+          <button
+            onClick={() => setPhase(4)}
+            opened={selectedPhase == 4 ? "true" : "false"}
+          >
+            Prototype
+          </button>
+          <button
+            onClick={() => setPhase(5)}
+            opened={selectedPhase == 5 ? "true" : "false"}
+          >
+            Test
+          </button>
+        </div>
+          
 
         <div opened={selectedPhase == 1 ? "true" : "false"} className="text1">
           {" "}
@@ -413,6 +415,7 @@ const HeadContent = styled.div`
       position: relative;
       width: 90%;
     }
+    
   }
 
   @media only screen and (max-width: 800px) {
@@ -478,15 +481,9 @@ const HeadContent = styled.div`
 const MainContent = styled.div`
   @media only screen and (max-width: 1110px) {
     .introduction {
-      background-color: red;
-      color: white;
       overflow: auto;
       word-wrap: break-word;
       overflow-wrap: normal;
-
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
     }
 
     *content {
@@ -501,18 +498,42 @@ const MainContent = styled.div`
       overflow-wrap: normal;
     }
 
-    .grid-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+    button {
+      width: 17% !important;
+    }
+    .phase-buttons {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10%;
+
     }
 
-    .grid-empathise {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+  }
+  @media only screen and (max-width: 800px) {
+    .grid-designThinking {
+      flex-direction: column-reverse !important;
+      align-items: center;
+      margin-top: 0 !important;
+      padding: 0 0 2vw 2vw
+    }
+    .bulb {
+      max-width: 200px;
+    }
+    .introduction {
+      text-align: center; 
+    }
+    .phase-buttons {
+      flex-direction: column;
+      width: 100%;
+      gap: 2vh;
+      align-items: center;
+    }
+    button {
+      width: 50% !important
     }
   }
+  
+  
 
   button {
     background: white;
@@ -534,7 +555,6 @@ const MainContent = styled.div`
     font-weight: bold;
 
     text-align: center;
-    margin-right: 20px;
   }
 
   button[opened="true"] {
@@ -551,10 +571,11 @@ const MainContent = styled.div`
   }
 
   .grid-designThinking {
-    display: inline-grid;
-    grid-template-columns: 670px 280px;
-    padding: 10px;
-    margin: 64px 64px 64px 0;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10vh;
+    margin-bottom: 1vh;
+    width: 100%;
   }
 
   .grid-general {
@@ -609,6 +630,7 @@ const MainContent = styled.div`
 
   .bulb {
     transform: rotate(-25deg);
+    padding: 2%
   }
 
   .empathize,
