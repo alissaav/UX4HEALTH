@@ -578,15 +578,9 @@ const MainContent = styled.div`
     width: 100%;
   }
 
-  .grid-general {
-    display: inline-grid;
-    grid-template-columns: 190px 190px 190px 190px 190px;
-    padding: 10px;
-  }
-
   .grid-content {
     display: inline-grid;
-    grid-template-columns: 700px 350px;
+    grid-template-columns: 70% 30%;
   }
 
   .grid-button [opened="false"] {
@@ -594,32 +588,22 @@ const MainContent = styled.div`
   }
 
   .grid-empathise {
-    display: inline-grid;
-    grid-template-columns: 1200px;
     margin-bottom: 60px;
   }
 
   .grid-define {
-    display: inline-grid;
-    grid-template-columns: 1200px;
     margin-bottom: 60px;
   }
 
   .grid-ideate {
-    display: inline-grid;
-    grid-template-columns: 1200px;
     margin-bottom: 60px;
   }
 
   .grid-prototype {
-    display: inline-grid;
-    grid-template-columns: 1200px;
     margin-bottom: 60px;
   }
 
   .grid-test {
-    display: inline-grid;
-    grid-template-columns: 1200px;
     margin-bottom: 60px;
   }
 
