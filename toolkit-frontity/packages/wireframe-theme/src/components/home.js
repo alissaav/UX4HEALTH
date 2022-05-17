@@ -24,8 +24,10 @@ const Home = ({ state }) => {
             <img class="headImage" src={Header} />
           </div>
           <div class="headContent">
-            <h1>Willkommen zu dem</h1>
-            <h1>UX4Health Toolkit.</h1>
+            <div>
+              <h1>Willkommen zu dem</h1>
+              <h1>UX4Health Toolkit.</h1>
+            </div>
             <p>
               Eine Sammlung von Design-Thinking Methoden, die sich für
               ausgewählte Anwendungsbereiche im Kontext Digitale Gesundheit
@@ -63,7 +65,7 @@ const Home = ({ state }) => {
           </div>
         </div>
         <div class="phase-buttons">
-          <button
+        <button
             onClick={() => setPhase(1)}
             opened={selectedPhase == 1 ? "true" : "false"}
           >
@@ -94,16 +96,15 @@ const Home = ({ state }) => {
             Test
           </button>
         </div>
+          
 
         <div opened={selectedPhase == 1 ? "true" : "false"} className="text1">
           {" "}
           <div class="grid-empathise">
             <div class="grid-content">
               <div class="introduction">
-                <div className="numberHeadline">
-                  <h1 id="number">1</h1>
-                  <h2 id="headline">Empathise</h2>
-                </div>
+                <h1 id="number">1</h1>
+                <h2 id="headline">Empathise</h2>
                 <p id="content">
                   Um das gigantische Spektrum von unterschiedlichen Menschen für
                   eHealth zu sensibilisieren und ihre Bedürfnisse klar
@@ -138,27 +139,23 @@ const Home = ({ state }) => {
               </div>
             </div>
             <p></p>
-            <div className="beforeFooter">
-              <h4 id="typical">
-                Diese Methoden werden typischerweise auch verwendet:
-              </h4>
-              <Link link="/methodology/tagebuchstudie" id="typicalMethods">
-                &bull; &nbsp; Tagebuchstudie
-              </Link>
-              <Link
-                link="/methodology/interview-mit-experten/"
-                id="typicalMethods"
-              >
-                &bull; &nbsp; Interviews mit Expert*innen
-              </Link>
-              <Link link="/methodology/extreme-users" id="typicalMethods">
-                &bull; &nbsp; Extreme Users
-              </Link>
-              <div className="moreMethods">
-                <Link link="/methodology/category/empathise">
-                  Mehr Methoden
-                </Link>
-              </div>
+            <h4 id="typical">
+              Diese Methoden werden typischerweise auch verwendet:
+            </h4>
+            <Link link="/methodology/tagebuchstudie" id="typicalMethods">
+              &bull; &nbsp; Tagebuchstudie
+            </Link>
+            <Link
+              link="/methodology/interview-mit-experten/"
+              id="typicalMethods"
+            >
+              &bull; &nbsp; Interviews mit Expert*innen
+            </Link>
+            <Link link="/methodology/extreme-users" id="typicalMethods">
+              &bull; &nbsp; Extreme Users
+            </Link>
+            <div className="moreMethods">
+              <Link link="/methodology/category/empathise">Mehr Methoden</Link>
             </div>
           </div>
         </div>
@@ -166,10 +163,8 @@ const Home = ({ state }) => {
           <div class="grid-define">
             <div class="grid-content">
               <div class="introduction">
-                <div className="numberHeadline">
-                  <h1 id="number">2</h1>
-                  <h2 id="headline">Define</h2>
-                </div>
+                <h1 id="number">2</h1>
+                <h2 id="headline">Define</h2>
                 <p id="content">
                   Sobald die ersten Daten aus dem vorherigen Schritt vorliegen,
                   könnt ihr euch zuallererst mit diesen Daten vertraut machen
@@ -224,10 +219,8 @@ const Home = ({ state }) => {
           <div class="grid-ideate">
             <div class="grid-content">
               <div class="introduction">
-                <div className="numberHeadline">
-                  <h1 id="number">3</h1>
-                  <h2 id="headline">Ideate</h2>
-                </div>
+                <h1 id="number">3</h1>
+                <h2 id="headline">Ideate</h2>
                 <p id="content">
                   In diesem Schritt wird es kreativ! Nun sind eure Ideen
                   gefragt, um Lösungen für die Probleme der Stakeholder*innen
@@ -273,10 +266,8 @@ const Home = ({ state }) => {
           <div class="grid-prototype">
             <div class="grid-content">
               <div class="introduction">
-                <div className="numberHeadline">
-                  <h1 id="number">4</h1>
-                  <h2 id="headline">Prototype</h2>
-                </div>
+                <h1 id="number">4</h1>
+                <h2 id="headline">Prototype</h2>
                 <p id="content">
                   Nachdem ihr Ideen für mögliche Problemlösungen gesammelt habt
                   und schon ein bis mehrere grobe Konzepte habt, geht es in die
@@ -315,10 +306,8 @@ const Home = ({ state }) => {
           <div class="grid-test">
             <div class="grid-content">
               <div class="introduction">
-                <div className="numberHeadline">
-                  <h1 id="number">5</h1>
-                  <h2 id="headline">Testing</h2>
-                </div>
+                <h1 id="number">5</h1>
+                <h2 id="headline">Testing</h2>
                 <p id="content">
                   Solltet ihr mit euren Ergebnissen der Prototyping-Phase
                   zufrieden sein, wird es nun Zeit für die Testing-Phase. In
@@ -364,42 +353,44 @@ const HeadContent = styled.div`
     height: 500px;
     overflow: hidden;
     position: relative;
-    content: left;
     background-color: black;
   }
 
   .headImage {
     opacity: 0.3;
     position: absolute;
+    object-fit: contain;
     left: 0;
     top: 0;
     width: 100%;
     height: auto;
-    object-fit: contain;
   }
 
   .headContent {
-    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+    padding: 5%;
     position: absolute;
-    width: 80%;
+    justify-content: space-around;
   }
 
   h1 {
-    margin-left: 64px;
     font-size: 54px;
     color: white;
   }
 
   p {
-    margin: 40px 0 20px 64px;
+    margin: 40px 0 0 0;
     font-size: 18px;
     color: white;
     opacity: 1;
   }
 
   .viewMethods {
-    margin-top: 70px;
-    margin-left: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .viewMethods a {
@@ -410,7 +401,6 @@ const HeadContent = styled.div`
     font-size: 1.1em;
     text-transform: uppercase;
     text-decoration: none;
-    font-weight: bold;
   }
 
   .viewMethods a:hover {
@@ -419,199 +409,29 @@ const HeadContent = styled.div`
   }
 
   @media only screen and (max-width: 1110px) {
-    .head {
-      text-align: center;
-      color: white;
-    }
-
-    .headContent {
-      margin-top: 60px;
-      position: relative;
-      width: 90%;
-    }
   }
 
   @media only screen and (max-width: 800px) {
+
     .head {
-      background-color: white;
-      top: 40px;
-      height: 800px;
-      overflow: hidden;
-      content: center;
+      
+      max-height: 400px;
+      text-align: center;
+      z-index: 50;
+      
     }
-
-    h1 {
-      margin-left: 64px;
-      font-size: 30px;
-      color: black;
-    }
-
-    p {
-      margin: 40px 0 20px 64px;
-      font-size: 14px;
-      color: black;
-      opacity: 1;
-    }
-
-    .headImageBox {
-      position: relative;
-      width: 450px;
-      height: 300px;
-      background-color: black;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .headImage {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
-
     .headContent {
-      margin-top: 60px;
-      position: relative;
-      width: 90%;
+      height: 200%!important;
+      overflow: visible;
     }
-
-    .viewMethods a {
-      border: 4px solid #84ffdd;
-      background-color: transparent;
-      color: darkgrey;
-      padding: 16px 24px 16px 24px;
-      font-size: 1.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-weight: bold;
+    p {
+      color: black!important;
     }
   }
 `;
 
 const MainContent = styled.div`
-  @media only screen and (max-width: 1110px) {
-    .introduction {
-      overflow: auto;
-      word-wrap: break-word;
-      overflow-wrap: normal;
-    }
-
-    *content {
-      overflow: auto;
-      word-wrap: break-word;
-      overflow-wrap: normal;
-    }
-
-    p {
-      overflow: auto;
-      word-wrap: break-word;
-      overflow-wrap: normal;
-    }
-
-    button {
-      width: 17% !important;
-    }
-    .phase-buttons {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 10%;
-    }
-  }
-
-  @media only screen and (max-width: 800px) {
-    .grid-designThinking {
-      flex-direction: column-reverse !important;
-      align-items: center;
-      margin-top: 0 !important;
-      padding: 0 0 2vw 2vw;
-    }
-    .bulb {
-      max-width: 200px;
-    }
-    .introduction {
-      text-align: center;
-    }
-    .phase-buttons {
-      flex-direction: column;
-      width: 100%;
-      gap: 2px !important;
-      align-items: center;
-    }
-    button {
-      padding: 30px !important;
-      margin-bottom: 20px !important;
-      width: 50% !important;
-    }
-
-    h1 {
-      font-size: 40px !important;
-    }
-
-    h2 {
-      font-size: 40px !important;
-    }
-
-    .numberHeadline {
-      display: flex;
-      justify-content: center !important;
-      gap: 20px;
-      align-items: baseline;
-    }
-
-    .grid-content {
-      display: flex;
-      flex-direction: column-reverse !important;
-      gap: 0px !important;
-    }
-
-    .heart {
-      max-width: 350px;
-      margin-top: 4em !important;
-      padding: 0;
-    }
-
-    #content {
-      padding: 0 0 20px 20px;
-    }
-
-    .beforeFooter {
-      text-align: center !important;
-      items-align: center !important;
-    }
-  }
-
-  .numberHeadline h1 {
-    padding-right: 5 px !important;
-    position: relative !important;
-  }
-
-  .phase-buttons {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 10%;
-    gap: 10px;
-  }
-
-  .number {
-    position: relative;
-  }
-
-  .headline {
-    position: relative;
-  }
-
-  .numberHeadline {
-    display: flex;
-    justify-content: start;
-    gap: 20px;
-    align-items: baseline;
-    font-size: 30px;
-    width: 100%;
-  }
-
+  
   button {
     background: white;
 
@@ -624,8 +444,6 @@ const MainContent = styled.div`
     height: 69;
 
     padding: 1em;
-
-    margin-bottom: 75px;
 
     font-size: 18px;
 
@@ -658,10 +476,8 @@ const MainContent = styled.div`
   }
 
   .grid-content {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 70% 30%;
   }
 
   .grid-button [opened="false"] {
@@ -695,12 +511,15 @@ const MainContent = styled.div`
 
   .bulb {
     transform: rotate(-25deg);
-    padding: 2%;
+    padding: 2%
   }
 
+  .empathize,
+  .define,
+  .ideate,
+  .prototype,
   .heart {
     margin-top: 7em;
-    min-width: 300px;
   }
 
   .moreMethods {
@@ -726,6 +545,12 @@ const MainContent = styled.div`
   #number {
     color: darkblue;
     font-size: 70px;
+    margin-top: 1em;
+  }
+
+  #headline {
+    margin-left: 70px;
+    margin-top: -2em;
   }
 
   #content,
@@ -737,5 +562,63 @@ const MainContent = styled.div`
     margin-left: 10px;
     margin-top: 0.5em;
     text-decoration: none;
+  }
+  @media only screen and (max-width: 1110px) {
+    .introduction {
+      overflow: auto;
+      word-wrap: break-word;
+      overflow-wrap: normal;
+    }
+
+    *content {
+      overflow: auto;
+      word-wrap: break-word;
+      overflow-wrap: normal;
+    }
+
+    p {
+      overflow: auto;
+      word-wrap: break-word;
+      overflow-wrap: normal;
+    }
+
+    button {
+      width: 17% !important;
+    }
+    .phase-buttons {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10%;
+
+    }
+
+  }
+  @media only screen and (max-width: 800px) {
+    * {
+
+    }
+    
+
+    .grid-designThinking {
+      flex-direction: column-reverse !important;
+      align-items: center;
+      padding: 0 0 2vw 2vw;
+      margin-top: 100%!important;
+    }
+    .bulb {
+      max-width: 200px;
+    }
+    .introduction {
+      text-align: center; 
+    }
+    .phase-buttons {
+      flex-direction: column;
+      width: 100%;
+      gap: 2vh;
+      align-items: center;
+    }
+    button {
+      width: 50% !important
+    }
   }
 `;

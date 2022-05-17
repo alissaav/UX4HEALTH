@@ -52,4 +52,8 @@ const MainContent = styled.header`
     font-size: 0.8em;
     margin-bottom: 1em;
     }
+    
+    @media only screen and (max-width: 800px) {
+        padding: 0!important;
+    }
 `

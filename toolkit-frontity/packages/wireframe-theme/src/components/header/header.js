@@ -40,7 +40,7 @@ const HeaderElement = styled.header`
     top: 0px;
     z-index: 99;
     background: #FFFFFF;
-    box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 16px 16px 8px rgb(0 0 0 / 60%);
 
     .title {
         color: #5A48F3;
@@ -76,14 +76,11 @@ const HeaderElement = styled.header`
         list-style-type: none;
         margin: 0;
         padding: 0;
-      }
-      
+    }
     li {
-         float: left;
+            float: left;
     }
     
- 
-   
 `
 
 

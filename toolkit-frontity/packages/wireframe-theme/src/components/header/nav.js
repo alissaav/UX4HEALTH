@@ -34,23 +34,21 @@ export default connect(Nav);
 const NavContainer = styled.nav`
   list-style: none;
   display: flex;
-  width: 100%;
+  justify-content: space-evenly;
   max-width: 100%;
-  box-sizing: border-box;
+  height: 70px;
   padding: 0;
   margin: 0;
-  overflow-x: auto;
-  position: fixed;
   z-index: 101;
-  left: 200px;
-
+  align-items: center;
  
 `;
 
 const NavItem = styled.div`
+display: flex;
+align-content: center;
 
 padding: 0;
-margin: 0 16px;
 color: #fff;
 font-size: 0.9em;
 box-sizing: border-box;
@@ -59,8 +57,6 @@ box-sizing: border-box;
   color: black;
   text-align: center;
   padding: 14px 16px;
-  margin-left: 75px;
-  margin-top: 10px;
   text-decoration: none;
   font-style: normal;
   font-weight: bold;
@@ -85,11 +81,6 @@ box-sizing: border-box;
 &:last-of-type {
   margin-right: 0;
 
-  &:after {
-    content: "";
-    display: inline-block;
-    width: 24px;
-  }
 }
 
 `;
