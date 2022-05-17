@@ -1,71 +1,73 @@
-import React from "react"
-import { connect, styled } from "frontity"
-import Link from "@frontity/components/link"
-import Logo from "../images/footer-hsd-logo.svg"
+import React from "react";
+import { connect, styled } from "frontity";
+import Link from "@frontity/components/link";
+import Logo from "../images/footer-hsd-logo.svg";
 
+const Footer = ({ state }) => {
+  return (
+    <>
+      <FooterElement>
+        <div className="wrapper">
+          <div className="inline-wrapper">
+            <Link link="https://codeforhealth.de" className="logo">
+              <img src={Logo}></img>
+            </Link>
 
-const Footer = ({state}) => {
-  
-    return (
-        <>
-        <FooterElement>
-            <div className="wrapper">
-                <div className="inline-wrapper">
-                    <Link link="https://codeforhealth.de" className="logo"><img src={Logo}></img></Link>
-                    
-                    <div className="contact">
-                     <div className="adress-div">
-                        <p className="adress">
-                            <strong>CoDe for Health Lab</strong><br></br>
-                            Ackerstraße 11<br></br>
-                            40223 Düsseldorf<br></br>
-                            Germany
-                        </p>
-                     </div>
-                     <div className="message">
-                         <p>
-                            If you are curious about our projects or 
-                            want to collaborate, we are happy to
-                            learn more about you.</p>
-                     </div>
-                  
-
-                    </div>
-                </div>
-                <div className="inline-wrapper">
-                    <div className="links">
-                        <div>
-                            <Link link="https://codeforhealth.de/">Start</Link>
-                            <Link link="https://codeforhealth.de/about/">About</Link>
-                            <Link link="https://codeforhealth.de/projects/">Projects</Link>
-                        </div>
-                        <div>
-                            <Link link="https://codeforhealth.de/research/">Research</Link>
-                            <Link link="https://codeforhealth.de/contact/">Contact</Link>
-                        </div>
-                    </div>
-                    <div className="getintouch">
-                        <Link link='https://codeforhealth.de/contact/'>Get in touch<i className="arrow"></i></Link>
-                        </div>
-                </div>
-                <div className="inline-wrapper rights">
-                    <div>
-                        <Link link="https://codeforhealth.de/legal-disclosure/">Legal Disclosure</Link> | <Link link="https://codeforhealth.de/privacy-policy/">Privacy Policy</Link></div>
-                    <div>© 2022 CoDe for Health</div>
-                </div>
-                
-                
+            <div className="contact">
+              <div className="adress-div">
+                <p className="adress">
+                  <strong>CoDe for Health Lab</strong>
+                  <br></br>
+                  Ackerstraße 11<br></br>
+                  40223 Düsseldorf<br></br>
+                  Germany
+                </p>
+              </div>
+              <div className="message">
+                <p>
+                  If you are curious about our projects or want to collaborate,
+                  we are happy to learn more about you.
+                </p>
+              </div>
             </div>
-           
-        </FooterElement>
-        </>
-    )
-}
+          </div>
+          <div className="inline-wrapper">
+            <div className="links">
+              <div>
+                <Link link="https://codeforhealth.de/">Start</Link>
+                <Link link="https://codeforhealth.de/about/">About</Link>
+                <Link link="https://codeforhealth.de/projects/">Projects</Link>
+              </div>
+              <div>
+                <Link link="https://codeforhealth.de/research/">Research</Link>
+                <Link link="https://codeforhealth.de/contact/">Contact</Link>
+              </div>
+            </div>
+            <div className="getintouch">
+              <Link link="https://codeforhealth.de/contact/">
+                Get in touch<i className="arrow"></i>
+              </Link>
+            </div>
+          </div>
+          <div className="inline-wrapper rights">
+            <div>
+              <Link link="https://codeforhealth.de/legal-disclosure/">
+                Legal Disclosure
+              </Link>{" "}
+              |{" "}
+              <Link link="https://codeforhealth.de/privacy-policy/">
+                Privacy Policy
+              </Link>
+            </div>
+            <div>© 2022 CoDe for Health</div>
+          </div>
+        </div>
+      </FooterElement>
+    </>
+  );
+};
 
-
-
-export default connect(Footer)
-
+export default connect(Footer);
 
 const FooterElement = styled.footer` 
 
@@ -73,7 +75,7 @@ const FooterElement = styled.footer`
 
     width: 100%;
     background-color: #5A48F3;
-    height: 400px;
+    height: 100%;
     color: white;
 
     .wrapper {
@@ -84,7 +86,6 @@ const FooterElement = styled.footer`
     .inline-wrapper {
         display: flex;
         justify-content: space-between;
-
     }
 
     ul {
@@ -204,4 +205,30 @@ const FooterElement = styled.footer`
     }
 
     
-`
+     @media only screen and (max-width: 1050px) {
+                
+    .inline-wrapper {
+      flex-direction: column-reverse !important;
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .wrapper{
+        text-align: center !important;
+        items-align: center !important;
+    }
+
+    .logo{
+        width: 300px;
+    }
+
+    .links{
+        margin-left: 40px;
+    }
+
+    
+    }
+
+    
+`;
