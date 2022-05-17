@@ -103,8 +103,11 @@ const Home = ({ state }) => {
           <div class="grid-empathise">
             <div class="grid-content">
               <div class="introduction">
-                <h1 id="number">1</h1>
-                <h2 id="headline">Empathise</h2>
+              <div className="numberHeadline">
+                  <h1 id="number">1</h1>
+                  <h2 id="headline">Empathise</h2>
+                </div>
+
                 <p id="content">
                   Um das gigantische Spektrum von unterschiedlichen Menschen für
                   eHealth zu sensibilisieren und ihre Bedürfnisse klar
@@ -139,23 +142,27 @@ const Home = ({ state }) => {
               </div>
             </div>
             <p></p>
-            <h4 id="typical">
-              Diese Methoden werden typischerweise auch verwendet:
-            </h4>
-            <Link link="/methodology/tagebuchstudie" id="typicalMethods">
-              &bull; &nbsp; Tagebuchstudie
-            </Link>
-            <Link
-              link="/methodology/interview-mit-experten/"
-              id="typicalMethods"
-            >
-              &bull; &nbsp; Interviews mit Expert*innen
-            </Link>
-            <Link link="/methodology/extreme-users" id="typicalMethods">
-              &bull; &nbsp; Extreme Users
-            </Link>
-            <div className="moreMethods">
-              <Link link="/methodology/category/empathise">Mehr Methoden</Link>
+            <div className="beforeFooter">
+              <h4 id="typical">
+                Diese Methoden werden typischerweise auch verwendet:
+              </h4>
+              <Link link="/methodology/tagebuchstudie" id="typicalMethods">
+                &bull; &nbsp; Tagebuchstudie
+              </Link>
+              <Link
+                link="/methodology/interview-mit-experten/"
+                id="typicalMethods"
+              >
+                &bull; &nbsp; Interviews mit Expert*innen
+              </Link>
+              <Link link="/methodology/extreme-users" id="typicalMethods">
+                &bull; &nbsp; Extreme Users
+              </Link>
+              <div className="moreMethods">
+                <Link link="/methodology/category/empathise">
+                  Mehr Methoden
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -163,8 +170,10 @@ const Home = ({ state }) => {
           <div class="grid-define">
             <div class="grid-content">
               <div class="introduction">
-                <h1 id="number">2</h1>
-                <h2 id="headline">Define</h2>
+              <div className="numberHeadline">
+                  <h1 id="number">2</h1>
+                  <h2 id="headline">Define</h2>
+                </div>
                 <p id="content">
                   Sobald die ersten Daten aus dem vorherigen Schritt vorliegen,
                   könnt ihr euch zuallererst mit diesen Daten vertraut machen
@@ -219,8 +228,10 @@ const Home = ({ state }) => {
           <div class="grid-ideate">
             <div class="grid-content">
               <div class="introduction">
-                <h1 id="number">3</h1>
-                <h2 id="headline">Ideate</h2>
+                <div className="numberHeadline">
+                  <h1 id="number">3</h1>
+                  <h2 id="headline">Ideate</h2>
+                </div>
                 <p id="content">
                   In diesem Schritt wird es kreativ! Nun sind eure Ideen
                   gefragt, um Lösungen für die Probleme der Stakeholder*innen
@@ -266,8 +277,10 @@ const Home = ({ state }) => {
           <div class="grid-prototype">
             <div class="grid-content">
               <div class="introduction">
-                <h1 id="number">4</h1>
-                <h2 id="headline">Prototype</h2>
+                <div className="numberHeadline">
+                  <h1 id="number">4</h1>
+                  <h2 id="headline">Prototype</h2>
+                </div>
                 <p id="content">
                   Nachdem ihr Ideen für mögliche Problemlösungen gesammelt habt
                   und schon ein bis mehrere grobe Konzepte habt, geht es in die
@@ -306,8 +319,10 @@ const Home = ({ state }) => {
           <div class="grid-test">
             <div class="grid-content">
               <div class="introduction">
-                <h1 id="number">5</h1>
-                <h2 id="headline">Testing</h2>
+                <div className="numberHeadline">
+                  <h1 id="number">5</h1>
+                  <h2 id="headline">Testing</h2>
+                </div>
                 <p id="content">
                   Solltet ihr mit euren Ergebnissen der Prototyping-Phase
                   zufrieden sein, wird es nun Zeit für die Testing-Phase. In
@@ -353,11 +368,10 @@ const HeadContent = styled.div`
     height: 500px;
     overflow: hidden;
     position: relative;
-    background-color: black;
   }
 
   .headImage {
-    opacity: 0.3;
+    filter: brightness(0.3);
     position: absolute;
     object-fit: contain;
     left: 0;
@@ -414,18 +428,28 @@ const HeadContent = styled.div`
   @media only screen and (max-width: 800px) {
 
     .head {
-      
+      overflow: visible;
       max-height: 400px;
       text-align: center;
       z-index: 50;
       
     }
     .headContent {
-      height: 200%!important;
+      height: 190%!important;
       overflow: visible;
+      h1 {
+        font-size: 9.5vw;
+      }
     }
     p {
       color: black!important;
+      margin-top: 10vh;
+    }
+    .viewMethods a {
+      color: black;
+    }
+    .viewMethods a:hover {
+    color: black;
     }
   }
 `;
@@ -476,8 +500,10 @@ const MainContent = styled.div`
   }
 
   .grid-content {
-    display: inline-grid;
-    grid-template-columns: 70% 30%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
   }
 
   .grid-button [opened="false"] {
@@ -511,15 +537,13 @@ const MainContent = styled.div`
 
   .bulb {
     transform: rotate(-25deg);
-    padding: 2%
+    padding: 2%;
   }
 
-  .empathize,
-  .define,
-  .ideate,
-  .prototype,
+
   .heart {
     margin-top: 7em;
+    min-width: 300px;
   }
 
   .moreMethods {
@@ -545,12 +569,6 @@ const MainContent = styled.div`
   #number {
     color: darkblue;
     font-size: 70px;
-    margin-top: 1em;
-  }
-
-  #headline {
-    margin-left: 70px;
-    margin-top: -2em;
   }
 
   #content,
@@ -614,11 +632,81 @@ const MainContent = styled.div`
     .phase-buttons {
       flex-direction: column;
       width: 100%;
-      gap: 2vh;
+      gap: 2vh !important;
       align-items: center;
     }
     button {
-      width: 50% !important
+      padding: 30px !important;
+      margin-bottom: 20px !important;
+      width: 50% !important;
     }
+
+    h1 {
+      font-size: 40px !important;
+    }
+
+    h2 {
+      font-size: 40px !important;
+    }
+
+    .numberHeadline {
+      display: flex;
+      justify-content: center !important;
+      gap: 20px;
+      align-items: baseline;
+    }
+
+    .grid-content {
+      display: flex;
+      flex-direction: column-reverse !important;
+      gap: 0px !important;
+    }
+
+    .heart {
+      max-width: 350px;
+      margin-top: 4em !important;
+      padding: 0;
+    }
+
+    #content {
+      padding: 0 0 20px 20px;
+    }
+
+    .beforeFooter {
+      text-align: center !important;
+      items-align: center !important;
+    }
+  }
+
+  .numberHeadline h1 {
+    padding-right: 5 px !important;
+    position: relative !important;
+  }
+
+  .phase-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10%;
+    gap: 10px;
+  }
+
+  .number {
+    position: relative;
+  }
+
+  .headline {
+    position: relative;
+  }
+
+  .numberHeadline {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    align-items: baseline;
+    font-size: 30px;
+    width: 100%;
+
+
+    
   }
 `;

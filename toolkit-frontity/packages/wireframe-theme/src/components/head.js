@@ -98,11 +98,10 @@ const HeadContent = styled.div`
         overflow: hidden;
         position: relative;
         content: left;
-        background-color: black;
     }
     
     .demo-bg {
-        opacity: 0.3;
+        filter: brightness(30%);
         position: absolute;
         left: 0;
         top: 0;
