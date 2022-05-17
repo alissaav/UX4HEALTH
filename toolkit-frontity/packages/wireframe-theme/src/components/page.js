@@ -40,7 +40,6 @@ const HeadContent = styled.div`
     overflow: hidden;
     position: relative;
     content: left;
-    background-color: black;
   }
 
   .headImage {
