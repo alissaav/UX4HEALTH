@@ -83,8 +83,14 @@ h2 {
 
 p {
   margin-left: 64px;
-  margin-top: 0.5em;
+  margin-top: 2em;
   font-size: 18px;
+  text-transform: uppercase;
 }
+
+pre {
+  margin-left: 64px;;
+}
+
 
 `
