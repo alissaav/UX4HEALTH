@@ -43,7 +43,7 @@ const HeadContent = styled.div`
   }
 
   .headImage {
-      opacity: 0.3;
+      filter: brightness(30%);
       position: absolute;
       left: 0;
       top: 0;

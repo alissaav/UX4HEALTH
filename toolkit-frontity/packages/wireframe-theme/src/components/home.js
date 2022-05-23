@@ -607,7 +607,8 @@ const MainContent = styled.div`
       display: flex;
       justify-content: space-between;
       padding-top: 10%;
-
+      
+      padding-bottom: 5%;
     }
 
   }
@@ -634,6 +635,8 @@ const MainContent = styled.div`
       width: 100%;
       gap: 2vh !important;
       align-items: center;
+      
+      padding-bottom: 5%;
     }
     button {
       padding: 30px !important;
@@ -688,6 +691,8 @@ const MainContent = styled.div`
     justify-content: space-between;
     padding-top: 10%;
     gap: 10px;
+    
+    padding-bottom: 5%;
   }
 
   .number {

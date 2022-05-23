@@ -122,7 +122,7 @@ const Main = styled.div`
     border-right: none;
   }
 
-  @media only screen and (max-width: 1450px) {
+  @media only screen and (max-width: 1350px) {
     position: relative;
     margin-left: 0px;
     margin-right: 0px;

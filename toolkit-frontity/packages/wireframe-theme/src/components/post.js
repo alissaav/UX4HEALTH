@@ -35,8 +35,6 @@ const Post = ({ state, libraries, actions }) => {
         
           <PostContent>
             <h2>{post.title.rendered}</h2>
-            <FeaturedMedia id={post.featured_media} />
-                       
             <Html2React html={postContent} />
           </PostContent>   
           <Complementary>
@@ -62,12 +60,13 @@ const Post = ({ state, libraries, actions }) => {
   const PostContent = styled.div`
     position: relative;
     left: 0;
+    margin: 3%;
   
     method1, method2 {
       display: none;
     }
     p {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-top: 2em;
       line-height: 1.6;
       margin-bottom: 2em;
@@ -79,8 +78,8 @@ const Post = ({ state, libraries, actions }) => {
       padding-top: 2%;
     }
   
-    .tricks li, .advantages li, .vorbereitung ul {
-      font-size: 1.5em;
+    .tricks li, .advantages li, .vorbereitung li {
+      font-size: 1.2em;
       line-height: 1.6;
       width: 90%;
     }
@@ -88,12 +87,12 @@ const Post = ({ state, libraries, actions }) => {
   
     h2 {
       margin-top: 1em;
-      font-size: 4em;
+      font-size: 3em;
     }
   
     h3 {
       margin-top: 1em;
-      font-size: 2.5em;
+      font-size: 1.8em;
     }
   
     img {
@@ -116,7 +115,7 @@ const Post = ({ state, libraries, actions }) => {
       counter-increment: item;
       margin-bottom: 25px;
       position: relative;
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-left: 4em;
       line-height: 1.6;
     }
@@ -124,7 +123,7 @@ const Post = ({ state, libraries, actions }) => {
     .steps li::before {
       margin-right: 10px;
       font-weight: bold;
-      font-size: 1.5em;
+      font-size: 1.4em;
       position: absolute;
       content: counter(item);
       background: #2C2378;
@@ -140,14 +139,13 @@ const Post = ({ state, libraries, actions }) => {
   
     .stats, .materials {
       margin-top: 2.5em;
-      font-weight: bold;
-      font-size: 0.7em;
       box-shadow: -4px -4px 10px rgba(0, 0, 0, 0.1), 4px 4px 10px rgba(0, 0, 0, 0.25);
       width: 250px;
       cursor: text;
       color: white;
       padding-bottom: 10px;
       border-radius: 5%;
+      padding: 12px;
     } 
   
     .stats h3, .materials h3 {
@@ -159,13 +157,12 @@ const Post = ({ state, libraries, actions }) => {
     } 
   
     .stats a {
-      font-size: 1.5em;
+      font-size: 1em;
       color: black;
       text-decoration: none;
       display: block;
       pointer-events: none;
       padding-left: 10px;
-      margin-bottom: 10px;
     }
   
     .stats a::before {
@@ -175,24 +172,20 @@ const Post = ({ state, libraries, actions }) => {
     .materials {
       color: black;
       display: block;
-      font-size: 1.5em;
     }
   
-    .materials h3 {
-      font-size: 1em;
-    }
-  
-    .materials input {
+    .materials input{
       margin: 20px 10px;
       width: 20px;
       height: 20px;
+      
     }
     
     .external ul {
       margin-top: 2em;
       list-style: none;
       counter-reset: item;
-   }
+    }
   
     .external {
       margin-bottom: 20px;
@@ -203,7 +196,7 @@ const Post = ({ state, libraries, actions }) => {
       list-style-position: outside;
       list-style-type: disc;
       margin-left: 25px;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
   
     .external li a {
@@ -224,12 +217,27 @@ const Post = ({ state, libraries, actions }) => {
     h4 {
       font-size: 1.5em;
     }
+
+    .taxonomy-post_tag {
+      font-family: monospace;
+      padding: 6px;
+      padding-bottom: 16px;
+    }
   
     
-  
-  
-  
-  
+  @media only screen and (max-width: 800px) {
+    .wp-block-columns {
+      flex-direction: column;
+    } 
+    .wp-block-column.right-column {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .steps ol {
+      width: 100%;
+      padding: 3%;
+    }
+  }
   
   `
   
