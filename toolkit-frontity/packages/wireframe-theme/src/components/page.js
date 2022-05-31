@@ -85,12 +85,23 @@ p {
   margin-left: 64px;
   margin-top: 2em;
   font-size: 18px;
-  text-transform: uppercase;
 }
 
 pre {
   margin-left: 64px;;
 }
 
+a {
+  text-decoration: none;
+  color: #5A48F3;
 
+}
+pre a:hover {
+  font-weight: 700;
+}
+
+p a:hover {
+  font-size: 17.5px;
+  font-weight: 500;
+}
 `
