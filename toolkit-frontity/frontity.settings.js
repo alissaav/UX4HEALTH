@@ -16,6 +16,7 @@ const settings = {
               ["Home", "/"],
               ["Methoden", "/methodology/"],
               ["Templates", "/templates/"],
+              ["Workshop-Tool", "/workshop-tool/"]
             ],
             featured: {
               showOnList: true,
@@ -32,6 +33,7 @@ const settings = {
           "homepage": "home",
           "postsPage": "/methodology",
           "categoryBase": "/methodology/category",
+
           // "tagBase": "/methodology/tag"       
         }
       }

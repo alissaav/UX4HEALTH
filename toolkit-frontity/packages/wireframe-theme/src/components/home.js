@@ -10,6 +10,7 @@ import Prototype from "../images/prototype.png";
 import Ideate from "../images/ideate.png";
 import { useState } from "react";
 import { useEffect } from "react";
+import WorkshopTool from "./workshop-tool";
 
 const Home = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -18,6 +19,7 @@ const Home = ({ state }) => {
 
   return (
     <>
+      
       <HeadContent>
         <div class="head">
           <div class="headImageBox">
@@ -60,10 +62,14 @@ const Home = ({ state }) => {
               können.
             </p>
           </div>
+          
           <div class="bulb">
             <img src={Bulb}></img>
           </div>
         </div>
+        <WorkshopTool>
+            
+          </WorkshopTool>
         <div class="phase-buttons">
         <button
             onClick={() => setPhase(1)}

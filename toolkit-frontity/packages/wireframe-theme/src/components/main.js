@@ -7,6 +7,7 @@ import Post from "./post";
 import Page from "./page";
 import Home from "./home";
 import Sidebar from "./sidebar";
+import WorkshopTool from "./workshop-tool";
 
 const Main = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -16,10 +17,12 @@ const Main = ({ state }) => {
       {(data.isArchive || data.isPost) && <Sidebar />}
       <MainContent>
         <Switch>
+          <WorkshopTool when={data.isWorkshopTool}>This is the Workshop-Tool</WorkshopTool>
           <Home when={data.isHome}>This is the home page</Home>
           <List when={data.isArchive}>This is a list</List>
           <Post when={data.isPost}>This is a post</Post>
-          <Page when={data.isPage}>This is a page</Page>
+          <Page when={data.isPage && !data.isWorkshopTool}>This is a page</Page>
+          
         </Switch>
       </MainContent>
     </>
