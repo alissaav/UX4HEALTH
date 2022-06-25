@@ -1,6 +1,8 @@
 import { connect, styled } from "frontity";
 import React from "react";
 import Question from "./question";
+import WorkshopProgressBar from "./progress";
+import PlanningTool from "./planning-tool";
 
 class WorkshopTool extends React.Component {
   constructor(props) {
@@ -53,28 +55,28 @@ class WorkshopTool extends React.Component {
           case 0: // Formular mit Workshop-Titel, Datum etc.
             return (
               <div id="grid-container">
-                <label class="label-title">
+                <label className="label-title">
                   Titel des Workshops <br/>
-                  <input name="title" class="input-title" type="text" value={this.state.title} onChange={this.onInputChange}></input> <br/>
+                  <input name="title" className="input-title" type="text" value={this.state.title} onChange={this.onInputChange}></input> <br/>
                 </label>
 
-                <label class="label-location">
+                <label className="label-location">
                   Ort <br/>
-                  <input name="location" class="input-location" type="text" value={this.state.location} onChange={this.onInputChange}></input> <br/>
+                  <input name="location" className="input-location" type="text" value={this.state.location} onChange={this.onInputChange}></input> <br/>
                 </label>
                   
-                <h3 class="h3-question">Wann findet der Workshop statt?</h3>
-                <label class="label-date">
+                <h3 className="h3-question">Wann findet der Workshop statt?</h3>
+                <label className="label-date">
                   Datum <br/>
                   <input type="date" name="date" value={this.state.date} onChange={this.onInputChange}></input> <br/>
                 </label>
 
-                <label class="label-time">
+                <label className="label-time">
                   Uhrzeit <br/>
                   <input type="time" name="time" value={this.state.time} onChange={this.onInputChange}></input> <br/>
                 </label>
 
-                <label class="label-days-count">
+                <label className="label-days-count">
                   Anzahl der Tage <br/>
                   <select name="daysCount" value={this.state.daysCount} onChange={this.onInputChange}>
                     <option value="1">1</option>
@@ -82,7 +84,7 @@ class WorkshopTool extends React.Component {
                   </select> <br/>
                 </label>
               
-                <button class="nextButton" onClick={() => {this.handleQuestionStateChange(1)}}>Weiter</button>
+                <button className="nextButton" onClick={() => {this.handleQuestionStateChange(1)}}>Weiter</button>
               </div>
             );
           case 1:
@@ -143,7 +145,7 @@ class WorkshopTool extends React.Component {
           //);
       case 2:
         return (
-          <div className="pt">Herzlich Wilkommen auf dem Planungstool!</div>
+          <PlanningTool></PlanningTool>
         );
     }
   }
@@ -183,13 +185,18 @@ class WorkshopTool extends React.Component {
   }
 
   render() {
-    return <WorkshopContainer>{this.renderSwitch()}</WorkshopContainer>;
+    return (
+    <WorkshopContainer>
+      <WorkshopProgressBar/>
+      {this.renderSwitch()} 
+    </WorkshopContainer>
+    );
   }
 }
 export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
-  margin-top: 140px;
+  margin-top: 70px;
 
   div {
     items-align: center;

@@ -67,9 +67,6 @@ const Home = ({ state }) => {
             <img src={Bulb}></img>
           </div>
         </div>
-        <WorkshopTool>
-            
-          </WorkshopTool>
         <div class="phase-buttons">
         <button
             onClick={() => setPhase(1)}
