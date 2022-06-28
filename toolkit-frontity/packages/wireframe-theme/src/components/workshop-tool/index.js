@@ -187,7 +187,7 @@ class WorkshopTool extends React.Component {
   render() {
     return (
     <WorkshopContainer>
-      <WorkshopProgressBar/>
+      {this.state.currentScreen == 1 ? <WorkshopProgressBar currentQuestion={this.state.currentQuestionScreen} numberOfQuestions={5}/> : ""}
       {this.renderSwitch()} 
     </WorkshopContainer>
     );
@@ -196,7 +196,7 @@ class WorkshopTool extends React.Component {
 export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
-  margin-top: 70px;
+  margin-top:120px;
 
   div {
     items-align: center;
