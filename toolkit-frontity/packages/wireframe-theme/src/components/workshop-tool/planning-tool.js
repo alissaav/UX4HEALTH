@@ -1,6 +1,7 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import WorkshopElement from "./element";
+import { COLORS } from "./colors";
 
 class PlanningTool extends React.Component {
     constructor(props) {
@@ -12,15 +13,15 @@ class PlanningTool extends React.Component {
             <PlanningToolContainer>
                 <ElementsContainer>
                     <h3>Elemente</h3>
-                    <WorkshopElement title="Pause" color="lightgreen" isInPlan={false} duration={45}></WorkshopElement>
-                    <WorkshopElement title="Icebreaker" color="lightblue" isInPlan={false} duration={15}></WorkshopElement>
+                    <WorkshopElement title="Pause" color={COLORS.green} isInPlan={false} duration={45}></WorkshopElement>
+                    <WorkshopElement title="Icebreaker" color={COLORS.pink} isInPlan={false} duration={15}></WorkshopElement>
                 </ElementsContainer>
                 <PlanContainer>
-                    <WorkshopElement title="Icebreaker" color="lightblue" isInPlan={true} duration={15}></WorkshopElement>
-                    <WorkshopElement title="Pause" color="lightgreen" isInPlan={true} duration={45}></WorkshopElement>
+                    <WorkshopElement title="Icebreaker" color={COLORS.pink} isInPlan={true} duration={15}></WorkshopElement>
+                    <WorkshopElement title="Pause" color={COLORS.green} isInPlan={true} duration={45}></WorkshopElement>
                 </PlanContainer>
                 <TipContainer>
-                bye
+                <h3>Tipps</h3>
                 </TipContainer>
             </PlanningToolContainer>
         );
@@ -48,10 +49,15 @@ const PlanContainer = styled.div`
     flex-direction: column;
     width: 45%;
     background-color: whitesmoke;
+    padding: 4px;
 `
 
 const TipContainer = styled.div`
     display: flex;
     width: 20%;
     background-color: whitesmoke;
+    justify-content: center;
+
+    padding: 8px;
+    box-shadow: 0 0 1em grey;
 `

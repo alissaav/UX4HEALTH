@@ -197,6 +197,7 @@ export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
   margin-top:120px;
+  min-height: 80vh;
 
   div {
     items-align: center;
