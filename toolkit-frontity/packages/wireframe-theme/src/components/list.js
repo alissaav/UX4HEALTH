@@ -174,7 +174,7 @@ const List = ({ state, actions }) => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Head></Head>
 
       <PopularMethods>
@@ -231,7 +231,7 @@ const List = ({ state, actions }) => {
           </Buttons>
         </div>
         {show ? (
-          <>
+          <Wrapper>
             <div className="modal">
               <div className="modalBtn">
                 <div className="containerCategory">
@@ -802,7 +802,7 @@ const List = ({ state, actions }) => {
                 </div>
               </div>
             </div>
-          </>
+          </Wrapper>
         ) : null}
       </StyledDiv>
 
@@ -837,7 +837,7 @@ const List = ({ state, actions }) => {
             });
 
             return (
-              <>
+              <Wrapper>
                 {/* 
                 Einzelne Methodeneinträge ausgelagert in eigene Komponenten
                 Aufrufen mit dem post objekt, das gerendet werden soll
@@ -851,7 +851,7 @@ const List = ({ state, actions }) => {
                 {!tileviewActive && (
                   <MethodList key={item.id} post={post}></MethodList>
                 )}
-              </>
+              </Wrapper>
             );
           })}
       </Item>
@@ -875,7 +875,7 @@ const List = ({ state, actions }) => {
           </button>
         )}
       </PrevNextNav>
-    </>
+    </Wrapper>
   );
   // }
   // else{
@@ -886,6 +886,11 @@ const List = ({ state, actions }) => {
 
   // }
 };
+
+const Wrapper = styled.div`
+  max-width: 950px;
+  margin: auto;
+`;
 
 //Styles für die Leiste zum Ändern der Ansicht
 const Buttons = styled.div`
@@ -1031,6 +1036,7 @@ const StyledDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
+    width: 100%;
   }
 
   .headerFlex {

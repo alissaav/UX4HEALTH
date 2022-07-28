@@ -18,8 +18,7 @@ const Home = ({ state }) => {
   const [selectedPhase, setPhase] = useState(1);
 
   return (
-    <>
-      
+    <Wrapper>
       <HeadContent>
         <div class="head">
           <div class="headImageBox">
@@ -42,7 +41,7 @@ const Home = ({ state }) => {
           </div>
         </div>
       </HeadContent>
-      <MainContent>
+      <MainContentHome>
         <div class="grid-designThinking">
           <div class="introduction">
             <h2>Der Design Thinking Prozess</h2>
@@ -62,16 +61,13 @@ const Home = ({ state }) => {
               können.
             </p>
           </div>
-          
+
           <div class="bulb">
             <img src={Bulb}></img>
           </div>
         </div>
-        <WorkshopTool>
-            
-          </WorkshopTool>
         <div class="phase-buttons">
-        <button
+          <button
             onClick={() => setPhase(1)}
             opened={selectedPhase == 1 ? "true" : "false"}
           >
@@ -102,14 +98,13 @@ const Home = ({ state }) => {
             Test
           </button>
         </div>
-          
 
         <div opened={selectedPhase == 1 ? "true" : "false"} className="text1">
           {" "}
           <div class="grid-empathise">
             <div class="grid-content">
               <div class="introduction">
-              <div className="numberHeadline">
+                <div className="numberHeadline">
                   <h1 id="number">1</h1>
                   <h2 id="headline">Empathise</h2>
                 </div>
@@ -176,7 +171,7 @@ const Home = ({ state }) => {
           <div class="grid-define">
             <div class="grid-content">
               <div class="introduction">
-              <div className="numberHeadline">
+                <div className="numberHeadline">
                   <h1 id="number">2</h1>
                   <h2 id="headline">Define</h2>
                 </div>
@@ -361,12 +356,17 @@ const Home = ({ state }) => {
             <p></p>
           </div>
         </div>
-      </MainContent>
-    </>
+      </MainContentHome>
+    </Wrapper>
   );
 };
 
 export default connect(Home);
+
+const Wrapper = styled.div`
+  max-width: 950px;
+  margin: auto;
+`;
 
 const HeadContent = styled.div`
   .head {
@@ -432,36 +432,33 @@ const HeadContent = styled.div`
   }
 
   @media only screen and (max-width: 800px) {
-
     .head {
       overflow: visible;
       max-height: 400px;
       text-align: center;
       z-index: 50;
-      
     }
     .headContent {
-      height: 190%!important;
+      height: 190% !important;
       overflow: visible;
       h1 {
         font-size: 9.5vw;
       }
     }
     p {
-      color: black!important;
+      color: black !important;
       margin-top: 10vh;
     }
     .viewMethods a {
       color: black;
     }
     .viewMethods a:hover {
-    color: black;
+      color: black;
     }
   }
 `;
 
-const MainContent = styled.div`
-  
+const MainContentHome = styled.div`
   button {
     background: white;
 
@@ -546,7 +543,6 @@ const MainContent = styled.div`
     padding: 2%;
   }
 
-
   .heart {
     margin-top: 7em;
     min-width: 300px;
@@ -613,35 +609,32 @@ const MainContent = styled.div`
       display: flex;
       justify-content: space-between;
       padding-top: 10%;
-      
+
       padding-bottom: 5%;
     }
-
   }
   @media only screen and (max-width: 800px) {
     * {
-
     }
-    
 
     .grid-designThinking {
       flex-direction: column-reverse !important;
       align-items: center;
       padding: 0 0 2vw 2vw;
-      margin-top: 100%!important;
+      margin-top: 100% !important;
     }
     .bulb {
       max-width: 200px;
     }
     .introduction {
-      text-align: center; 
+      text-align: center;
     }
     .phase-buttons {
       flex-direction: column;
       width: 100%;
       gap: 2vh !important;
       align-items: center;
-      
+
       padding-bottom: 5%;
     }
     button {
@@ -697,7 +690,7 @@ const MainContent = styled.div`
     justify-content: space-between;
     padding-top: 10%;
     gap: 10px;
-    
+
     padding-bottom: 5%;
   }
 
@@ -716,8 +709,5 @@ const MainContent = styled.div`
     align-items: baseline;
     font-size: 30px;
     width: 100%;
-
-
-    
   }
 `;
