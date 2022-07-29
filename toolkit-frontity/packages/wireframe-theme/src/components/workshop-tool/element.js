@@ -64,6 +64,10 @@ const ElementInPlanContainer = styled.div`
     border-width: 1px;
     min-width: 420px;
 
+    h4 {
+        margin: 4px;
+    }
+
 `
 
 
@@ -84,6 +88,7 @@ const TimeDiv = styled.div`
 
     p {
         margin-bottom: 0;
+        margin-top: 0;
     }
 `
 const NotesDiv = styled.div`
