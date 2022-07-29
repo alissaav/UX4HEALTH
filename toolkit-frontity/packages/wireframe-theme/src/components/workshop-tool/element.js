@@ -79,6 +79,7 @@ const TimeDiv = styled.div`
     grid-column-start: 2;
     font-size: 10px;
     border-style: none dashed none none;
+    border-width: 1px;
     height: 100%;
 
     p {
@@ -96,4 +97,3 @@ const NotesDiv = styled.div`
         padding: 1px;
     }
 `
-
