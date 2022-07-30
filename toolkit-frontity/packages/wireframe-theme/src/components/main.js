@@ -33,11 +33,6 @@ const Main = ({ state }) => {
 export default connect(Main);
 
 const MainContent = styled.header`
-  padding: 1em;
-
-  //max-width: 950px;
-  //margin: auto;
-
   img {
     max-width: 100%;
   }
