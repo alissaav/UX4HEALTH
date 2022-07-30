@@ -44,7 +44,7 @@ class WorkshopTool extends React.Component {
             <div className="beginningWhitebox">
               <div className="beginningWhiteboxText">
                 <div className="beginningText1">
-                  <h2>Das Workshop-Toolkit</h2> <br></br>
+                  <h1>Das Workshop-Toolkit</h1> <br></br>
                   <p>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                     diam nonumy eirmod tempor invidunt ut labore et dolore magna
@@ -555,13 +555,13 @@ div {
   .beginningWhitebox {
     background-color: white;
     padding: 30px;
-    padding-top: 45px;
-    width: 1380px;
+    padding-top: 33px;
+    width: 1280px;
     height: 550px;
     position: absolute;
     margin: auto;
-    top: 25vh;
-    left: 13.5vw;
+    top: 23vh;
+    left: 15.3vw;
   }
 
   .beginningWhiteboxText {
