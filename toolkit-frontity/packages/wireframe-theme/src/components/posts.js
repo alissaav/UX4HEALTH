@@ -6,7 +6,7 @@ export const Posts = ({ state }) => {
 
     let posts = [];
 
-    data.items.forEach(item => {
+    data.source.post.forEach(item => {
         let post = new Object;
         post.title = item.title.rendered;
         post.duration = item.duration;
@@ -34,10 +34,10 @@ export const Posts = ({ state }) => {
                 break;
         }
         post.isInPlan = false;
-        console.log(post.toString);
+        console.log(post);
         posts.append(post);
         
     });
-    console.log(posts.toString);
+    console.log(posts);
     return posts;
 }
