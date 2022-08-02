@@ -143,7 +143,7 @@ class WorkshopTool extends React.Component {
                   </label>
                   <div className="buttonBox">
                     <button
-                      class="backButton"
+                      className="backButton"
                       onClick={() => {
                         this.handleStateChange(0);
                       }}
@@ -151,7 +151,7 @@ class WorkshopTool extends React.Component {
                       Zurück
                     </button>
                     <button
-                      class="nextButton"
+                      className="nextButton"
                       onClick={() => {
                         this.handleQuestionStateChange(1);
                       }}
@@ -211,7 +211,7 @@ class WorkshopTool extends React.Component {
                     </div>
                   </div>
                   <button
-                    class="backButton"
+                    className="backButton"
                     onClick={() => {
                       this.handleQuestionStateChange(0);
                     }}
@@ -219,7 +219,7 @@ class WorkshopTool extends React.Component {
                     Zurück
                   </button>
                   <button
-                    class="nextButton"
+                    className="nextButton"
                     onClick={() => {
                       this.handleQuestionStateChange(2);
                     }}
@@ -270,7 +270,7 @@ class WorkshopTool extends React.Component {
                     </div>
                   </div>
                   <button
-                    class="backButton"
+                    className="backButton"
                     onClick={() => {
                       this.handleQuestionStateChange(1);
                     }}
@@ -278,7 +278,7 @@ class WorkshopTool extends React.Component {
                     Zurück
                   </button>
                   <button
-                    class="nextButton"
+                    className="nextButton"
                     onClick={() => {
                       this.handleQuestionStateChange(3);
                     }}
@@ -328,7 +328,7 @@ class WorkshopTool extends React.Component {
                       </div>
                     </div>
                     <button
-                      class="backButton"
+                      className="backButton"
                       onClick={() => {
                         this.handleQuestionStateChange(2);
                       }}
@@ -336,7 +336,7 @@ class WorkshopTool extends React.Component {
                       Zurück
                     </button>
                     <button
-                      class="nextButton"
+                      className="nextButton"
                       onClick={() => {
                         this.handleStateChange(2);
                       }}
@@ -403,7 +403,7 @@ class WorkshopTool extends React.Component {
             <div className="toolWhitebox">
               <PlanningTool></PlanningTool>
               <button
-                class="backButton"
+                className="backButton"
                 onClick={() => {
                   this.handleStateChange(1);
                   this.handleQuestionStateChange(3);

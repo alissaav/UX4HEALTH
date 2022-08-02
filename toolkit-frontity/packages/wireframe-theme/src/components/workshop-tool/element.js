@@ -23,11 +23,11 @@ class WorkshopElement extends React.Component {
             );
         } else {
             return (
-                <ElementInPlanContainer style={{"backgroundColor": this.props.color.light, "height": (this.state.duration * 3) + "px", "border-color": this.props.color.main}}>
+                <ElementInPlanContainer style={{"backgroundColor": this.props.color.light, "height": (this.state.duration * 3) + "px", "borderColor": this.props.color.main}}>
                     <ColorAccent style={{"backgroundColor": this.props.color.dark, "boxShadow": "1px 1px " + this.props.color.dark + ", -1px -1px " + this.props.color.dark + ", 1px -1px " + this.props.color.dark + ", -1px 1px " + this.props.color.dark}}>
 
                     </ColorAccent>
-                    <TimeDiv style={{"border-color": this.props.color.main}}>
+                    <TimeDiv style={{"borderColor": this.props.color.main}}>
                     <p>uhrzeit</p>
                     <p style={{"color": this.props.color.dark}}>{this.props.duration} Minuten</p>
                     </TimeDiv>

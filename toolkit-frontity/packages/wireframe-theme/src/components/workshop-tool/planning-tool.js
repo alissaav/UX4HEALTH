@@ -2,17 +2,28 @@ import React from "react";
 import { connect, styled } from "frontity";
 import WorkshopElement from "./element";
 import { COLORS } from "./colors";
+import { Posts } from "../posts.js";
 
 class PlanningTool extends React.Component {
     constructor(props) {
         super(props);
+        const posts = Posts;
+        console.log(posts.toString);
     }
+
 
     render() {
         return(
             <PlanningToolContainer>
                 <ElementsContainer>
                     <h3>Elemente</h3>
+                    {/* { 
+                        Posts.map((item) => {
+                            return (
+                                <WorkshopElement title={item.title.rendered} color={COLORS.blue} isInPlan={false} duration={30}></WorkshopElement>
+                            )
+                        })
+                    } */}
                     <WorkshopElement title="Pause" color={COLORS.green} isInPlan={false} duration={45}></WorkshopElement>
                     <WorkshopElement title="Icebreaker" color={COLORS.pink} isInPlan={false} duration={15}></WorkshopElement>
                 </ElementsContainer>
@@ -22,6 +33,7 @@ class PlanningTool extends React.Component {
                 </PlanContainer>
                 <TipContainer>
                 <h3>Tipps</h3>
+                <p>{this.props.state.source["post"][34].title.rendered}</p>
                 </TipContainer>
             </PlanningToolContainer>
         );
