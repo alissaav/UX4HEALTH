@@ -521,7 +521,7 @@ class WorkshopTool extends React.Component {
         );
       
 
-      // Wechsel Fragen - Planungstool
+      // Wechsel Fragen - Planungstool hi
       case 3:
         return(
           <div className="toolBackground">
