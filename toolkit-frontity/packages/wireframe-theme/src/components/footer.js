@@ -71,7 +71,7 @@ export default connect(Footer);
 
 const FooterElement = styled.footer` 
 
-
+    z-index:100;
 
     width: 100%;
     background-color: #5A48F3;

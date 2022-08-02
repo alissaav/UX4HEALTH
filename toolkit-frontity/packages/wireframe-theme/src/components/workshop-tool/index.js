@@ -5,6 +5,11 @@ import WorkshopProgressBar from "./progress";
 import PlanningTool from "./planning-tool";
 import startup from "../../images/workshopTool/startup3.png";
 import book from "../../images/workshopTool/book2.png";
+import hands from "../../images/workshopTool/hands2.png";
+import block from "../../images/workshopTool/block2.png";
+import praesenz from "../../images/workshopTool/praesenz.jpg";
+import online from "../../images/workshopTool/online.png";
+import bgWild from "../../images/workshopTool/bgWild2.png";
 
 class WorkshopTool extends React.Component {
   constructor(props) {
@@ -26,7 +31,6 @@ class WorkshopTool extends React.Component {
 
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleQuestionStateChange = this.handleQuestionStateChange.bind(this);
-    //this.handlerQuestion1State = this.handlerQuestion1State.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
@@ -41,34 +45,52 @@ class WorkshopTool extends React.Component {
             <div className="backgroundScreen0"></div>
             <div className="beginningWhitebox">
               <div className="beginningWhiteboxText">
-                <h2>Das Workshop-Toolkit</h2> <br></br>
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                  sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                  nonumy eirmod.<br></br>
-                  <br></br> Tempor invidunt ut labore et dolore magna aliquyam
-                  erat, sed diam voluptua. At vero eos et accusam et justo duo
-                  dolores et ea rebum.
-                </p>
+                <div className="beginningText1">
+                  <h1>Das Workshop-Toolkit</h1> <br></br>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                    nonumy eirmod.<br></br>
+                    <br></br> Tempor invidunt ut labore et dolore magna aliquyam
+                    erat, sed diam voluptua. At vero eos et accusam et justo duo
+                    dolores et ea rebum.
+                  </p>
+                </div>
+                <div className="beginningText2">
+                  <h2>
+                    Brauchst du Unterstützung dabei <br /> deinen Workshop zu
+                    planen?
+                  </h2>
+                </div>
               </div>
-              <button
-                onClick={() => {
-                  this.handleStateChange(1);
-                }}
-              >
-                Ja!
-              </button>
-              <button
-                onClick={() => {
-                  this.handleStateChange(2);
-                }}
-              >
-                Direkt zum Tool
-              </button>
+              <div className="beginningButtonImages">
+                <div
+                  className="handsButton"
+                  onClick={() => {
+                    this.handleStateChange(1);
+                  }}
+                >
+                  <div className="spanHands">
+                    <span>Toolkit mit Unterstützung starten</span>
+                  </div>
+                  <img src={hands} className="imgHands" />
+                </div>
+                <div
+                  className="blockButton"
+                  onClick={() => {
+                    this.handleStateChange(2);
+                  }}
+                >
+                  <div className="spanBlock">
+                    <span>Toolkit ohne Unterstützung starten</span>
+                  </div>
+                  <img src={block} className="imgBlock" />
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -174,8 +196,12 @@ class WorkshopTool extends React.Component {
                   <div className="goalOptionsbox">
                     <div
                       className="goalOption1"
-                      id="goalOption1"
-                      onClick={this.handlerQuestion1State0}
+                      id={
+                        this.state.question1 != 0
+                          ? "goalOption1"
+                          : "goalOption1Clicked"
+                      }
+                      onClick={() => this.setState({ question1: 0 })}
                     >
                       <div className="goalPic1"></div>
                       <h2>Produktentwicklung</h2>
@@ -186,8 +212,12 @@ class WorkshopTool extends React.Component {
                     </div>
                     <div
                       className="goalOption2"
-                      id="goalOption2"
-                      onClick={this.handlerQuestion1State1}
+                      id={
+                        this.state.question1 != 1
+                          ? "goalOption2"
+                          : "goalOption2Clicked"
+                      }
+                      onClick={() => this.setState({ question1: 1 })}
                     >
                       <div className="goalPic2"></div>
                       <h2>Produkt-Testen</h2>
@@ -197,8 +227,12 @@ class WorkshopTool extends React.Component {
                     </div>
                     <div
                       className="goalOption3"
-                      id="goalOption3"
-                      onClick={this.handlerQuestion1State2}
+                      id={
+                        this.state.question1 != 2
+                          ? "goalOption3"
+                          : "goalOption3Clicked"
+                      }
+                      onClick={() => this.setState({ question1: 2 })}
                     >
                       <div className="goalPic3"></div>
                       <h2>Ideensammlung</h2>
@@ -232,47 +266,128 @@ class WorkshopTool extends React.Component {
 
           case 2:
             return (
-              <div className="numberBackground">
-                <div className="numberWhitebox">
-                  <h1>Anzahl der Teilnehmer</h1>
-                  <div className="numberOptionsbox">
-                    <div
-                      className="numberOption1"
-                      id="numberOption1"
-                      onClick={this.handlerQuestion1State0}
+              <div className="numberContainer">
+                <div className="numberBackground">
+                  <img src={book} />
+                  <div className="numberWhitebox">
+                    <h1>Anzahl der Teilnehmer</h1>
+                    <div className="numberOptionsbox">
+                      <div
+                        className="numberOption2"
+                        id={
+                          this.state.question2 != 0
+                            ? "numberOption1"
+                            : "numberOption1Clicked"
+                        }
+                        onClick={() => this.setState({ question2: 0 })}
+                      >
+                        <div className="numberPic1"></div>
+                        <h2>5-10</h2>
+                      </div>
+                      <div
+                        className="numberOption2"
+                        id={
+                          this.state.question2 != 1
+                            ? "numberOption2"
+                            : "numberOption2Clicked"
+                        }
+                        onClick={() => this.setState({ question2: 1 })}
+                      >
+                        <div className="numberPic2"></div>
+                        <h2>10-15</h2>
+                      </div>
+                      <div
+                        className="numberOption3"
+                        id={
+                          this.state.question2 != 2
+                            ? "numberOption3"
+                            : "numberOption3Clicked"
+                        }
+                        onClick={() => this.setState({ question2: 2 })}
+                      >
+                        <div className="numberPic3"></div>
+                        <h2>15-25</h2>
+                      </div>
+                      <div
+                        className="numberOption4"
+                        id={
+                          this.state.question2 != 3
+                            ? "numberOption4"
+                            : "numberOption4Clicked"
+                        }
+                        onClick={() => this.setState({ question2: 3 })}
+                      >
+                        <div className="numberPic4"></div>
+                        <h2>Über 25</h2>
+                      </div>
+                    </div>
+                    <button
+                      class="backButton"
+                      onClick={() => {
+                        this.handleQuestionStateChange(1);
+                      }}
                     >
-                      <div className="numberPic1"></div>
-                      <h3>5-10</h3>
+                      Zurück
+                    </button>
+                    <button
+                      class="nextButton"
+                      onClick={() => {
+                        this.handleQuestionStateChange(3);
+                      }}
+                    >
+                      Weiter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+
+          case 3:
+            return (
+              <div className="locationContainer">
+                <div className="locationBackground">
+                  <img src={book} />
+                </div>
+                <div className="locationWhitebox">
+                  <h1>Soll der Workshop online oder in Präsenz stattfinden?</h1>
+                  <div className="locationOptionsbox">
+                    <div
+                      className="locationOption1"
+                      id={
+                        this.state.question3 != 0
+                          ? "locationOption1"
+                          : "locationOption1Clicked"
+                      }
+                      onClick={() => this.setState({ question3: 0 })}
+                    >
+                      <div className="locationPic1">
+                        <img src={online} />
+                      </div>
+                      <h2>Online</h2>
+                      Lorem ipsum dolor sit amet, consetetur dolor sit
+                      sadipscing elitr.
                     </div>
                     <div
-                      className="numberOption2"
-                      id="numberOption2"
-                      onClick={this.handlerQuestion1State1}
+                      className="locationOption2"
+                      id={
+                        this.state.question3 != 1
+                          ? "locationOption2"
+                          : "locationOption2Clicked"
+                      }
+                      onClick={() => this.setState({ question3: 1 })}
                     >
-                      <div className="numberPic2"></div>
-                      <h3>10-15</h3>
-                    </div>
-                    <div
-                      className="numberOption3"
-                      id="numberOption3"
-                      onClick={this.handlerQuestion1State2}
-                    >
-                      <div className="numberPic3"></div>
-                      <h3>15-25</h3>
-                    </div>
-                    <div
-                      className="numberOption3"
-                      id="numberOption3"
-                      onClick={this.handlerQuestion1State2}
-                    >
-                      <div className="numberPic3"></div>
-                      <h3> Über 25</h3>
+                      <div className="locationPic2">
+                        <img src={praesenz} />
+                      </div>
+                      <h2>Präsenz</h2>
+                      Lorem ipsum dolor sit amet, consetetur dolor sit
+                      sadipscing elitr.
                     </div>
                   </div>
                   <button
                     className="backButton"
                     onClick={() => {
-                      this.handleQuestionStateChange(1);
+                      this.handleQuestionStateChange(2);
                     }}
                   >
                     Zurück
@@ -280,7 +395,7 @@ class WorkshopTool extends React.Component {
                   <button
                     className="nextButton"
                     onClick={() => {
-                      this.handleQuestionStateChange(3);
+                      this.handleStateChange(2);
                     }}
                   >
                     Weiter
@@ -348,65 +463,73 @@ class WorkshopTool extends React.Component {
               </div>
             );
         }
-      //return (
-      // <div>
-      //   <Question
-      //     question="Was ist das Ziel Ihres Workshops?"
-      //     answers={[
-      //       "Produktentwicklung",
-      //       "Produkt testen",
-      //       "Ideensammlung",
-      //     ]}
-      //     answerHandler={this.handlerQuestion1State.bind(this)}
-      //   />
-      //   {this.state.question1 != 0 && (
-      //     <div>
-      //       <Question
-      //         question="Was ist die Anzahl der Teilnehmer?"
-      //         answers={["5-10", "10-15", "15-25", ">25"]}
-      //         answerHandler={this.handlerQuestion2State.bind(this)}
-      //       />
-      //     </div>
-      //   )}
-      //   {this.state.question2 != 0 && (
-      //     <div>
-      //       <Question
-      //         question="Soll der Workshop online oder in Präsenz stattfinden?"
-      //         answers={["Online", "Präsenz"]}
-      //         answerHandler={this.handlerQuestion3State.bind(this)}
-      //       />
-      //     </div>
-      //   )}
-      //   {this.state.question3 != 0 && (
-      //     <div>
-      //       <Question
-      //         question="Was ist die Anzahl der Teilnehmer?"
-      //         answers={["5-10", "10-15", "15-25", ">25"]}
-      //         answerHandler={this.handlerQuestion4State.bind(this)}
-      //       />
-      //     </div>
-      //   )}
-      //   {this.state.question4 != 0 && (
-      //     <div>
-      //       <Question
-      //         question="Wie lange soll Ihr Workshop gehen?"
-      //         answers={["3-4 Stunden", "6-8 Stunden", "2 Tage"]}
-      //         answerHandler={this.handlerFinalQuestion.bind(this)}
-      //       />
-      //     </div>
-      //   )}
-      // </div>
-      //);
+
+      // Wechsel Fragen - Planungstool
       case 2:
         return (
-          <div className="toolBackground">
-            <div className="toolWhitebox">
-              <PlanningTool></PlanningTool>
+          <div className="suggestionContainer">
+            <div className="suggestionsBackground">
+              <img src={bgWild} />
+            </div>
+            <div className="suggestionsWhitebox">
+              <h1>Eingegebene Daten:</h1>
+              <br />
+              <br />
+              Titel: {this.state.title}
+              <br />
+              <br />
+              Ort: {this.state.location}
+              <br />
+              <br />
+              Datum: {this.state.date}
+              <br />
+              <br />
+              Uhrzeit: {this.state.time}
+              <br />
+              <br />
+              Tage: {this.state.daysCount}
+              <br />
+              <br />
+              Frage 1: {this.state.question1}
+              <br />
+              <br />
+              Frage 2: {this.state.question2}
+              <br />
+              <br />
+              Frage 3: {this.state.question3}
+              <br />
+              <br />
               <button
                 className="backButton"
                 onClick={() => {
                   this.handleStateChange(1);
                   this.handleQuestionStateChange(3);
+                }}
+              >
+                Zurück
+              </button>
+              <button
+                class="nextButton"
+                onClick={() => {
+                  this.handleStateChange(3);
+                }}
+              >
+                Weiter
+              </button>
+            </div>
+          </div>
+        );
+
+      // Wechsel Fragen - Planungstool
+      case 3:
+        return (
+          <div className="toolBackground">
+            <div className="toolWhitebox">
+              Herzlich Wilkommen auf dem Planungstool! <br></br>
+              <button
+                class="backButton"
+                onClick={() => {
+                  this.handleStateChange(2);
                 }}
               >
                 Zurück
@@ -417,32 +540,6 @@ class WorkshopTool extends React.Component {
     }
   }
 
-  /*
-  setColor() {
-    //alert(this.question1);
-    if (this.state.question1 == 0) {
-      alert("q1=0");
-      document.getElementById("goalOption1").id = "goalOption1Clicked";
-      document.getElementsByClassName("goalOption2").id = "goalOption2";
-      document.getElementsByClassName("goalOption3").id = "goalOption3";
-    }
-
-    if (this.state.question1 == 1) {
-      alert("q1=1");
-      document.getElementById("goalOption2").id = "goalOption2Clicked";
-      document.getElementsByClassName("goalOption1").id = "goalOption1";
-      document.getElementsByClassName("goalOption3").id = "goalOption3";
-    }
-
-    if (this.state.question1 == 2) {
-      alert("q1=2");
-      document.getElementById("goalOption3").id = "goalOption3Clicked";
-      document.getElementsByClassName("goalOption1").id = "goalOption1";
-      document.getElementsByClassName("goalOption2").id = "goalOption2";
-    }
-  }
-  */
-
   handleStateChange(number) {
     this.setState({ currentScreen: number });
   }
@@ -451,30 +548,6 @@ class WorkshopTool extends React.Component {
     this.setState({ currentQuestionScreen: number });
   }
 
-  /******* Fragenhandler *******/
-  handlerQuestion1State0() {
-    document.getElementById("goalOption1").id = "goalOption1Clicked";
-    document.getElementsById("goalOption2Clicked").id = "goalOption2";
-    document.getElementsById("goalOption3Clicked").id = "goalOption3";
-    this.setState({ question1: 0 });
-    //this.setColor();
-  }
-  handlerQuestion1State1() {
-    document.getElementById("goalOption2").id = "goalOption2Clicked";
-    document.getElementById("goalOption1Clicked").id = "goalOption1";
-    document.getElementById("goalOption3Clicked").id = "goalOption3";
-    this.setState({ question1: 1 });
-    //this.setColor();
-  }
-  handlerQuestion1State2() {
-    document.getElementById("goalOption3").id = "goalOption3Clicked";
-    document.getElementById("goalOption1Clicked").id = "goalOption1";
-    document.getElementsById("goalOption2Clicked").id = "goalOption2";
-    this.setState({ question1: 2 });
-    //this.setColor();
-  }
-
-  //
   handlerQuestion2State(value) {
     this.setState({ question2: value });
   }
@@ -499,20 +572,25 @@ class WorkshopTool extends React.Component {
 
   render() {
     return (
-    <WorkshopContainer>
-      {this.state.currentScreen == 1 ? <WorkshopProgressBar currentQuestion={this.state.currentQuestionScreen} numberOfQuestions={5}/> : ""}
-      {this.renderSwitch()} 
-    </WorkshopContainer>
+      <WorkshopContainer>
+        {this.state.currentScreen == 1 ? (
+          <WorkshopProgressBar
+            currentQuestion={this.state.currentQuestionScreen}
+            numberOfQuestions={5}
+          />
+        ) : (
+          ""
+        )}
+        {this.renderSwitch()}
+      </WorkshopContainer>
     );
   }
 }
 export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
-  margin-top:120px;
-  min-height: 80vh;
 
-  div {
+div {
     items-align: center;
     text-align: center;
   }
@@ -522,7 +600,6 @@ const WorkshopContainer = styled.div`
     padding: 20px;
     margin: 20px;
     height: 50px;
-    opacity: 1 !important;
     //margin-bottom: 150px !important;
   }
 
@@ -532,12 +609,9 @@ const WorkshopContainer = styled.div`
 
   //beginning
 
-  .beginningContainer {
-  }
-
   .backgroundPicScreen0 {
     width: 100%;
-    height: 70vh;
+    height: 75vh;
     position: relative;
   }
 
@@ -546,31 +620,82 @@ const WorkshopContainer = styled.div`
   }
 
   .backgroundScreen0 {
-    background-color: whitesmoke;
-    height: 150px;
+    background-color: white;
+    height: 180px;
     position: relative;
   }
 
   .beginningWhitebox {
-    background-color: whitesmoke;
+    background-color: white;
     padding: 30px;
-    padding-top: 60px;
-    width: 1380px;
+    padding-top: 33px;
+    width: 1280px;
     height: 550px;
     position: absolute;
     margin: auto;
-    top: 25vh;
-    left: 13.5vw;
+    top: 23vh;
+    left: 15.3vw;
   }
 
   .beginningWhiteboxText {
     width: 60%;
     margin: auto;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .beginningText1 {
     border-bottom-width: 2.5px;
     border-bottom-style: solid;
-    border-color: lightblue;
-    padding-bottom: 45px;
-    margin-bottom: 45px;
+    border-color: rgba(78, 237, 228, 0.4);
+  }
+
+  .beginningText2 {
+    margin-top: 45px;
+  }
+
+  //beginning button images
+  .imgHands {
+    height: 170px;
+    width: 289px;
+  }
+
+  .imgBlock {
+    height: 170px;
+    width: 289px;
+  }
+
+  .spanHands {
+    position: absolute;
+    display: inline;
+    padding: 17px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.7);
+    width: 289px;
+    height: 60px;
+  }
+
+  .spanBlock {
+    position: absolute;
+    display: inline;
+    padding: 17px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.7);
+    width: 289px;
+    height: 60px;
+  }
+
+  .handsButton {
+    display: inline;
+    margin-right: 50px;
+    height: 170px;
+    width: 289px;
+  }
+
+  .blockButton {
+    display: inline;
+    height: 170px;
+    width: 289px;
   }
 
   //data
@@ -590,7 +715,6 @@ const WorkshopContainer = styled.div`
   }
 
   #dataWhitespace {
-    background-color: whitesmoke;
     display: grid;
     grid-template-columns: 30% 10% 20% 10% 30%;
     grid-template-rows: 30% 20% 30% 20%;
@@ -600,9 +724,10 @@ const WorkshopContainer = styled.div`
       "date xtime xtime xtime days-count"
       "buttonBox buttonBox buttonBox buttonBox buttonBox";
     padding: 120px;
+    height: 64vh;
     width: 50%;
-    opacity: 0.7;
-    top: 15vh;
+    background: rgba(255, 255, 255, 0.7);
+    top: 13vh;
     left: 23vw;
     position: absolute;
   }
@@ -615,16 +740,20 @@ const WorkshopContainer = styled.div`
   .label-title {
     grid-area: title;
   }
+
   .label-location {
     grid-area: location;
   }
+
   .h3-question {
     margin: 24px;
     grid-area: h3-question;
   }
+
   .label-date {
     grid-area: date;
   }
+
   .label-time {
     grid-area: xtime;
   }
@@ -637,10 +766,17 @@ const WorkshopContainer = styled.div`
   }
   .backButton {
     grid-area: backButton;
+    padding: 0 !important
+    margin: 0 !important;
+    bottom: 0 !important;
   }
 
   .nextButton {
+    margin-left: 42%;
     grid-area: nextButton;
+    padding: 0 !important
+    margin: 0 !important;
+    bottom: 0 !important;
   }
 
   //goal
@@ -661,118 +797,212 @@ const WorkshopContainer = styled.div`
   }
 
   .goalWhitebox {
-    background-color: whitesmoke;
     width: 50%;
-    height: 62vh;
-    opacity: 0.7;
-    top: 15vh;
+    height: 64vh;
+    background: rgba(245, 245, 245, 0.7);
+    top: 13vh;
     left: 23vw;
     position: absolute;
   }
 
   .goalOptionsbox {
+    width: 90%;
     display: flex;
-    gap: 3em;
-    flex-direction: row;
-    margin: 3em;
-    margin-bottom: 20px;
+    gap: 30px;
+    margin: auto;
+
+    flex-basis: 33%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 0;
   }
 
-  #goalOption1 {
-    padding: 20px;
-    border: black 2px solid;
-  }
-
-  #goalOption1Clicked {
-    padding: 20px;
-    border: purple 4px solid;
-    background-color: purple;
-    color: white;
-  }
-
-  #goalOption2 {
-    padding: 20px;
-    border: black 2px solid;
-  }
-
-  #goalOption2Clicked {
-    padding: 20px;
-    border: purple 4px solid;
-    background-color: purple;
-    color: white;
-  }
-
+  #goalOption1,
+  #goalOption2,
   #goalOption3 {
-    padding: 20px;
-    border: black 2px solid;
+    background: rgba(245, 245, 245, 0.7);
+    width: 28%;
+    height: 40vh;
+    padding: 1.5%;
+    //border: black 2px solid;
+    flex: 1;
   }
 
+  #goalOption1Clicked,
+  #goalOption2Clicked,
   #goalOption3Clicked {
-    padding: 20px;
-    border: purple 4px solid;
-    background-color: purple;
-    color: white;
+    background: rgba(245, 245, 245, 0.7);
+    width: 28%;
+    height: 40vh;
+    padding: 1.5%;
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+    flex: 1;
   }
 
   //number
+  .numberContainer {
+    height: 82vh;
+    position: relative;
+  }
+
   .numberBackground {
-    //background-color: grey;
-    height: 850px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 400px;
   }
 
   .numberBackground img {
-    width: 100vw;
+    width: 100%;
+    left: 0;
+    margin-bottom: 20px;
   }
 
   .numberWhitebox {
-    background-color: whitesmoke;
-    opacity: 0.7;
-    height: 700px;
-    width: 950px;
-    padding-top: 30px;
-    margin: auto;
-    margin-top: 100px;
+    width: 50%;
+    height: 64vh;
+    background: rgba(245, 245, 245, 0.7);
+    top: 13vh;
+    left: 23vw;
+    position: absolute;
   }
 
   .numberOptionsbox {
+    width: 90%;
     display: flex;
-    gap: 3em;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 40px;
+    gap: 30px;
+    margin: auto;
+
+    flex-basis: 33%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 0;
   }
 
   #numberOption1,
   #numberOption2,
   #numberOption3,
   #numberOption4 {
+    margin: auto;
+    background: rgba(245, 245, 245, 0.7);
+    width: 30%;
+    height: 40vh;
+    padding: 1.5%;
+    //border: black 2px solid;
+    flex: 1;
+  }
+
+  #numberOption1Clicked,
+  #numberOption2Clicked,
+  #numberOption3Clicked,
+  #numberOption4Clicked {
+    margin: auto;
+    background: rgba(245, 245, 245, 0.7);
+    width: 30%;
+    height: 40vh;
+    padding: 1.5%;
+    //border: black 2px solid;
+    flex: 1;
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+
+  }
+
+  //location
+
+  .locationContainer {
+    height: 82vh;
+    position: relative;
+  }
+
+  .locationBackground {
+    height: 400px;
+  }
+
+  .locationBackground img {
+    width: 100%;
+    left: 0;
+    margin-bottom: 20px;
+  }
+
+  .locationWhitebox {
+    width: 50%;
+    height: 64vh;
+    background: rgba(245, 245, 245, 0.7);
+    top: 13vh;
+    left: 23vw;
+    position: absolute;
+  }
+
+  .locationOptionsbox {
+    width: 90%;
+    display: flex;
+    gap: 30px;
+    margin: auto;
+
+    flex-basis: 33%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  #locationOption1,
+  #locationOption2,
+  #locationOption3 {
+    background: rgba(245, 245, 245, 0.7);
+    width: 28%;
+    height: 40vh;
+    //border: black 2px solid;
+    flex: 1;
+  }
+
+  #locationOption1Clicked,
+  #locationOption2Clicked,
+  #locationOption3Clicked {
+    background: rgba(245, 245, 245, 0.7);
+    width: 28%;
+    height: 40vh;
+    flex: 1;
+
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+  }
+
+  .locationPic1, .locationPic2 {
+    margin: auto;
+    width: 100%;
+    
+  }
+
+  //Vorschläge
+  .suggestionContainer{
+    height: 82vh;
+    position: relative;
+  }
+
+  .suggestionsBackground {
+    z-index:0;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    border: black 2px solid;
-    width: 130px;
-    height: 70px;
+  }
+
+  .suggestionsWhitebox {
+    width: 50%;
+    height: 64vh;
+    background: rgba(245, 245, 245, 0.92);
+    top: 13vh;
+    left: 23vw;
+    position: absolute;
   }
 
   //Planungstool
-  .toolBackground {
-    //background-color: grey;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  
+  .toolBackground{
+        height: 400px;
   }
 
-  .toolWhitebox {
-    background-color: whitesmoke;
-    opacity: 0.7;
-    width: 950px;
-    padding-top: 30px;
-    margin: auto;
+  .toolBackground img {
+    width: 100%;
+    left: 0;
+    margin-bottom: 20px;
   }
+  
 `;

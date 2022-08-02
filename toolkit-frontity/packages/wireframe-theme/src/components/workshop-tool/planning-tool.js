@@ -45,34 +45,35 @@ class PlanningTool extends React.Component {
 export default connect(PlanningTool);
 
 const PlanningToolContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    `
+  display: flex;
+  justify-content: space-evenly;
+  height: 50vh;
+`;
 
 const ElementsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 20%;
-    justify-content: center;
-    background-color: whitesmoke;
-    padding: 8px;
-    box-shadow: 0 0 1em grey;
-`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 20%;
+  justify-content: center;
+  background-color: whitesmoke;
+  padding: 8px;
+  box-shadow: 0 0 1em grey;
+`;
 const PlanContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-    background-color: whitesmoke;
-    padding: 4px;
-`
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  background-color: red;
+  padding: 4px;
+`;
 
 const TipContainer = styled.div`
-    display: flex;
-    width: 20%;
-    background-color: whitesmoke;
-    justify-content: center;
+  display: flex;
+  width: 20%;
+  background-color: whitesmoke;
+  justify-content: center;
 
-    padding: 8px;
-    box-shadow: 0 0 1em grey;
-`
+  padding: 8px;
+  box-shadow: 0 0 1em grey;
+`;

@@ -34,10 +34,8 @@ export const Posts = ({ state }) => {
                 break;
         }
         post.isInPlan = false;
-        console.log(post);
         posts.append(post);
         
     });
-    console.log(posts);
     return posts;
 }

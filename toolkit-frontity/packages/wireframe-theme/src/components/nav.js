@@ -1,5 +1,5 @@
 import { connect, styled } from "frontity";
-import Link from "@frontity/components/link"
+import Link from "@frontity/components/link";
 
 /**
  * Navigation Component
