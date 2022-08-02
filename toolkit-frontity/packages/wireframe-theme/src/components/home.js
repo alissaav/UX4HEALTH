@@ -364,6 +364,7 @@ const Home = ({ state }) => {
 export default connect(Home);
 
 const Wrapper = styled.div`
+  padding: 1em;
   max-width: 950px;
   margin: auto;
 `;

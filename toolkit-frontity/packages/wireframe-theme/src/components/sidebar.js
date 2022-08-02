@@ -81,6 +81,9 @@ const Sidebar = ({ state }) => {
 export default connect(Sidebar);
 
 const Main = styled.div`
+  margin: 0;
+  padding: 0;
+
   position: absolute;
   margin-top: 70px;
   margin-left: 20px;
@@ -91,11 +94,9 @@ const Main = styled.div`
   nav {
     padding: 10px;
   }
-
   ul {
     list-style: none;
   }
-
   li > a {
     padding: 15px;
     display: block;
@@ -106,31 +107,27 @@ const Main = styled.div`
     font-size: 16px;
     text-transform: uppercase;
     opacity: 0.4;
-
     /* Use for semantic approach to style the current link */
     &[aria-current="page"] {
       color: #5a48f3;
       opacity: 1;
     }
   }
-
   li > a:hover {
     text-decoration: underline;
   }
-
   @media only screen and (max-width: 1580px) {
     border-right: none;
   }
-
-  @media only screen and (max-width: 1350px) {
+  @media only screen and (max-width: 1620px) {
     position: relative;
     margin-left: 0px;
     margin-right: 0px;
+    margin-bottom: 30px;
     height: 300px;
     align-items: center;
     text-align: center;
     width: 100%;
-
     nav {
       padding-bottom: 20px !important;
       border-bottom: 1px solid #c4c4c4 !important;
