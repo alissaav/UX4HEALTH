@@ -174,7 +174,7 @@ const List = ({ state, actions }) => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Head></Head>
 
       <PopularMethods>
@@ -875,7 +875,7 @@ const List = ({ state, actions }) => {
           </button>
         )}
       </PrevNextNav>
-    </>
+    </Wrapper>
   );
   // }
   // else{
@@ -888,10 +888,15 @@ const List = ({ state, actions }) => {
 };
 
 //Styles für die Leiste zum Ändern der Ansicht
+const Wrapper = styled.div`
+  max-width: 950px;
+  padding: 1em;
+  margin: auto;
+`;
+
 const Buttons = styled.div`
   padding-top: 10px;
   text-align: right;
-
   h3 {
     display: inline;
     text-align: left;
@@ -900,22 +905,18 @@ const Buttons = styled.div`
     font-size: 1.5em;
     padding-left: 10px;
   }
-
   img {
     display: inline-block;
     cursor: pointer;
     height: 25px;
   }
-
   img[aria-current="false"] {
     opacity: 0.4;
   }
-
   img:nth-of-type(2) {
     padding-left: 5px;
     vertical-align: bottom;
   }
-
   img:nth-of-type(1) {
     padding-left: 5px;
     margin-top: 5px;
@@ -949,11 +950,9 @@ const StyledDiv = styled.div`
     margin-top: 10px;
     margin-left: 5px;
   }
-
   .filterBtn {
     margin-left: 70%;
   }
-
   .modal {
     width: 100%;
     display: flex;
@@ -963,7 +962,6 @@ const StyledDiv = styled.div`
     background-color: #eeeeee;
     border-radius: 10px;
   }
-
   button {
     background-color: #b5b5b5;
     border: none;
@@ -977,16 +975,13 @@ const StyledDiv = styled.div`
     margin: 10px 10px 0px 0px;
     border-radius: 5px;
   }
-
   .modalBtn {
     margin: 0px 25px 10px 0px;
   }
-
   .modal-dauer {
     display: flex;
     padding: 10px;
   }
-
   .btn {
     background-color: #b5b5b5;
     border: none;
@@ -999,40 +994,32 @@ const StyledDiv = styled.div`
     transition-duration: 0.4s;
     border-radius: 5px;
   }
-
   button:hover {
     background-color: #5a48f3;
     color: white;
   }
-
   .containerCategory {
     display: flex;
     margin-bottom: 5px;
   }
-
   .containerCategory img {
     margin-right: 5px;
     width: 25px;
   }
-
   .filterCategory {
     margin: 0;
   }
-
   .modal_active {
     background-color: #5a48f3;
   }
-
   .filter-selected {
     background-color: #5a48f3;
   }
-
   .container {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
   }
-
   .headerFlex {
     flex: 50%;
     margin-bottom: 10px;
@@ -1041,7 +1028,6 @@ const StyledDiv = styled.div`
 
 const PrevNextNav = styled.div`
   padding-top: 1.5em;
-
   & > button {
     background: #eee;
     text-decoration: none;

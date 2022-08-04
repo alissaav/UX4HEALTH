@@ -17,12 +17,13 @@ const Main = ({ state }) => {
       {(data.isArchive || data.isPost) && <Sidebar />}
       <MainContent>
         <Switch>
-          <WorkshopTool when={data.isWorkshopTool}>This is the Workshop-Tool</WorkshopTool>
+          <WorkshopTool when={data.isWorkshopTool}>
+            This is the Workshop-Tool
+          </WorkshopTool>
           <Home when={data.isHome}>This is the home page</Home>
           <List when={data.isArchive}>This is a list</List>
           <Post when={data.isPost}>This is a post</Post>
           <Page when={data.isPage && !data.isWorkshopTool}>This is a page</Page>
-          
         </Switch>
       </MainContent>
     </>
@@ -32,10 +33,6 @@ const Main = ({ state }) => {
 export default connect(Main);
 
 const MainContent = styled.header`
-  max-width: 950px;
-  padding: 1em;
-  margin: auto;
-
   img {
     max-width: 100%;
   }
@@ -50,9 +47,9 @@ const MainContent = styled.header`
     color: #828282;
     font-size: 0.8em;
     margin-bottom: 1em;
-    }
-    
-    @media only screen and (max-width: 800px) {
-        padding: 0!important;
-    }
-`
+  }
+
+  @media only screen and (max-width: 800px) {
+    padding: 0 !important;
+  }
+`;
