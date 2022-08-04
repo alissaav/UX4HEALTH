@@ -9,23 +9,23 @@ class PlanningTool extends React.Component {
         super(props);
         
     }
-
-
     render() {
-        const posts = this.props.state.source["post"];
-        let myTarget = JSON.parse(JSON.stringify(posts));
-        console.log(myTarget);
+        const postsData = this.props.state.source["post"];
+        let parsedPosts = JSON.parse(JSON.stringify(postsData));
+        console.log(parsedPosts);
+        const posts = Posts(parsedPosts);
+        console.log(posts);
 
         return(
             <PlanningToolContainer>
                 <ElementsContainer>
                     <h3>Elemente</h3>
                     { 
-                        Object.keys(myTarget).map(function(key, index) {
-                            return (
-                                <WorkshopElement title={myTarget[key].title.rendered} color={COLORS.blue} isInPlan={false} duration={30}></WorkshopElement>
-                            )
-                        })
+
+                        posts.map((post) =>
+                        <WorkshopElement title={post.title} duration={post.duration} isInPlan={post.isInPlan} color={COLORS.blue}/>
+                        )
+
                     } 
                     <WorkshopElement title="Pause" color={COLORS.green} isInPlan={false} duration={45}></WorkshopElement>
                     <WorkshopElement title="Icebreaker" color={COLORS.pink} isInPlan={false} duration={15}></WorkshopElement>
