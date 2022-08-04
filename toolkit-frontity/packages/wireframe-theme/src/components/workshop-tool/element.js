@@ -20,7 +20,7 @@ function WorkshopElement(props) {
       <ElementContainer
         ref={drag}
         style={{
-          backgroundColor: isDragging ? props.color.main : "white",
+          backgroundColor: isDragging ? "purple" : props.color.main,
         }}
       >
         {props.title}

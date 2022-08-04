@@ -24,6 +24,7 @@ export default function DragDrop(props) {
         console.log(key);
         board.push(props.methoden[key]);
       }
+      console.log(props.methoden);
     });
   };
 
@@ -48,8 +49,8 @@ export default function DragDrop(props) {
           return (
             <WorkshopElement
               title={key.title.rendered}
-              color={COLORS.blue}
-              isInPlan={false}
+              color={COLORS.yellow}
+              isInPlan={true}
               duration={30}
               id={key}
             ></WorkshopElement>
