@@ -82,7 +82,7 @@ class WorkshopTool extends React.Component {
                 <div
                   className="blockButton"
                   onClick={() => {
-                    this.handleStateChange(2);
+                    this.handleStateChange(3);
                   }}
                 >
                   <div className="spanBlock">
@@ -519,11 +519,10 @@ class WorkshopTool extends React.Component {
             </div>
           </div>
         );
-      
 
       // Wechsel Fragen - Planungstool hi
       case 3:
-        return(
+        return (
           <div className="toolBackground">
             <div className="toolWhitebox">
               <PlanningTool></PlanningTool>
@@ -573,10 +572,17 @@ class WorkshopTool extends React.Component {
 
   render() {
     return (
-    <WorkshopContainer>
-      {this.state.currentScreen == 1 ? <WorkshopProgressBar currentQuestion={this.state.currentQuestionScreen} numberOfQuestions={5}/> : ""}
-      {this.renderSwitch()} 
-    </WorkshopContainer>
+      <WorkshopContainer>
+        {this.state.currentScreen == 1 ? (
+          <WorkshopProgressBar
+            currentQuestion={this.state.currentQuestionScreen}
+            numberOfQuestions={5}
+          />
+        ) : (
+          ""
+        )}
+        {this.renderSwitch()}
+      </WorkshopContainer>
     );
   }
 }
