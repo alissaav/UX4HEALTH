@@ -15,7 +15,7 @@ export const COLORS = {
         dark: "#3B4FF2"
     }, 
     violet: {
-        main: "#9DA5F9", 
+        main: "#B780E3", 
         light: "#F5F0F8",
         dark: "#6813C0"
     },  

@@ -20,7 +20,8 @@ function WorkshopElement(props) {
       <ElementContainer
         ref={drag}
         style={{
-          backgroundColor: isDragging ? "purple" : props.color.main,
+          backgroundColor: props.color.main,
+          opacity: isDragging ? 0.5 : 1,
         }}
       >
         {props.title}
@@ -32,7 +33,7 @@ function WorkshopElement(props) {
         ref={drag}
         style={{
           backgroundColor: props.color.light,
-          height: duration * 3 + "px",
+          height: duration * 2 + "px",
           borderColor: props.color.main,
         }}
       >
@@ -57,7 +58,7 @@ function WorkshopElement(props) {
         <h4 style={{ color: props.color.dark }}>{props.title} </h4>
         <NotesDiv>
           Notizen:
-          <textarea style={{ height: duration * 3 - 10 + "px" }}></textarea>
+          <textarea style={{ height: duration * 2 - 10 + "px", borderColor: props.color.dark }}></textarea>
         </NotesDiv>
       </ElementInPlanContainer>
     );

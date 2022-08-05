@@ -725,7 +725,6 @@ const WorkshopContainer = styled.div`
       "h3-question h3-question h3-question h3-question h3-question"
       "date xtime xtime xtime days-count"
       "buttonBox buttonBox buttonBox buttonBox buttonBox";
-    padding: 120px;
     height: 64vh;
     width: 50%;
     background: rgba(255, 255, 255, 0.7);
@@ -735,6 +734,7 @@ const WorkshopContainer = styled.div`
   }
 
   .buttonBox {
+    display: flex;
     grid-area: buttonBox;
     width: 100%;
   }
