@@ -24,7 +24,7 @@ class WorkshopProgressBar extends React.Component {
                     <line id="Linie_3-4" data-name="Linie 3-4" x1="250" y1="25" x2="350" y2="25" stroke={this.state.currentQuestion >= 3 ? "#444" : "#ccc"} strokeWidth="6"/>
                     <line id="Linie_4-5" data-name="Linie 4-5" x1="350" y1="25" x2="450" y2="25" stroke={this.state.currentQuestion >= 4 ? "#444" : "#ccc"} strokeWidth="6"/>
                     
-                    <circle id="circle_1" data-name="circle_1" cx="50" cy="25" r="15" fill={this.state.currentQuestion >= 0 ? "#444" : "#ccc"} onclick="console.log(&quot;Hello&quot;)"/>
+                    <circle id="circle_1" data-name="circle_1" cx="50" cy="25" r="15" fill={this.state.currentQuestion >= 0 ? "#444" : "#ccc"} onClick={() => {console.log("Hello")}}/>
                     
                     <circle id="circle_2" data-name="circle_1" cx="150" cy="25" r="15" fill={this.state.currentQuestion >= 1 ? "#444" : "#ccc"}/>
                     <circle id="circle_3" data-name="circle_1" cx="250" cy="25" r="15" fill={this.state.currentQuestion >= 2 ? "#444" : "#ccc"}/>

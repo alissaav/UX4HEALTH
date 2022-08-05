@@ -6,6 +6,8 @@ class WorkshopElement extends React.Component {
         super(props);
 
         this.state = {
+            id: this.props.id,
+            title: this.props.title,
             isInPlan: this.props.isInPlan,
             duration: this.props.duration,
             notes: "",

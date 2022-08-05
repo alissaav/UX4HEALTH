@@ -3,46 +3,79 @@ import { connect, styled } from "frontity";
 import WorkshopElement from "./element";
 import { COLORS } from "./colors";
 import { Posts } from "../posts.js";
+import DragElement from "./drag-element"
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import DropWrapper from "./drop-wrapper";
+
 
 class PlanningTool extends React.Component {
     constructor(props) {
         super(props);
         
+        this.state = {
+            posts: []
+        }
+        
     }
+    onDrop(item, monitor) {
+        const post = posts[item.id]; 
+        this.posts.filter(i => i.id !== post);
+        this.posts.concat({ ...item, });
+    } 
+
+    onMove(dragIndex, hoverIndex){
+
+    }
+
     render() {
         const postsData = this.props.state.source["post"];
         let parsedPosts = JSON.parse(JSON.stringify(postsData));
         console.log(parsedPosts);
-        const posts = Posts(parsedPosts);
+        this.posts = Posts(parsedPosts);
         console.log(posts);
 
         return(
             <PlanningToolContainer>
+                <DndProvider backend={HTML5Backend}>
                 <ElementsContainer>
-                    <h3>Elemente</h3>
-                    { 
+                    <DropWrapper onDrop isPlan={false}>
+                        <h3>Elemente</h3>
+                        { 
 
-                        posts.map((post) =>
-                        <WorkshopElement title={post.title} duration={post.duration} isInPlan={post.isInPlan} color={COLORS.blue}/>
-                        )
+                            posts.map((post) =>
+                            post.isInPlan? "" : <DragElement id={post.id} title={post.title} duration={post.duration} isInPlan={post.isInPlan} color={COLORS.blue}/> 
+                            )
 
-                    } 
-                    <WorkshopElement title="Pause" color={COLORS.green} isInPlan={false} duration={45}></WorkshopElement>
-                    <WorkshopElement title="Icebreaker" color={COLORS.pink} isInPlan={false} duration={15}></WorkshopElement>
+                        } 
+                    </DropWrapper>
                 </ElementsContainer>
+
+
                 <PlanContainer>
-                    <WorkshopElement title="Icebreaker" color={COLORS.pink} isInPlan={true} duration={15}></WorkshopElement>
-                    <WorkshopElement title="Pause" color={COLORS.green} isInPlan={true} duration={45}></WorkshopElement>
+                { 
+
+                posts.map((post) =>
+                post.isInPlan? <DragElement id={post.id} title={post.title} duration={post.duration} isInPlan={post.isInPlan} color={COLORS.blue}/> : ""
+                )
+
+                } 
                 </PlanContainer>
+
+
                 <TipContainer>
                 <h3>Tipps</h3>
-                <p>{this.props.state.source["post"][34].description}</p>
                 </TipContainer>
+
+                </DndProvider>
+
             </PlanningToolContainer>
         );
     }
 }
 export default connect(PlanningTool);
+
+
 
 const PlanningToolContainer = styled.div`
     display: flex;

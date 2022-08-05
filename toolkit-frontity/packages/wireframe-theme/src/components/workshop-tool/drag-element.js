@@ -1,8 +1,12 @@
 import React, { useRef } from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
 import { useDrag, useDrop } from 'react-dnd';
 import ITEM_TYPE from "./types";
+import { connect, styled } from "frontity";
 
-const DragElement = ({ item, index, moveItem, status }) => {
+
+const DragElement = ({ item, index, moveItem, status, state }) => {
+
     const ref = useRef(null);
 
     const [, drop] = useDrop({
@@ -53,6 +57,8 @@ const DragElement = ({ item, index, moveItem, status }) => {
     drag(drop(ref));
 
     return (
-        <WorkshopElement></WorkshopElement>
+        <WorkshopElement id={this.props.id} title={this.props.title} duration={this.props.duration} color={this.props.color} isInPlan={this.props.isInPlan} className={this.props.title} style={{opacity: isDragging? 0 : 1}}></WorkshopElement>
     )
 }
+
+export default connect(DragElement);
