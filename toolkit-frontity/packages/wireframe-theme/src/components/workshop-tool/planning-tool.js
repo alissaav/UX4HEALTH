@@ -7,16 +7,18 @@ import { DndProvider, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import DragDrop from "./DragDrop";
 
-function PlanningTool(props) {
-  const posts = props.state.source["post"];
-  let myTarget = JSON.parse(JSON.stringify(posts));
-  console.log(myTarget);
+    function PlanningTool(props) {
+    const posts = props.state.source["post"];
+    let parsedPosts = JSON.parse(JSON.stringify(posts));
+    console.log(parsedPosts);
+    let postArray = Posts(parsedPosts);
+    console.log(postArray);
 
-  return (
-    <DndProvider backend={HTML5Backend}>
-      <DragDrop props={props} methoden={myTarget}></DragDrop>
-    </DndProvider>
-  );
-}
+    return (
+        <DndProvider backend={HTML5Backend}>
+        <DragDrop props={props} methoden={postArray}></DragDrop>
+        </DndProvider>
+    );
+    }
 
 export default connect(PlanningTool);

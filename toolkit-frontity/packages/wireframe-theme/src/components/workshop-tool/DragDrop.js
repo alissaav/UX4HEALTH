@@ -12,7 +12,9 @@ export default function DragDrop(props) {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "method",
     //herausfinden welches Element man zu Board hinzufügt
-    drop: (item) => addMethodToBoard(item.id),
+    drop: (item) => {
+      item.isInPlan = true;
+      addMethodToBoard(item.id)},
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -35,10 +37,10 @@ export default function DragDrop(props) {
         {Object.keys(props.methoden).map(function (key) {
           return (
             <WorkshopElement
-              title={props.methoden[key].title.rendered}
-              color={COLORS.blue}
-              isInPlan={false}
-              duration={30}
+              title={props.methoden[key].title}
+              color={props.methoden[key].color}
+              isInPlan={props.methoden[key].isInPlan}
+              duration={props.methoden[key].duration}
               id={key}
             ></WorkshopElement>
           );
@@ -48,10 +50,10 @@ export default function DragDrop(props) {
         {board.map((key) => {
           return (
             <WorkshopElement
-              title={key.title.rendered}
-              color={COLORS.yellow}
+              title={key.title}
+              color={key.color}
               isInPlan={true}
-              duration={30}
+              duration={key.duration}
               id={key}
             ></WorkshopElement>
           );
