@@ -104,11 +104,11 @@ class WorkshopTool extends React.Component {
                 </div>
 
                 <div id="dataWhitespace">
-                  <label class="label-title">
+                  <label className="label-title">
                     Titel des Workshops <br />
                     <input
                       name="title"
-                      class="input-title"
+                      className="input-title"
                       type="text"
                       value={this.state.title}
                       onChange={this.onInputChange}
@@ -116,11 +116,11 @@ class WorkshopTool extends React.Component {
                     <br />
                   </label>
 
-                  <label class="label-location">
+                  <label className="label-location">
                     Ort <br />
                     <input
                       name="location"
-                      class="input-location"
+                      className="input-location"
                       type="text"
                       value={this.state.location}
                       onChange={this.onInputChange}
@@ -128,8 +128,10 @@ class WorkshopTool extends React.Component {
                     <br />
                   </label>
 
-                  <h3 class="h3-question">Wann findet der Workshop statt?</h3>
-                  <label class="label-date">
+                  <h3 className="h3-question">
+                    Wann findet der Workshop statt?
+                  </h3>
+                  <label className="label-date">
                     Datum <br />
                     <input
                       type="date"
@@ -140,7 +142,7 @@ class WorkshopTool extends React.Component {
                     <br />
                   </label>
 
-                  <label class="label-time">
+                  <label className="label-time">
                     Uhrzeit <br />
                     <input
                       type="time"
@@ -151,7 +153,7 @@ class WorkshopTool extends React.Component {
                     <br />
                   </label>
 
-                  <label class="label-days-count">
+                  <label className="label-days-count">
                     Anzahl der Tage <br />
                     <select
                       name="daysCount"
@@ -322,7 +324,7 @@ class WorkshopTool extends React.Component {
                       </div>
                     </div>
                     <button
-                      class="backButton"
+                      className="backButton"
                       onClick={() => {
                         this.handleQuestionStateChange(1);
                       }}
@@ -330,7 +332,7 @@ class WorkshopTool extends React.Component {
                       Zurück
                     </button>
                     <button
-                      class="nextButton"
+                      className="nextButton"
                       onClick={() => {
                         this.handleQuestionStateChange(3);
                       }}
@@ -509,7 +511,7 @@ class WorkshopTool extends React.Component {
                 Zurück
               </button>
               <button
-                class="nextButton"
+                className="nextButton"
                 onClick={() => {
                   this.handleStateChange(3);
                 }}
@@ -527,7 +529,7 @@ class WorkshopTool extends React.Component {
             <div className="toolWhitebox">
               <PlanningTool></PlanningTool>
               <button
-                class="backButton"
+                className="backButton"
                 onClick={() => {
                   this.handleStateChange(2);
                 }}
