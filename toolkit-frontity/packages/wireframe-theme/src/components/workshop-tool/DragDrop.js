@@ -55,6 +55,16 @@ export default function DragDrop(props) {
         board.push(props.methoden[key]);
       }
     });
+    //Pause
+    if (id == 99) {
+      board.push({
+        id: 99,
+        title: "Pause",
+        duration: "20",
+        isInPlan: true,
+        color: { dark: "#82827d", light: "#e3e3e1", main: "#c7c7c7" },
+      });
+    }
   };
 
   //Indizes der Arrays angleichen
@@ -79,6 +89,13 @@ export default function DragDrop(props) {
     <PlanningToolContainer>
       <ElementsContainer>
         <h3>Elemente</h3>
+        <WorkshopElement
+          title="Pause"
+          color={{ dark: "#c7c7c7", light: "#c7c7c7", main: "#c7c7c7" }}
+          isInPlan={false}
+          duration="20"
+          id={99}
+        ></WorkshopElement>
         {Object.keys(props.methoden).map(function (key) {
           if (!props.methoden[key].isInPlan) {
             return (

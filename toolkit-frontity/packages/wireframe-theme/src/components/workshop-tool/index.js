@@ -1000,7 +1000,8 @@ const WorkshopContainer = styled.div`
   //Planungstool
   
   .toolBackground{
-        height: 400px;
+        min-height: 80vh;
+        position: relative;
   }
 
   .toolBackground img {
