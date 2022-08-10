@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect, styled } from "frontity";
 import { useDrag } from "react-dnd";
+import moment from "Moment";
 
 function WorkshopElement(props) {
   const [isInPlan, setIsInPlan] = useState(props.isInPlan);
@@ -52,13 +53,18 @@ function WorkshopElement(props) {
           }}
         ></ColorAccent>
         <TimeDiv style={{ borderColor: props.color.main }}>
-          <p>uhrzeit</p>
+          <p>Uhrzeit: {props.start}</p>
           <p style={{ color: props.color.dark }}>{duration} Minuten</p>
         </TimeDiv>
         <h4 style={{ color: props.color.dark }}>{props.title} </h4>
         <NotesDiv>
           Notizen:
-          <textarea style={{ height: duration * 2 - 10 + "px", borderColor: props.color.dark }}></textarea>
+          <textarea
+            style={{
+              height: duration * 2 - 10 + "px",
+              borderColor: props.color.dark,
+            }}
+          ></textarea>
         </NotesDiv>
       </ElementInPlanContainer>
     );

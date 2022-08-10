@@ -15,7 +15,13 @@ function PlanningTool(props) {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <DragDrop props={props} methoden={postArray}></DragDrop>
+      <DragDrop
+        props={props}
+        methoden={postArray}
+        goal={props.goal}
+        time={props.time}
+        date={props.date}
+      ></DragDrop>
     </DndProvider>
   );
 }

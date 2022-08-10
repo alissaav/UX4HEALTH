@@ -527,7 +527,11 @@ class WorkshopTool extends React.Component {
         return (
           <div className="toolBackground">
             <div className="toolWhitebox">
-              <PlanningTool></PlanningTool>
+              <PlanningTool
+                goal={this.state.question1}
+                time={this.state.time}
+                date={this.state.date}
+              ></PlanningTool>
               <button
                 className="backButton"
                 onClick={() => {
@@ -591,7 +595,7 @@ class WorkshopTool extends React.Component {
 export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
-  margin-top:120px;
+  margin-top:66px;
   min-height: 80vh;
 
   div {
@@ -613,6 +617,11 @@ const WorkshopContainer = styled.div`
 
   //beginning
 
+  .beginningContainer{
+    margin: auto!important;
+    align-items: center;
+  }
+
   .backgroundPicScreen0 {
     width: 100%;
     height: 75vh;
@@ -632,13 +641,13 @@ const WorkshopContainer = styled.div`
   .beginningWhitebox {
     background-color: white;
     padding: 30px;
-    padding-top: 33px;
-    width: 1280px;
+    padding-top: 28px;
+    width: 60vw;
     height: 550px;
     position: absolute;
     margin: auto;
-    top: 23vh;
-    left: 15.3vw;
+    top: 25vh;
+    left: 18.5vw;
   }
 
   .beginningWhiteboxText {
@@ -1000,8 +1009,9 @@ const WorkshopContainer = styled.div`
   //Planungstool
   
   .toolBackground{
-        min-height: 80vh;
-        position: relative;
+    min-height: 90vh;
+    position: relative;
+    margin-top:110px!important;
   }
 
   .toolBackground img {
