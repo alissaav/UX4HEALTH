@@ -12,6 +12,7 @@ export default function DragDrop(props) {
   const [board, setBoard] = useState([]);
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
+
   var time = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
 
   const ref = useRef(null);

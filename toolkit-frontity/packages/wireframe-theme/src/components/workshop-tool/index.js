@@ -2,7 +2,6 @@ import { connect, styled } from "frontity";
 import React from "react";
 import Question from "./question";
 import WorkshopProgressBar from "./progress";
-import PlanningTool from "./planning-tool";
 import startup from "../../images/workshopTool/startup3.png";
 import book from "../../images/workshopTool/book2.png";
 import hands from "../../images/workshopTool/hands2.png";
@@ -10,6 +9,7 @@ import block from "../../images/workshopTool/block2.png";
 import praesenz from "../../images/workshopTool/praesenz.jpg";
 import online from "../../images/workshopTool/online.png";
 import bgWild from "../../images/workshopTool/bgWild2.png";
+import Inputs from "./inputs";
 
 class WorkshopTool extends React.Component {
   constructor(props) {
@@ -22,16 +22,11 @@ class WorkshopTool extends React.Component {
       question2: 10,
       question3: 10,
       question4: 10,
-      title: "",
-      location: "",
-      date: null,
-      time: null,
-      daysCount: 1,
     };
+    this.onInputChange = this.onInputChange.bind(this);
 
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleQuestionStateChange = this.handleQuestionStateChange.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
   }
 
   renderSwitch() {
@@ -102,88 +97,11 @@ class WorkshopTool extends React.Component {
                 <div className="dataBackground">
                   <img src={book} />
                 </div>
-
-                <div id="dataWhitespace">
-                  <label className="label-title">
-                    Titel des Workshops <br />
-                    <input
-                      name="title"
-                      className="input-title"
-                      type="text"
-                      value={this.state.title}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
-
-                  <label className="label-location">
-                    Ort <br />
-                    <input
-                      name="location"
-                      className="input-location"
-                      type="text"
-                      value={this.state.location}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
-
-                  <h3 className="h3-question">
-                    Wann findet der Workshop statt?
-                  </h3>
-                  <label className="label-date">
-                    Datum <br />
-                    <input
-                      type="date"
-                      name="date"
-                      value={this.state.date}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
-
-                  <label className="label-time">
-                    Uhrzeit <br />
-                    <input
-                      type="time"
-                      name="time"
-                      value={this.state.time}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
-
-                  <label className="label-days-count">
-                    Anzahl der Tage <br />
-                    <select
-                      name="daysCount"
-                      value={this.state.daysCount}
-                      onChange={this.onInputChange}
-                    >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                    </select>{" "}
-                    <br />
-                  </label>
-                  <div className="buttonBox">
-                    <button
-                      className="backButton"
-                      onClick={() => {
-                        this.handleStateChange(0);
-                      }}
-                    >
-                      Zurück
-                    </button>
-                    <button
-                      className="nextButton"
-                      onClick={() => {
-                        this.handleQuestionStateChange(1);
-                      }}
-                    >
-                      Weiter
-                    </button>
-                  </div>
-                </div>
+                <Inputs
+                  handleStateCh={this.handleStateChange}
+                  handleQuestionStateCh={this.handleQuestionStateChange}
+                  displayType="startQuestions"
+                ></Inputs>
               </div>
             );
 
@@ -474,6 +392,7 @@ class WorkshopTool extends React.Component {
               <img src={bgWild} />
             </div>
             <div className="suggestionsWhitebox">
+              {/*}
               <h1>Eingegebene Daten:</h1>
               <br />
               <br />
@@ -501,6 +420,7 @@ class WorkshopTool extends React.Component {
               Frage 3: {this.state.question3}
               <br />
               <br />
+              */}
               <button
                 className="backButton"
                 onClick={() => {
@@ -527,11 +447,11 @@ class WorkshopTool extends React.Component {
         return (
           <div className="toolBackground">
             <div className="toolWhitebox">
-              <PlanningTool
-                goal={this.state.question1}
-                time={this.state.time}
-                date={this.state.date}
-              ></PlanningTool>
+              <Inputs
+                displayType="planning-tool"
+                question1={this.state.question1}
+              ></Inputs>
+
               <button
                 className="backButton"
                 onClick={() => {
@@ -544,6 +464,13 @@ class WorkshopTool extends React.Component {
           </div>
         );
     }
+  }
+
+  onInputChange(event) {
+    console.log("setState erreicht");
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleStateChange(number) {
@@ -570,12 +497,6 @@ class WorkshopTool extends React.Component {
     this.setState({ currentScreen: 2 });
   }
 
-  onInputChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
   render() {
     return (
       <WorkshopContainer>
@@ -595,7 +516,7 @@ class WorkshopTool extends React.Component {
 export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
-  margin-top:66px;
+  margin-top: 66px;
   min-height: 80vh;
 
   div {
@@ -617,8 +538,8 @@ const WorkshopContainer = styled.div`
 
   //beginning
 
-  .beginningContainer{
-    margin: auto!important;
+  .beginningContainer {
+    margin: auto !important;
     align-items: center;
   }
 
@@ -727,71 +648,6 @@ const WorkshopContainer = styled.div`
     margin-bottom: 20px;
   }
 
-  #dataWhitespace {
-    display: grid;
-    grid-template-columns: 30% 10% 20% 10% 30%;
-    grid-template-rows: 30% 20% 30% 20%;
-    grid-template-areas:
-      "title title . location location"
-      "h3-question h3-question h3-question h3-question h3-question"
-      "date xtime xtime xtime days-count"
-      "buttonBox buttonBox buttonBox buttonBox buttonBox";
-    height: 64vh;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.7);
-    top: 13vh;
-    left: 23vw;
-    position: absolute;
-  }
-
-  .buttonBox {
-    display: flex;
-    grid-area: buttonBox;
-    width: 100%;
-  }
-
-  .label-title {
-    grid-area: title;
-  }
-
-  .label-location {
-    grid-area: location;
-  }
-
-  .h3-question {
-    margin: 24px;
-    grid-area: h3-question;
-  }
-
-  .label-date {
-    grid-area: date;
-  }
-
-  .label-time {
-    grid-area: xtime;
-  }
-  .label-days-count {
-    grid-area: days-count;
-  }
-  .input-title,
-  .input-location {
-    width: 200px;
-  }
-  .backButton {
-    grid-area: backButton;
-    padding: 0 !important
-    margin: 0 !important;
-    bottom: 0 !important;
-  }
-
-  .nextButton {
-    margin-left: 42%;
-    grid-area: nextButton;
-    padding: 0 !important
-    margin: 0 !important;
-    bottom: 0 !important;
-  }
-
   //goal
 
   .goalContainer {
@@ -848,7 +704,7 @@ const WorkshopContainer = styled.div`
     width: 28%;
     height: 40vh;
     padding: 1.5%;
-    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1);
     flex: 1;
   }
 
@@ -914,8 +770,7 @@ const WorkshopContainer = styled.div`
     padding: 1.5%;
     //border: black 2px solid;
     flex: 1;
-    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
-
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1);
   }
 
   //location
@@ -974,23 +829,23 @@ const WorkshopContainer = styled.div`
     height: 40vh;
     flex: 1;
 
-    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1);
   }
 
-  .locationPic1, .locationPic2 {
+  .locationPic1,
+  .locationPic2 {
     margin: auto;
     width: 100%;
-    
   }
 
   //Vorschläge
-  .suggestionContainer{
+  .suggestionContainer {
     height: 82vh;
     position: relative;
   }
 
   .suggestionsBackground {
-    z-index:0;
+    z-index: 0;
     height: 100%;
     display: flex;
     align-items: center;
@@ -1007,11 +862,11 @@ const WorkshopContainer = styled.div`
   }
 
   //Planungstool
-  
-  .toolBackground{
+
+  .toolBackground {
     min-height: 90vh;
     position: relative;
-    margin-top:110px!important;
+    margin-top: 110px !important;
   }
 
   .toolBackground img {
@@ -1019,5 +874,4 @@ const WorkshopContainer = styled.div`
     left: 0;
     margin-bottom: 20px;
   }
-  
 `;
