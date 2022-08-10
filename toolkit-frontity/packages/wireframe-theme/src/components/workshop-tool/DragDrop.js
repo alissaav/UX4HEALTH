@@ -11,6 +11,7 @@ import moment from "Moment";
 export default function DragDrop(props) {
   const [board, setBoard] = useState([]);
   const [lastItemId, setLastItemId] = useState(-1);
+  const [initial, setInitial] = useState(true);
   var time = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
 
   const ref = useRef(null);
@@ -56,9 +57,7 @@ export default function DragDrop(props) {
       if (id == key) {
         props.methoden[key].isInPlan = true;
         board.push(props.methoden[key]);
-        console.log(time);
         time.add(props.methoden[key].duration + 5, "m");
-        console.log(time);
       }
     });
 
@@ -78,8 +77,11 @@ export default function DragDrop(props) {
     }
 
     //Größe des Zeitcontainers anpassen aufgrund der Lücken zwischen den Methoden
-    let gr = document.getElementById("containerTime").clientHeight + 5;
-    document.getElementById("containerTime").style.height = gr + "px";
+    let timeContainer = document.getElementById("containerTime");
+    if (timeContainer != null) {
+      let grTime = timeContainer.clientHeight + 5;
+      timeContainer.style.height = grTime + "px";
+    }
   };
 
   //Indizes der Arrays angleichen
@@ -99,34 +101,144 @@ export default function DragDrop(props) {
       //console.log(key);
     }
   }
-  var init = true;
 
-  if (props.goal != 10 && init) {
-    init = false;
-    if (props.goal == 0) {
-      addMethodToBoard(0);
-      addMethodToBoard(7);
-      addMethodToBoard(13);
-    } else if (props.goal == 1) {
-      addMethodToBoard(0);
-      addMethodToBoard(7);
-      addMethodToBoard(13);
-      addMethodToBoard(5);
-      addMethodToBoard(9);
-    } else {
-      addMethodToBoard(0);
-      addMethodToBoard(12);
-      addMethodToBoard(7);
-      addMethodToBoard(5);
-      addMethodToBoard(9);
-      addMethodToBoard(6);
-      addMethodToBoard(1);
+  if (initial) {
+    //Methoden des Ziels hinzufügen
+    if (props.goal != 10) {
+      setInitial(false);
+      if (props.goal == 0) {
+        addMethodToBoard(0);
+        addMethodToBoard(7);
+        addMethodToBoard(13);
+      } else if (props.goal == 1) {
+        addMethodToBoard(0);
+        addMethodToBoard(7);
+        addMethodToBoard(13);
+        addMethodToBoard(5);
+        addMethodToBoard(9);
+      } else {
+        addMethodToBoard(0);
+        addMethodToBoard(12);
+        addMethodToBoard(7);
+        addMethodToBoard(5);
+        addMethodToBoard(9);
+        addMethodToBoard(6);
+        addMethodToBoard(1);
+      }
     }
   }
 
   //Eingegebene Daten in Datumsobjekt umwandeln
   const date = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
-  const date2 = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
+
+  var displayContainer = "";
+  if (date.isValid()) {
+    displayContainer = (
+      <div className="displayContainer">
+        <div className="stunde1viertel1">{date.format("HH:mm")}</div>
+        <div className="stunde1viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde1viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde1viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde2viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde2viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde2viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde2viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde3viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde3viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde3viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde3viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde4viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde4viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde4viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde4viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde5viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde5viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde5viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde5viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde6viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde6viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde6viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde6viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde7viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde7viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde7viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde7viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+
+        <div className="stunde8viertel1">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde8viertel2">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde8viertel3">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+        <div className="stunde8viertel4">
+          {date.add(15, "m").format("HH:mm")}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <PlanningToolContainer>
@@ -138,7 +250,6 @@ export default function DragDrop(props) {
           isInPlan={false}
           duration="20"
           id={99}
-          start={date2.add(20, "m").format("HH:mm")}
         ></WorkshopElement>
         {Object.keys(props.methoden).map(function (key) {
           if (!props.methoden[key].isInPlan) {
@@ -154,9 +265,6 @@ export default function DragDrop(props) {
                   isInPlan={props.methoden[key].isInPlan}
                   duration={props.methoden[key].duration}
                   id={key}
-                  start={date2
-                    .add(props.methoden[key].duration, "m")
-                    .format("HH:mm")}
                 ></WorkshopElement>
               </div>
             );
@@ -165,107 +273,7 @@ export default function DragDrop(props) {
       </ElementsContainer>
       <PlanContainer ref={drop}>
         <div className="containerTime" id="containerTime">
-          <div className="stunde1viertel1">{date.format("HH:mm")}</div>
-          <div className="stunde1viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde1viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde1viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde2viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde2viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde2viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde2viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde3viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde3viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde3viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde3viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde4viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde4viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde4viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde4viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde5viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde5viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde5viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde5viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde6viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde6viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde6viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde6viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde7viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde7viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde7viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde7viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-
-          <div className="stunde8viertel1">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde8viertel2">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde8viertel3">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
-          <div className="stunde8viertel4">
-            {date.add(15, "m").format("HH:mm")}
-          </div>
+          {displayContainer}
         </div>
         <div className="containerPlan">
           {board.map(function (key) {
@@ -281,7 +289,6 @@ export default function DragDrop(props) {
                   isInPlan={key.isInPlan}
                   duration={key.duration}
                   id={key}
-                  start={date2.add(key.duration, "m").format("HH:mm")}
                 ></WorkshopElement>
               </div>
             );
@@ -336,7 +343,7 @@ const PlanContainer = styled.div`
     height: 30px;
   }
 
-  .containerTime div:nth-child(odd) {
+  .displayContainer div:nth-child(odd) {
     color: darkgrey;
   }
 

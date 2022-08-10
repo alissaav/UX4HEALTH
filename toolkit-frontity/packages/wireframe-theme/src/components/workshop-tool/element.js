@@ -53,8 +53,9 @@ function WorkshopElement(props) {
           }}
         ></ColorAccent>
         <TimeDiv style={{ borderColor: props.color.main }}>
-          <p>Uhrzeit: {props.start}</p>
-          <p style={{ color: props.color.dark }}>{duration} Minuten</p>
+          <p style={{ color: props.color.dark, marginTop: "0.8em" }}>
+            Dauer: {duration} Minuten
+          </p>
         </TimeDiv>
         <h4 style={{ color: props.color.dark }}>{props.title} </h4>
         <NotesDiv>
