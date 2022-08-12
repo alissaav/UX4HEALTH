@@ -92,6 +92,8 @@ export default function DragDrop(props) {
     props.methoden[index].id = index;
   });
 
+  var htmlObject;
+
   function updateLastItem(key) {
     if (key.isInPlan == true) {
       setLastItemId(key.id);
@@ -130,6 +132,10 @@ export default function DragDrop(props) {
 
   //Eingegebene Daten in Datumsobjekt umwandeln
   const date = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
+
+  console.log(props.goal);
+  console.log(props.setState);
+  props.setState(99);
 
   var displayContainer = "";
   if (date.isValid()) {
@@ -271,6 +277,7 @@ export default function DragDrop(props) {
           }
         })}
       </ElementsContainer>
+      {console.log(props.goal)}
       <PlanContainer ref={drop}>
         <div className="containerTime" id="containerTime">
           {displayContainer}
@@ -298,10 +305,14 @@ export default function DragDrop(props) {
       <TipContainer>
         <h3>Tipps</h3>
         <br />
-        {props.methoden[lastItemId] == undefined
-          ? ""
-          : props.methoden[lastItemId].title}
-
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              props.methoden[lastItemId] == undefined
+                ? ""
+                : props.methoden[lastItemId].tip,
+          }}
+        />
         <div className="tippHinweis">Bitte wählen Sie eine Methode aus.</div>
       </TipContainer>
     </PlanningToolContainer>

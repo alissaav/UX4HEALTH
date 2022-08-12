@@ -23,6 +23,7 @@ export var Posts = (data) => {
       id: data[key].id,
       title: data[key].title.rendered,
       duration: data[key].duration,
+      tip: data[key].tip == undefined ? "undefined" : data[key].tip,
       isInPlan: false,
       color: getColor(data[key].categories[0]),
     };

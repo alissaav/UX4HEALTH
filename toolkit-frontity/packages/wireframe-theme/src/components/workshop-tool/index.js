@@ -32,6 +32,7 @@ class WorkshopTool extends React.Component {
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleQuestionStateChange = this.handleQuestionStateChange.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.setStateTest = this.setStateTest.bind(this);
   }
 
   renderSwitch() {
@@ -466,64 +467,8 @@ class WorkshopTool extends React.Component {
             );
         }
 
-      // Wechsel Fragen - Planungstool
-      case 2:
-        return (
-          <div className="suggestionContainer">
-            <div className="suggestionsBackground">
-              <img src={bgWild} />
-            </div>
-            <div className="suggestionsWhitebox">
-              <h1>Eingegebene Daten:</h1>
-              <br />
-              <br />
-              Titel: {this.state.title}
-              <br />
-              <br />
-              Ort: {this.state.location}
-              <br />
-              <br />
-              Datum: {this.state.date}
-              <br />
-              <br />
-              Uhrzeit: {this.state.time}
-              <br />
-              <br />
-              Tage: {this.state.daysCount}
-              <br />
-              <br />
-              Frage 1: {this.state.question1}
-              <br />
-              <br />
-              Frage 2: {this.state.question2}
-              <br />
-              <br />
-              Frage 3: {this.state.question3}
-              <br />
-              <br />
-              <button
-                className="backButton"
-                onClick={() => {
-                  this.handleStateChange(1);
-                  this.handleQuestionStateChange(3);
-                }}
-              >
-                Zurück
-              </button>
-              <button
-                className="nextButton"
-                onClick={() => {
-                  this.handleStateChange(3);
-                }}
-              >
-                Weiter
-              </button>
-            </div>
-          </div>
-        );
-
       // Wechsel Fragen - Planungstool hi
-      case 3:
+      case 2:
         return (
           <div className="toolBackground">
             <div className="toolWhitebox">
@@ -531,11 +476,12 @@ class WorkshopTool extends React.Component {
                 goal={this.state.question1}
                 time={this.state.time}
                 date={this.state.date}
+                setState={this.setStateTest}
               ></PlanningTool>
               <button
                 className="backButton"
                 onClick={() => {
-                  this.handleStateChange(2);
+                  this.handleStateChange(1);
                 }}
               >
                 Zurück
@@ -544,6 +490,10 @@ class WorkshopTool extends React.Component {
           </div>
         );
     }
+  }
+
+  setStateTest(v) {
+    this.setState({ goal: v });
   }
 
   handleStateChange(number) {
@@ -581,6 +531,7 @@ class WorkshopTool extends React.Component {
       <WorkshopContainer>
         {this.state.currentScreen == 1 ? (
           <WorkshopProgressBar
+            className="progressBar"
             currentQuestion={this.state.currentQuestionScreen}
             numberOfQuestions={5}
           />
@@ -597,6 +548,7 @@ export default connect(WorkshopTool);
 const WorkshopContainer = styled.div`
   margin-top:66px;
   min-height: 80vh;
+  position: absolut;
 
   div {
     items-align: center;
@@ -730,9 +682,11 @@ const WorkshopContainer = styled.div`
   #dataWhitespace {
     display: grid;
     grid-template-columns: 30% 10% 20% 10% 30%;
-    grid-template-rows: 30% 20% 30% 20%;
+    grid-template-rows: 10% 15% 15% 20% 20% 15%;
     grid-template-areas:
-      "title title . location location"
+      ". . . . ."
+      "title title . . ."
+      "location location . . ."
       "h3-question h3-question h3-question h3-question h3-question"
       "date xtime xtime xtime days-count"
       "buttonBox buttonBox buttonBox buttonBox buttonBox";
