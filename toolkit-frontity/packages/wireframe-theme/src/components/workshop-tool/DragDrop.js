@@ -8,13 +8,13 @@ import { DndProvider, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import cubes from "../../images/workshopTool/bgcubes2.png";
 import moment from "Moment";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function DragDrop(props) {
   const [board, setBoard] = useState([]);
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
-
-  const [addcounter, setAddcounter] = useState(0);
 
   const [data, setData] = useState({
     currentDate: props.date,
@@ -86,10 +86,6 @@ export default function DragDrop(props) {
       }
     });
 
-    incrementAddCounter(4);
-    setAddcounter(5);
-    console.log(addcounter);
-
     //Pause
     if (id == 99) {
       board.push({
@@ -101,36 +97,6 @@ export default function DragDrop(props) {
       });
 
       time.add(20, "m");
-    }
-
-    //Größe des Zeitcontainers anpassen aufgrund der Lücken zwischen den Methoden
-    var timeContainer = document.getElementById("containerTime");
-    var displayContainer = document.getElementById("displayContainer");
-
-    if (
-      timeContainer != null &&
-      displayContainer != null &&
-      timeContainer != undefined &&
-      displayContainer != undefined
-    ) {
-      let grTime = timeContainer.clientHeight + 8;
-      timeContainer.style.height = grTime + "px";
-
-      let grDisplay = displayContainer.clientHeight + 8;
-      displayContainer.style.height = grDisplay + "px";
-
-      //alert(timeContainer.style.height + " " + displayContainer.style.height);
-      var elementList = displayContainer.querySelectorAll("div");
-      //var zuAddierendePixel = displayContainer.clientHeight / addCounter;
-      //console.log(addCounter);
-      //console.log(zuAddierendePixel);
-
-      //for (let i = 0; i <= addCounter; i++) {
-      //elementList[i].style.height =
-      //displayContainer.style.height + zuAddierendePixel + "px";
-      //}
-
-      elementList.forEach(function (aktDiv) {});
     }
   };
 
@@ -299,8 +265,77 @@ export default function DragDrop(props) {
     });
   };
 
+  function printDocument() {
+    let input = document.getElementById("PlanContainer");
+
+    let titelInhalt = "";
+    let titel = document.getElementById("titleInput");
+    let locationInhalt = "";
+    let location = document.getElementById("locationInput");
+    let useWidth = "";
+    let useHeight = "";
+
+    if (input != null && input != undefined) {
+      useWidth = input.clientHeight;
+      useHeight = input.clientWidth;
+    }
+
+    if (titel != null && titel != undefined) {
+      titelInhalt = titel.value;
+    }
+
+    if (location != null && location != undefined) {
+      locationInhalt = location.value;
+    }
+
+    const pdf = new jsPDF("p", "pt", "a3");
+
+    html2canvas(input, {
+      width: useWidth,
+      height: useHeight,
+    }).then((canvas) => {
+      pdf.setTextColor(112, 112, 112);
+      pdf.setFontSize(34);
+      pdf.text(
+        100,
+        //1310,
+        100,
+        titelInhalt,
+        { align: "left" }
+      );
+
+      pdf.setFontSize(14);
+      pdf.text(
+        100,
+        //1310,
+        140,
+        "Ort: " + locationInhalt,
+        { align: "left" }
+      );
+
+      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 145, 180);
+
+      pdf.text(
+        100,
+        //1310,
+        850,
+        "... erstellt durch das UX4-Health Workshop-Toolkit: https://ux.codeforhealth.de/workshop-tool/",
+        { align: "left" }
+      );
+      pdf.text(
+        100,
+        //1310,
+        890,
+        "Kontakt: alina.huldtgren@hs-duesseldorf.de",
+        { align: "left" }
+      );
+
+      pdf.save("download.pdf");
+    });
+  }
+
   return (
-    <WorkShopToolkitContainer>
+    <WorkShopToolkitContainer id="alltoolkit">
       <img src={cubes} className="imgcubes" />
       <div className="titleBox">
         <div className="l-title">
@@ -308,6 +343,7 @@ export default function DragDrop(props) {
           <input
             name="currentTitle"
             className="titleInput"
+            id="titleInput"
             type="text"
             value={data.currentTitle}
             onChange={handleChange}
@@ -319,11 +355,20 @@ export default function DragDrop(props) {
           <input
             name="currentLocation"
             className="locationInput"
+            id="locationInput"
             type="text"
             value={data.currentLocation}
             onChange={handleChange}
           ></input>
         </div>
+        <button
+          className="saveButton"
+          onClick={() => {
+            printDocument();
+          }}
+        >
+          Als PDF herunterladen
+        </button>
       </div>
       <PlanningToolContainer>
         <ElementsContainer>
@@ -355,7 +400,7 @@ export default function DragDrop(props) {
             }
           })}
         </ElementsContainer>
-        <PlanContainer>
+        <PlanContainer id="PlanContainer">
           <div className="dataContainerTool">
             <div className="containerTimeSmall">
               <label className="l-date">
@@ -521,6 +566,24 @@ const WorkShopToolkitContainer = styled.div`
     font-size: 25px;
   }
 
+  .saveButton {
+    margin: 0 !important;
+    padding: 17px;
+    display: flex;
+    width: initial !important;
+    border-style: solid;
+    background-color: whitesmoke;
+    margin: 0 !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border-width: medium;
+    border-color: rgba(175, 175, 175, 0.55);
+    font-size: 12px;
+    width: 60%;
+    height: 60%;
+  }
+
   .l-location {
   }
 
@@ -619,7 +682,7 @@ const PlanContainer = styled.div`
 
   .containerTime div {
     width: 100%;
-    min-height: 30px;
+    min-height: 30.15px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;

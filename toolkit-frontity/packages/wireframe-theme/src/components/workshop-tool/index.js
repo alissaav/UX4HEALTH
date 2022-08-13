@@ -496,6 +496,7 @@ class WorkshopTool extends React.Component {
                 number={this.state.question2}
                 online={this.state.question3}
               ></PlanningTool>
+
               <button
                 className="backButton"
                 onClick={() => {

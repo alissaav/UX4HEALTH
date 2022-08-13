@@ -56,6 +56,19 @@ function WorkshopElement(props) {
           <p style={{ color: props.color.dark, marginTop: "0.8em" }}>
             Dauer: {duration} Minuten
           </p>
+          <div className="l-location">
+            <h3 style={{ display: "inline", marginRight: "20px" }}>Ort:</h3>
+            {/*
+            <input
+              name="currentLocation"
+              className="locationInput"
+              id="locationInput"
+              type="text"
+              value={data.currentLocation}
+              onChange={handleChange}
+            ></input>
+        */}
+          </div>
         </TimeDiv>
         <h4 style={{ color: props.color.dark }}>{props.title} </h4>
         <NotesDiv>
@@ -88,7 +101,7 @@ const ElementInPlanContainer = styled.div`
   display: grid;
   grid-template-columns: 12px 1fr 1.5fr 1.5fr;
   color: #666;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
   column-gap: 2px;
   border-style: dashed;
   border-width: 1px;
