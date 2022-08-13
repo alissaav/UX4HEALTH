@@ -21,7 +21,9 @@ function PlanningTool(props) {
         goal={props.goal}
         time={props.time}
         date={props.date}
-        setState={props.setState}
+        title={props.title}
+        location={props.location}
+        daysCount={props.daysCount}
       ></DragDrop>
     </DndProvider>
   );

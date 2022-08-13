@@ -12,7 +12,23 @@ export default function DragDrop(props) {
   const [board, setBoard] = useState([]);
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
-  var time = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
+
+  const [data, setData] = useState({
+    currentDate: props.date,
+    currentTime: props.time,
+    currentTitle: props.title,
+    currentLocation: props.location,
+    currentDaysCount: props.daysCount,
+  });
+
+  var time = moment(
+    data.currentDate + " " + data.currentTime,
+    "YYYY-MM-DD HH:mm"
+  );
+  var timeAbbild = moment(
+    data.currentDate + " " + data.currentTime,
+    "YYYY-MM-DD HH:mm"
+  );
 
   const ref = useRef(null);
 
@@ -130,192 +146,301 @@ export default function DragDrop(props) {
     }
   }
 
-  //Eingegebene Daten in Datumsobjekt umwandeln
-  const date = moment(props.date + " " + props.time, "YYYY-MM-DD HH:mm");
-
-  console.log(props.goal);
-  console.log(props.setState);
-  props.setState(99);
-
   var displayContainer = "";
-  if (date.isValid()) {
+  if (timeAbbild.isValid()) {
     displayContainer = (
       <div className="displayContainer">
-        <div className="stunde1viertel1">{date.format("HH:mm")}</div>
+        <div className="stunde1viertel1">{timeAbbild.format("HH:mm")}</div>
         <div className="stunde1viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde1viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde1viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde2viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde2viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde2viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde2viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde3viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde3viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde3viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde3viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde4viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde4viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde4viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde4viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde5viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde5viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde5viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde5viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde6viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde6viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde6viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde6viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde7viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde7viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde7viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde7viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
 
         <div className="stunde8viertel1">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde8viertel2">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde8viertel3">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
         <div className="stunde8viertel4">
-          {date.add(15, "m").format("HH:mm")}
+          {timeAbbild.add(15, "m").format("HH:mm")}
         </div>
       </div>
     );
   }
 
+  function handleChangeDate(event) {
+    setCurrentDate(event.target.value);
+  }
+
+  function handleChangeTime(event) {
+    setCurrentTime(event.target.value);
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setData((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
   return (
-    <PlanningToolContainer>
-      <ElementsContainer>
-        <h3>Elemente</h3>
-        <WorkshopElement
-          title="Pause"
-          color={{ dark: "#c7c7c7", light: "#c7c7c7", main: "#c7c7c7" }}
-          isInPlan={false}
-          duration="20"
-          id={99}
-        ></WorkshopElement>
-        {Object.keys(props.methoden).map(function (key) {
-          if (!props.methoden[key].isInPlan) {
-            return (
-              <div
-                onMouseDown={() => {
-                  updateLastItem(key);
-                }}
-              >
-                <WorkshopElement
-                  title={props.methoden[key].title}
-                  color={props.methoden[key].color}
-                  isInPlan={props.methoden[key].isInPlan}
-                  duration={props.methoden[key].duration}
-                  id={key}
-                ></WorkshopElement>
-              </div>
-            );
-          }
-        })}
-      </ElementsContainer>
-      {console.log(props.goal)}
-      <PlanContainer ref={drop}>
-        <div className="containerTime" id="containerTime">
-          {displayContainer}
-        </div>
-        <div className="containerPlan">
-          {board.map(function (key) {
-            return (
-              <div
-                onMouseDown={() => {
-                  updateLastItem(key);
-                }}
-              >
-                <WorkshopElement
-                  title={key.title}
-                  color={key.color}
-                  isInPlan={key.isInPlan}
-                  duration={key.duration}
-                  id={key}
-                ></WorkshopElement>
-              </div>
-            );
+    <>
+      <label className="label-title">
+        <h3>Titel:</h3>
+        <input
+          name="currentTitle"
+          className="titleInput"
+          type="text"
+          value={data.currentTitle}
+          onChange={handleChange}
+        ></input>
+      </label>
+
+      <label className="label-time">
+        <h3>Ort:</h3>
+        <input
+          name="currentLocation"
+          className="locationInput"
+          type="text"
+          value={data.currentLocation}
+          onChange={handleChange}
+        ></input>
+      </label>
+
+      <label className="label-days">
+        <h3>Anzahl Tage:</h3>
+        <select
+          name="currentDaysCount"
+          className="daysInput"
+          value={data.currentDaysCount}
+          onChange={handleChange}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </label>
+
+      <label className="label-date">
+        <h3>Datum:</h3>
+        <input
+          name="currentDate"
+          className="dateInput"
+          type="date"
+          value={time.format("yyyy-MM-DD")}
+          onChange={handleChange}
+        ></input>
+      </label>
+
+      <label className="label-time">
+        <h3>Uhrzeit:</h3>
+        <input
+          name="currentTime"
+          className="timeInput"
+          type="time"
+          value={time.format("HH:mm")}
+          onChange={handleChange}
+        ></input>
+      </label>
+
+      {/*
+        <label className="label-date">
+          <h3>Datum:</h3> <br />
+          <input
+            name="date"
+            className="dateInput"
+            type="date"
+            value={time.format("yyyy-MM-DD")}
+            onChange={handleChangeDate}
+          ></input>
+          <br />
+        </label>
+        <label className="label-date">
+          <h3>Datum:</h3> <br />
+          <input
+            name="date"
+            className="dateInput"
+            type="date"
+            value={time.format("yyyy-MM-DD")}
+            onChange={handleChangeDate}
+          ></input>
+          <br />
+        </label>
+        <label className="label-date">
+          <h3>Datum:</h3> <br />
+          <input
+            name="date"
+            className="dateInput"
+            type="date"
+            value={time.format("yyyy-MM-DD")}
+            onChange={handleChangeDate}
+          ></input>
+          <br />
+        </label>
+      </label>
+  */}
+      <br />
+      <br />
+      <br />
+      <PlanningToolContainer>
+        <ElementsContainer>
+          <h3>Elemente</h3>
+          <WorkshopElement
+            title="Pause"
+            color={{ dark: "#c7c7c7", light: "#c7c7c7", main: "#c7c7c7" }}
+            isInPlan={false}
+            duration="20"
+            id={99}
+          ></WorkshopElement>
+          {Object.keys(props.methoden).map(function (key) {
+            if (!props.methoden[key].isInPlan) {
+              return (
+                <div
+                  onMouseDown={() => {
+                    updateLastItem(key);
+                  }}
+                >
+                  <WorkshopElement
+                    title={props.methoden[key].title}
+                    color={props.methoden[key].color}
+                    isInPlan={props.methoden[key].isInPlan}
+                    duration={props.methoden[key].duration}
+                    id={key}
+                  ></WorkshopElement>
+                </div>
+              );
+            }
           })}
-        </div>
-      </PlanContainer>
-      <TipContainer>
-        <h3>Tipps</h3>
-        <br />
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              props.methoden[lastItemId] == undefined
-                ? ""
-                : props.methoden[lastItemId].tip,
-          }}
-        />
-        <div className="tippHinweis">Bitte wählen Sie eine Methode aus.</div>
-      </TipContainer>
-    </PlanningToolContainer>
+        </ElementsContainer>
+        {console.log(props.goal)}
+        <PlanContainer ref={drop}>
+          <div className="containerTime" id="containerTime">
+            {displayContainer}
+          </div>
+          <div className="containerPlan">
+            {board.map(function (key) {
+              return (
+                <div
+                  onMouseDown={() => {
+                    updateLastItem(key);
+                  }}
+                >
+                  <WorkshopElement
+                    title={key.title}
+                    color={key.color}
+                    isInPlan={key.isInPlan}
+                    duration={key.duration}
+                    id={key}
+                  ></WorkshopElement>
+                </div>
+              );
+            })}
+          </div>
+        </PlanContainer>
+        <TipContainer>
+          <h3>Tipps</h3>
+          <br />
+          <div
+            dangerouslySetInnerHTML={{
+              __html:
+                props.methoden[lastItemId] == undefined
+                  ? ""
+                  : props.methoden[lastItemId].tip,
+            }}
+          />
+          <div className="tippHinweis">Bitte wählen Sie eine Methode aus.</div>
+        </TipContainer>
+      </PlanningToolContainer>
+    </>
   );
 }
 

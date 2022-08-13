@@ -490,7 +490,9 @@ class WorkshopTool extends React.Component {
                 goal={this.state.question1}
                 time={this.state.time}
                 date={this.state.date}
-                setState={this.setStateTest}
+                title={this.state.title}
+                location={this.state.location}
+                daysCount={this.state.daysCount}
               ></PlanningTool>
               <button
                 className="backButton"
@@ -766,7 +768,6 @@ const WorkshopContainer = styled.div`
   .label-time h3,
   .label-days-count h3 {
     margin-bottom: 3px;
-    line-height: 0em !important;
     margin-bottom: 0em !important;
   }
 
