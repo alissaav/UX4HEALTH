@@ -47,7 +47,7 @@ class WorkshopTool extends React.Component {
             <div className="beginningWhitebox">
               <div className="beginningWhiteboxText">
                 <div className="beginningText1">
-                  <h1>Das Workshop-Toolkit</h1> <br></br>
+                  <h2>Das Workshop-Toolkit</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                     diam nonumy eirmod tempor invidunt ut labore et dolore magna
@@ -62,10 +62,10 @@ class WorkshopTool extends React.Component {
                   </p>
                 </div>
                 <div className="beginningText2">
-                  <h2>
+                  <p>
                     Brauchst du Unterstützung dabei <br /> deinen Workshop zu
                     planen?
-                  </h2>
+                  </p>
                 </div>
               </div>
               <div className="beginningButtonImages">
@@ -83,7 +83,7 @@ class WorkshopTool extends React.Component {
                 <div
                   className="blockButton"
                   onClick={() => {
-                    this.handleStateChange(3);
+                    this.handleStateChange(2);
                   }}
                 >
                   <div className="spanBlock">
@@ -105,85 +105,88 @@ class WorkshopTool extends React.Component {
                 </div>
 
                 <div id="dataWhitespace">
-                  <label className="label-title">
-                    Titel des Workshops <br />
-                    <input
-                      name="title"
-                      className="input-title"
-                      type="text"
-                      value={this.state.title}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
+                  <div id="dataWhitespaceGrid">
+                    <label className="label-title">
+                      <h3>Titel des Workshops</h3> <br />
+                      <input
+                        name="title"
+                        className="input-title"
+                        type="text"
+                        value={this.state.title}
+                        onChange={this.onInputChange}
+                      ></input>{" "}
+                      <br />
+                    </label>
 
-                  <label className="label-location">
-                    Ort <br />
-                    <input
-                      name="location"
-                      className="input-location"
-                      type="text"
-                      value={this.state.location}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
+                    <label className="label-location">
+                      <h3>Ort</h3> <br />
+                      <input
+                        name="location"
+                        className="input-location"
+                        type="text"
+                        value={this.state.location}
+                        onChange={this.onInputChange}
+                      ></input>{" "}
+                      <br />
+                    </label>
 
-                  <h3 className="h3-question">
-                    Wann findet der Workshop statt?
-                  </h3>
-                  <label className="label-date">
-                    Datum <br />
-                    <input
-                      type="date"
-                      name="date"
-                      value={this.state.date}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
+                    <div className="h3-question">
+                      <h3>Wann findet der Workshop statt?</h3>
+                    </div>
+                    <label className="label-date">
+                      <h3>Datum</h3> <br />
+                      <input
+                        type="date"
+                        name="date"
+                        className="inputDate"
+                        value={this.state.date}
+                        onChange={this.onInputChange}
+                      ></input>
+                      <br />
+                    </label>
 
-                  <label className="label-time">
-                    Uhrzeit <br />
-                    <input
-                      type="time"
-                      name="time"
-                      value={this.state.time}
-                      onChange={this.onInputChange}
-                    ></input>{" "}
-                    <br />
-                  </label>
+                    <label className="label-time">
+                      <h3>Uhrzeit</h3> <br />
+                      <input
+                        type="time"
+                        name="time"
+                        className="inputTime"
+                        value={this.state.time}
+                        onChange={this.onInputChange}
+                      ></input>{" "}
+                      <br />
+                    </label>
 
-                  <label className="label-days-count">
-                    Anzahl der Tage <br />
-                    <select
-                      name="daysCount"
-                      value={this.state.daysCount}
-                      onChange={this.onInputChange}
-                    >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                    </select>{" "}
-                    <br />
-                  </label>
-                  <div className="buttonBox">
-                    <button
-                      className="backButton"
-                      onClick={() => {
-                        this.handleStateChange(0);
-                      }}
-                    >
-                      Zurück
-                    </button>
-                    <button
-                      className="nextButton"
-                      onClick={() => {
-                        this.handleQuestionStateChange(1);
-                      }}
-                    >
-                      Weiter
-                    </button>
+                    <label className="label-days-count">
+                      <h3>Anzahl Tage</h3> <br />
+                      <select
+                        name="daysCount"
+                        className="inputDays"
+                        value={this.state.daysCount}
+                        onChange={this.onInputChange}
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                      <br />
+                    </label>
                   </div>
+                  <button
+                    className="backButton"
+                    onClick={() => {
+                      this.handleStateChange(0);
+                    }}
+                  >
+                    Zurück
+                  </button>
+                  <button
+                    className="nextButton"
+                    onClick={() => {
+                      this.handleQuestionStateChange(1);
+                    }}
+                  >
+                    Weiter
+                  </button>
                 </div>
               </div>
             );
@@ -195,7 +198,7 @@ class WorkshopTool extends React.Component {
                   <img src={book} />
                 </div>
                 <div className="goalWhitebox">
-                  <h1>Was ist das Ziel Ihres Workshops?</h1>
+                  <h2>Was ist das Ziel Ihres Workshops?</h2>
                   <div className="goalOptionsbox">
                     <div
                       className="goalOption1"
@@ -206,12 +209,16 @@ class WorkshopTool extends React.Component {
                       }
                       onClick={() => this.setState({ question1: 0 })}
                     >
-                      <div className="goalPic1"></div>
-                      <h2>Produktentwicklung</h2>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                      magna aliquyam erat, sed diam voluptua. At vero eos et
-                      accusam et justo duo dolores et ea rebum.
+                      <div className="goalPic1">
+                        <img src={praesenz} />
+                      </div>
+                      <div className="goalText1">
+                        <h2>Produktentwicklung</h2>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et
+                        dolore magna aliquyam erat, sed diam voluptua. At vero
+                        eos et accusam et justo duo dolores et ea rebum.
+                      </div>
                     </div>
                     <div
                       className="goalOption2"
@@ -222,11 +229,15 @@ class WorkshopTool extends React.Component {
                       }
                       onClick={() => this.setState({ question1: 1 })}
                     >
-                      <div className="goalPic2"></div>
-                      <h2>Produkt-Testen</h2>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                      magna aliquyam erat, sed diam voluptua.
+                      <div className="goalPic2">
+                        <img src={praesenz} />
+                      </div>
+                      <div className="goalText2">
+                        <h2>Produkt-Testen</h2>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et
+                        dolore magna aliquyam erat, sed diam voluptua.
+                      </div>
                     </div>
                     <div
                       className="goalOption3"
@@ -237,14 +248,17 @@ class WorkshopTool extends React.Component {
                       }
                       onClick={() => this.setState({ question1: 2 })}
                     >
-                      <div className="goalPic3"></div>
-                      <h2>Ideensammlung</h2>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                      magna aliquyam erat, sed diam voluptua. At vero eos et
-                      accusam et justo duo dolores et ea rebum. Stet clita kasd
-                      gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                      sit amet.
+                      <div className="goalPic3">
+                        <img src={praesenz} />
+                      </div>
+                      <div className="goalText3">
+                        <h2>Ideensammlung</h2>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                        sed diam nonumy eirmod tempor invidunt ut labore et
+                        dolore magna aliquyam erat, sed diam voluptua. At vero
+                        eos et accusam et justo duo dolores et ea rebum. Stet
+                        clita kasd gubergren.
+                      </div>
                     </div>
                   </div>
                   <button
@@ -273,7 +287,7 @@ class WorkshopTool extends React.Component {
                 <div className="numberBackground">
                   <img src={book} />
                   <div className="numberWhitebox">
-                    <h1>Anzahl der Teilnehmer</h1>
+                    <h2>Anzahl der Teilnehmer</h2>
                     <div className="numberOptionsbox">
                       <div
                         className="numberOption2"
@@ -352,7 +366,7 @@ class WorkshopTool extends React.Component {
                   <img src={book} />
                 </div>
                 <div className="locationWhitebox">
-                  <h1>Soll der Workshop online oder in Präsenz stattfinden?</h1>
+                  <h2>Soll der Workshop online oder in Präsenz stattfinden?</h2>
                   <div className="locationOptionsbox">
                     <div
                       className="locationOption1"
@@ -567,6 +581,12 @@ const WorkshopContainer = styled.div`
     color: #555555;
   }
 
+    .goalWhitebox>h2,
+    .numberWhitebox>h2,
+    .locationWhitebox>h2 {
+      margin-bottom: 40px;
+  }
+
   //beginning
 
   .beginningContainer{
@@ -576,7 +596,7 @@ const WorkshopContainer = styled.div`
 
   .backgroundPicScreen0 {
     width: 100%;
-    height: 75vh;
+    height: 50vh;
     position: relative;
   }
 
@@ -586,7 +606,7 @@ const WorkshopContainer = styled.div`
 
   .backgroundScreen0 {
     background-color: white;
-    height: 180px;
+    height: 350px;
     position: relative;
   }
 
@@ -612,12 +632,24 @@ const WorkshopContainer = styled.div`
   .beginningText1 {
     border-bottom-width: 2.5px;
     border-bottom-style: solid;
-    border-color: rgba(78, 237, 228, 0.4);
+    border-color: rgb(141, 250, 224);
+    border-radius: 1px;
+    text-align: left;
+  }
+
+  .beginningText1 h2 {
+    margin-bottom: 30px;
   }
 
   .beginningText2 {
     margin-top: 45px;
   }
+
+  .beginningText2 p{
+    font-weight: 500;
+    font-size: 1vw;
+  }
+
 
   //beginning button images
   .imgHands {
@@ -679,23 +711,28 @@ const WorkshopContainer = styled.div`
     margin-bottom: 20px;
   }
 
-  #dataWhitespace {
+  #dataWhitespace{
+    height: 64vh;
+    width: 50%;
+    background: rgba(245, 245, 245, 0.9);
+    top: 13vh;
+    left: 23vw;
+    position: absolute;
+  }
+
+  #dataWhitespaceGrid {
     display: grid;
-    grid-template-columns: 30% 10% 20% 10% 30%;
-    grid-template-rows: 10% 15% 15% 20% 20% 15%;
+    grid-template-columns: 30% 5% 30% 5% 30%;
+    grid-template-rows: 10% 20% 20% 25% 25%;
     grid-template-areas:
       ". . . . ."
       "title title . . ."
       "location location . . ."
       "h3-question h3-question h3-question h3-question h3-question"
-      "date xtime xtime xtime days-count"
-      "buttonBox buttonBox buttonBox buttonBox buttonBox";
-    height: 64vh;
-    width: 50%;
-    background: rgba(255, 255, 255, 0.7);
-    top: 13vh;
-    left: 23vw;
-    position: absolute;
+      "date . xtime . days-count";
+    position: relative;
+    width: 100%;
+    height: 50vh;
   }
 
   .buttonBox {
@@ -706,6 +743,7 @@ const WorkshopContainer = styled.div`
 
   .label-title {
     grid-area: title;
+
   }
 
   .label-location {
@@ -713,8 +751,23 @@ const WorkshopContainer = styled.div`
   }
 
   .h3-question {
-    margin: 24px;
+    margin: auto;
     grid-area: h3-question;
+    width: 91%;
+    border-bottom-width: 2.5px;
+    border-bottom-style: solid;
+    border-color: rgb(183, 183, 183);
+    border-radius: 2px
+  }
+
+  .label-title h3,
+  .label-location h3,
+  .label-date h3,
+  .label-time h3,
+  .label-days-count h3 {
+    margin-bottom: 3px;
+    line-height: 0em !important;
+    margin-bottom: 0em !important;
   }
 
   .label-date {
@@ -729,25 +782,32 @@ const WorkshopContainer = styled.div`
   }
   .input-title,
   .input-location {
-    width: 200px;
+    width: 300px;
+    height:30px;
+    margin-left: 12%;
   }
+
+  .inputDate,
+  .inputTime,
+  .inputDays {
+    height:30px!important;
+    width: 70%;
+  }
+
   .backButton {
-    grid-area: backButton;
     padding: 0 !important
     margin: 0 !important;
     bottom: 0 !important;
   }
 
   .nextButton {
-    margin-left: 42%;
-    grid-area: nextButton;
+    margin-left: 27vw;
     padding: 0 !important
     margin: 0 !important;
     bottom: 0 !important;
   }
 
   //goal
-
   .goalContainer {
     height: 82vh;
     position: relative;
@@ -766,7 +826,7 @@ const WorkshopContainer = styled.div`
   .goalWhitebox {
     width: 50%;
     height: 64vh;
-    background: rgba(245, 245, 245, 0.7);
+    background: rgba(245, 245, 245, 0.9);
     top: 13vh;
     left: 23vw;
     position: absolute;
@@ -787,12 +847,15 @@ const WorkshopContainer = styled.div`
   #goalOption1,
   #goalOption2,
   #goalOption3 {
-    background: rgba(245, 245, 245, 0.7);
+    background: rgba(245, 245, 245, 0.9);
     width: 28%;
     height: 40vh;
-    padding: 1.5%;
-    //border: black 2px solid;
     flex: 1;
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(183, 183, 183, 0.5);
+    border-radius: 5px
   }
 
   #goalOption1Clicked,
@@ -801,9 +864,23 @@ const WorkshopContainer = styled.div`
     background: rgba(245, 245, 245, 0.7);
     width: 28%;
     height: 40vh;
-    padding: 1.5%;
     box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
     flex: 1;
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(88, 23, 93, 0.4);
+    border-radius: 5px
+    }
+
+  .goalPic1, .goalPic2, .goalPic3 {
+    margin: auto;
+    width: 100%;
+  }
+
+  .goalText1, .goalText2, .goalText3{
+    padding-left: 4%;
+    padding-right: 4%;
   }
 
   //number
@@ -825,7 +902,7 @@ const WorkshopContainer = styled.div`
   .numberWhitebox {
     width: 50%;
     height: 64vh;
-    background: rgba(245, 245, 245, 0.7);
+    background: rgba(245, 245, 245, 0.9);
     top: 13vh;
     left: 23vw;
     position: absolute;
@@ -842,6 +919,7 @@ const WorkshopContainer = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
     min-width: 0;
+    
   }
 
   #numberOption1,
@@ -849,12 +927,21 @@ const WorkshopContainer = styled.div`
   #numberOption3,
   #numberOption4 {
     margin: auto;
-    background: rgba(245, 245, 245, 0.7);
+    background: rgba(245, 245, 245, 0.9);
     width: 30%;
-    height: 40vh;
-    padding: 1.5%;
+    height: 30vh;
+    padding: 0.5%;
     //border: black 2px solid;
     flex: 1;
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(183, 183, 183, 0.5);
+    border-radius: 5px
+  }
+
+    #numberOption4 {
+      margin-bottom: 1,5%;
   }
 
   #numberOption1Clicked,
@@ -864,11 +951,16 @@ const WorkshopContainer = styled.div`
     margin: auto;
     background: rgba(245, 245, 245, 0.7);
     width: 30%;
-    height: 40vh;
-    padding: 1.5%;
+    height: 30vh;
+    padding: 0.5%;
     //border: black 2px solid;
     flex: 1;
     box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(88, 23, 93, 0.4);
+    border-radius: 5px
 
   }
 
@@ -892,7 +984,7 @@ const WorkshopContainer = styled.div`
   .locationWhitebox {
     width: 50%;
     height: 64vh;
-    background: rgba(245, 245, 245, 0.7);
+    background: rgba(245, 245, 245, 0.9);
     top: 13vh;
     left: 23vw;
     position: absolute;
@@ -913,11 +1005,16 @@ const WorkshopContainer = styled.div`
   #locationOption1,
   #locationOption2,
   #locationOption3 {
-    background: rgba(245, 245, 245, 0.7);
+    background: rgba(245, 245, 245, 0.9);
     width: 28%;
     height: 40vh;
     //border: black 2px solid;
     flex: 1;
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(183, 183, 183, 0.5);
+    border-radius: 5px
   }
 
   #locationOption1Clicked,
@@ -927,8 +1024,12 @@ const WorkshopContainer = styled.div`
     width: 28%;
     height: 40vh;
     flex: 1;
-
     box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(88, 23, 93, 0.4);
+    border-radius: 5px;
   }
 
   .locationPic1, .locationPic2 {
@@ -936,29 +1037,7 @@ const WorkshopContainer = styled.div`
     width: 100%;
     
   }
-
-  //Vorschläge
-  .suggestionContainer{
-    height: 82vh;
-    position: relative;
-  }
-
-  .suggestionsBackground {
-    z-index:0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .suggestionsWhitebox {
-    width: 50%;
-    height: 64vh;
-    background: rgba(245, 245, 245, 0.92);
-    top: 13vh;
-    left: 23vw;
-    position: absolute;
-  }
+  
 
   //Planungstool
   

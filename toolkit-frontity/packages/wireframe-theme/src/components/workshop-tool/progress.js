@@ -31,7 +31,7 @@ class WorkshopProgressBar extends React.Component {
             y1="25"
             x2="150"
             y2="25"
-            stroke={this.state.currentQuestion >= 1 ? "#737373" : "#ccc"}
+            stroke={this.state.currentQuestion >= 1 ? "#737373" : "#eaeaea"}
             strokeWidth="6"
           />
           <line
@@ -41,7 +41,7 @@ class WorkshopProgressBar extends React.Component {
             y1="25"
             x2="250"
             y2="25"
-            stroke={this.state.currentQuestion >= 2 ? "#737373" : "#ccc"}
+            stroke={this.state.currentQuestion >= 2 ? "#737373" : "#eaeaea"}
             strokeWidth="6"
           />
           <line
@@ -51,7 +51,7 @@ class WorkshopProgressBar extends React.Component {
             y1="25"
             x2="350"
             y2="25"
-            stroke={this.state.currentQuestion >= 3 ? "#737373" : "#ccc"}
+            stroke={this.state.currentQuestion >= 3 ? "#737373" : "#eaeaea"}
             strokeWidth="6"
           />
           <line
@@ -61,7 +61,7 @@ class WorkshopProgressBar extends React.Component {
             y1="25"
             x2="450"
             y2="25"
-            stroke={this.state.currentQuestion >= 4 ? "#737373" : "#ccc"}
+            stroke={this.state.currentQuestion >= 4 ? "#737373" : "#eaeaea"}
             strokeWidth="6"
           />
 
@@ -71,7 +71,7 @@ class WorkshopProgressBar extends React.Component {
             cx="50"
             cy="25"
             r="15"
-            fill={this.state.currentQuestion >= 0 ? "#737373" : "#ccc"}
+            fill={this.state.currentQuestion >= 0 ? "#737373" : "#eaeaea"}
             onclick='console.log("Hello")'
           />
 
@@ -81,7 +81,7 @@ class WorkshopProgressBar extends React.Component {
             cx="150"
             cy="25"
             r="15"
-            fill={this.state.currentQuestion >= 1 ? "#737373" : "#ccc"}
+            fill={this.state.currentQuestion >= 1 ? "#737373" : "#eaeaea"}
           />
           <circle
             id="circle_3"
@@ -89,7 +89,7 @@ class WorkshopProgressBar extends React.Component {
             cx="250"
             cy="25"
             r="15"
-            fill={this.state.currentQuestion >= 2 ? "#737373" : "#ccc"}
+            fill={this.state.currentQuestion >= 2 ? "#737373" : "#eaeaea"}
           />
           <circle
             id="circle_4"
@@ -97,7 +97,7 @@ class WorkshopProgressBar extends React.Component {
             cx="350"
             cy="25"
             r="15"
-            fill={this.state.currentQuestion >= 3 ? "#737373" : "#ccc"}
+            fill={this.state.currentQuestion >= 3 ? "#737373" : "#eaeaea"}
           />
           <circle
             id="circle_5"
@@ -105,7 +105,7 @@ class WorkshopProgressBar extends React.Component {
             cx="450"
             cy="25"
             r="15"
-            fill={this.state.currentQuestion >= 4 ? "#737373" : "#ccc"}
+            fill={this.state.currentQuestion >= 4 ? "#737373" : "#eaeaea"}
           />
         </svg>
       </ProgressBarContainer>
