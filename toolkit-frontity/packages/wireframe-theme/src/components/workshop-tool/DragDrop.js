@@ -682,7 +682,7 @@ const PlanContainer = styled.div`
 
   .containerTime div {
     width: 100%;
-    min-height: 31px;
+    min-height: 30.5px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
