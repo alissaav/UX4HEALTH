@@ -10,6 +10,9 @@ import block from "../../images/workshopTool/block2.png";
 import praesenz from "../../images/workshopTool/praesenz.jpg";
 import online from "../../images/workshopTool/online.png";
 import bgWild from "../../images/workshopTool/bgWild2.png";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import NewPlanningTool from "./new-planning-tool";
 
 class WorkshopTool extends React.Component {
   constructor(props) {
@@ -486,14 +489,25 @@ class WorkshopTool extends React.Component {
         return (
           <div className="toolBackground">
             <div className="toolWhitebox">
-              <PlanningTool
-                goal={this.state.question1}
-                time={this.state.time}
-                date={this.state.date}
-                title={this.state.title}
-                location={this.state.location}
-                daysCount={this.state.daysCount}
-              ></PlanningTool>
+              <DndProvider backend={HTML5Backend}>
+                {/* <PlanningTool
+                  goal={this.state.question1}
+                  time={this.state.time}
+                  date={this.state.date}
+                  title={this.state.title}
+                  location={this.state.location}
+                  daysCount={this.state.daysCount}
+                ></PlanningTool> */}
+                <NewPlanningTool
+                  goal={this.state.question1}
+                  time={this.state.time}
+                  date={this.state.date}
+                  title={this.state.title}
+                  location={this.state.location}
+                  daysCount={this.state.daysCount}>
+
+                </NewPlanningTool>
+              </DndProvider>
               <button
                 className="backButton"
                 onClick={() => {

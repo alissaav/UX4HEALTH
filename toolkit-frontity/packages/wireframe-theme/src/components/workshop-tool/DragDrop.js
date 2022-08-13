@@ -108,7 +108,6 @@ export default function DragDrop(props) {
     props.methoden[index].id = index;
   });
 
-  var htmlObject;
 
   function updateLastItem(key) {
     if (key.isInPlan == true) {
@@ -433,11 +432,10 @@ export default function DragDrop(props) {
             dangerouslySetInnerHTML={{
               __html:
                 props.methoden[lastItemId] == undefined
-                  ? ""
+                  ? "Bitte wählen Sie eine Methode aus."
                   : props.methoden[lastItemId].tip,
             }}
           />
-          <div className="tippHinweis">Bitte wählen Sie eine Methode aus.</div>
         </TipContainer>
       </PlanningToolContainer>
     </>
