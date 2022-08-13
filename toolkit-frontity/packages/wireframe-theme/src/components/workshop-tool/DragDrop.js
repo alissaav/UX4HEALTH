@@ -14,6 +14,8 @@ export default function DragDrop(props) {
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
 
+  const [addcounter, setAddcounter] = useState(0);
+
   const [data, setData] = useState({
     currentDate: props.date,
     currentTime: props.time,
@@ -71,6 +73,10 @@ export default function DragDrop(props) {
     }, */
   }));
 
+  function incrementAddCounter(value) {
+    setAddcounter(value);
+  }
+
   const addMethodToBoard = (id) => {
     Object.keys(props.methoden).map(function (key) {
       if (id == key) {
@@ -79,6 +85,10 @@ export default function DragDrop(props) {
         time.add(props.methoden[key].duration + 5, "m");
       }
     });
+
+    incrementAddCounter(4);
+    setAddcounter(5);
+    console.log(addcounter);
 
     //Pause
     if (id == 99) {
@@ -89,17 +99,38 @@ export default function DragDrop(props) {
         isInPlan: true,
         color: { dark: "#82827d", light: "#e3e3e1", main: "#c7c7c7" },
       });
-      console.log(time);
 
       time.add(20, "m");
-      console.log(time);
     }
 
     //Größe des Zeitcontainers anpassen aufgrund der Lücken zwischen den Methoden
-    let timeContainer = document.getElementById("containerTime");
-    if (timeContainer != null) {
-      let grTime = timeContainer.clientHeight + 5;
+    var timeContainer = document.getElementById("containerTime");
+    var displayContainer = document.getElementById("displayContainer");
+
+    if (
+      timeContainer != null &&
+      displayContainer != null &&
+      timeContainer != undefined &&
+      displayContainer != undefined
+    ) {
+      let grTime = timeContainer.clientHeight + 8;
       timeContainer.style.height = grTime + "px";
+
+      let grDisplay = displayContainer.clientHeight + 8;
+      displayContainer.style.height = grDisplay + "px";
+
+      //alert(timeContainer.style.height + " " + displayContainer.style.height);
+      var elementList = displayContainer.querySelectorAll("div");
+      //var zuAddierendePixel = displayContainer.clientHeight / addCounter;
+      //console.log(addCounter);
+      //console.log(zuAddierendePixel);
+
+      //for (let i = 0; i <= addCounter; i++) {
+      //elementList[i].style.height =
+      //displayContainer.style.height + zuAddierendePixel + "px";
+      //}
+
+      elementList.forEach(function (aktDiv) {});
     }
   };
 
@@ -152,7 +183,7 @@ export default function DragDrop(props) {
   var displayContainer = "";
   if (timeAbbild.isValid()) {
     displayContainer = (
-      <div className="displayContainer">
+      <div id="displayContainer" className="displayContainer">
         <div className="stunde1viertel1">{timeAbbild.format("HH:mm")}</div>
         <div className="stunde1viertel2">
           {timeAbbild.add(15, "m").format("HH:mm")}
@@ -258,14 +289,6 @@ export default function DragDrop(props) {
     );
   }
 
-  function handleChangeDate(event) {
-    setCurrentDate(event.target.value);
-  }
-
-  function handleChangeTime(event) {
-    setCurrentTime(event.target.value);
-  }
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setData((prevState) => {
@@ -332,7 +355,6 @@ export default function DragDrop(props) {
             }
           })}
         </ElementsContainer>
-        {console.log(props.goal)}
         <PlanContainer>
           <div className="dataContainerTool">
             <div className="containerTimeSmall">
@@ -588,7 +610,6 @@ const PlanContainer = styled.div`
 
   .containerTime {
     width: 15%;
-    display: flex;
     margin: auto !important;
     padding: 0 !important;
     height: 965px;
@@ -598,7 +619,7 @@ const PlanContainer = styled.div`
 
   .containerTime div {
     width: 100%;
-    height: 30px;
+    min-height: 30px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
@@ -608,6 +629,13 @@ const PlanContainer = styled.div`
 
   .displayContainer div:nth-child(odd) {
     color: darkgrey;
+  }
+
+  .displayContainer {
+    display: flex;
+    flex-direction: column;
+    color: darkgrey;
+    height: 965px;
   }
 
   .containerPlan {

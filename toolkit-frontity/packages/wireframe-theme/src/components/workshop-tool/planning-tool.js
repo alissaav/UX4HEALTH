@@ -11,7 +11,6 @@ function PlanningTool(props) {
   const posts = props.state.source["post"];
   let parsedPosts = JSON.parse(JSON.stringify(posts));
   let postArray = Posts(parsedPosts);
-  console.log(postArray);
 
   return (
     <DndProvider backend={HTML5Backend}>
