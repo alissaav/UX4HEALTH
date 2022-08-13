@@ -23,9 +23,10 @@ export var Posts = (data) => {
       id: data[key].id,
       title: data[key].title.rendered,
       duration: data[key].duration,
-      tip: data[key].tip == undefined ? "undefined" : data[key].tip,
-      isInPlan: false,
+      tip: data[key].tip == undefined ? "Keine Tips" : data[key].tip,
+      status: "not-in-plan",
       color: getColor(data[key].categories[0]),
+      index: 0
     };
 
     postArray.push(post);

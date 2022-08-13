@@ -2,24 +2,27 @@ import { connect, styled } from "frontity";
 import React, { useState, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
-const Item = ({ props, item, index, moveItem }) => {
+const Item = ({ props, item, index, moveItem, status }) => {
     const ref = useRef(null);
 
     const [isInPlan, setIsInPlan] = useState(item.isInPlan);
     const [duration, setDuration] = useState(item.duration);
     const [notes, setNotes] = useState("");
 
+    status = item.status;
+
     const [, drop] = useDrop ({
         accept: "method",
         hover(item, monitor) {
             if (!ref.current) {
                 return;
-            }
+            }   
 
             const dragIndex = item.index;
             const hoverIndex = index;
+            console.log(hoverIndex);
 
-            if (dragIndex === hoveredIndex) {
+            if (dragIndex === hoverIndex) {
                 return;
             }
 
@@ -34,32 +37,36 @@ const Item = ({ props, item, index, moveItem }) => {
             if (dragIndex > hoverIndex && hoverClientY < hoverMiddleY) {
                 return;
             }
-
             moveItem(dragIndex, hoverIndex);
             item.index = hoverIndex;
         }
-    });
+    }, );
 
     const [{ isDragging }, drag] = useDrag({
         type: "method",
-        item: { type: "method", ...item, index},
-        collect: monitor => ({
-            isDragging: monitor.isDragging()
+        item: () => { 
+            return { ...item, index }
+        },
+        canDrag: true,
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
         })
-    });
+        
+    },);
 
 
     drag(drop(ref));
 
 
-    if (isInPlan == false) {
+    if (item.status == "not-in-plan") {
         return (
             <ElementContainer
-            ref={drag}
+            ref={ref}
             style={{
                 backgroundColor: item.color.main,
                 opacity: isDragging ? 0.5 : 1,
             }}
+            isDragDisabled={false}
             >
             {item.title}
             </ElementContainer>
@@ -67,13 +74,14 @@ const Item = ({ props, item, index, moveItem }) => {
         } else {
         return (
             <ElementInPlanContainer
-            ref={drag}
+            ref={ref}
             style={{
                 backgroundColor: item.color.light,
                 height: duration * 2 + "px",
                 borderColor: item.color.main,
                 opacity: isDragging ? 0.5 : 1,
             }}
+            isDragDisabled={false}
             >
             <ColorAccent
                 style={{

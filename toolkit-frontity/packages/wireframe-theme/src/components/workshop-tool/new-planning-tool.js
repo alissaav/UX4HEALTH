@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Item from "./item";
 import ColumnWrapper from "./column-wrapper";
 import Col from "./column";
+import { statuses } from "./status";
 import { connect, styled } from "frontity";
 import { COLORS } from "./colors";
 import { Posts } from "../posts.js";
@@ -14,7 +15,7 @@ const NewPlanningTool = props => {
     let postArray = Posts(parsedPosts);
 
     const [posts, setPosts] = useState(postArray);
-
+    console.log(posts);
     const [lastItemId, setLastItemId] = useState(-1);
     const [initial, setInitial] = useState(true);
 
@@ -153,36 +154,46 @@ const NewPlanningTool = props => {
         );
     }
 
-    const onDrop = (item, monitor, intoPlan) => {
-
-        setPosts(prevState => {
-            const newItems = prevState
-            .filter(i => i.id !== item.id);
-            if(!item.isInPlan && intoPlan) item.isInPlan = true;
-            if(item.isInPlan && !intoPlan) item.isInPlan = false;
-            newItems.concat({...item });
-            return [...newItems];
-        });
-
+    const onDrop = (item, monitor, status) => {
         console.log(posts);
-        
-    }
+        const newItems = posts
+            .filter(i => i.id !== item.id);
+        console.log(newItems);
+        const newItem = item;
+        newItem.status = status;
+        setPosts(newItems.concat(newItem));
+        console.log(newItems);
+        console.log(posts);
+    };
+
     const moveItem = (dragIndex, hoverIndex) => {
         const post = posts[dragIndex];
-        setItems(prevState => {
+        console.log(post);
+        console.log(hoverIndex);
+        setPosts((prevState) => {
+            // update(prevState, {
+            //     $splice: [
+            //         [dragIndex, 1],
+            //         [hoverIndex, 0, post],
+            //     ],
+            // }),
             const newItems = prevState
             .filter((i, idx) => idx !== dragIndex);
-            newItems.splice(hoverIndex, 0, item);
+            newItems = newItems.splice(hoverIndex, 0, post);
             return [...newItems];
-        });
-    };
+
+            });
+            
+        };
+        
+    
 
     return (
 
             <PlanningToolContainer>
-                <ElementsContainer>
+                <ElementsContainer key="not-in-plan" className="col-wrapper">
                     <h3>Elemente</h3>
-                    <ColumnWrapper onDrop={onDrop} intoPlan={false}>
+                    <ColumnWrapper onDrop={onDrop} status="not-in-plan" >
                         <Col>
                             {/* <WorkshopElement
                                 title="Pause"
@@ -213,20 +224,20 @@ const NewPlanningTool = props => {
                                 id={102}
                             ></WorkshopElement> */}
                             {posts.map( (post, key) => {
-                                if (!post.isInPlan) {
+                                if (post.status == "not-in-plan") {
                                     return (
-                                        <div
-                                        onMouseDown={() => {
-                                            updateLastItem(key);
-                                        }}
-                                        >
+                                        //<div
+                                        // onMouseDown={() => {
+                                        //     updateLastItem(key);
+                                        // }}
+                                        //>
                                             <Item
                                                 key={post.id}
                                                 item={post}
                                                 index={key}
                                                 moveItem={moveItem}
                                             ></Item>
-                                        </div>
+                                        //</div>
                                     );
                                 }
                             })}
@@ -236,27 +247,27 @@ const NewPlanningTool = props => {
                     
                 </ElementsContainer>
 
-            <PlanContainer>
+            <PlanContainer key="in-plan" className="col-wrapper">
                 <div className="containerTime" id="containerTime">
                     {displayContainer}
                 </div>
-                    <ColumnWrapper onDrop={onDrop} intoPlan={true}>
+                    <ColumnWrapper onDrop={onDrop} status="in-plan" >
                     <Col>
                         {posts.map( (post, key) => {
-                            if (post.isInPlan) {
+                            if (post.status == "in-plan") {
                                 return (
-                                    <div
-                                    onMouseDown={() => {
-                                        updateLastItem(key);
-                                    }}
-                                    >
+                                    
+                                    // onMouseDown={() => {
+                                    //     updateLastItem(key);
+                                    // }}
+                                    
                                         <Item
                                             key={post.id}
                                             item={post}
                                             index={key}
                                             moveItem={moveItem}
                                         ></Item>
-                                    </div>
+                                    
                                 );
                             }
                         })}

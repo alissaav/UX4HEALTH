@@ -1,14 +1,15 @@
 import { connect, styled } from "frontity";
 import React from "react";
 import { useDrop } from "react-dnd";
+import { statuses } from "./status";
 
-const ColumnWrapper = ({ onDrop, children, intoPlan }) => {
+const ColumnWrapper = ({ onDrop, children, status }) => {
     const [{ isOver }, drop ] = useDrop({
         accept: "method",
         drop: (item, monitor) => {
-            onDrop(item, monitor);
+            onDrop(item, monitor, status);
         },
-        collect: monitor => ({
+        collect: monitor => ({ 
             isOver: monitor.isOver()
         })
     });
