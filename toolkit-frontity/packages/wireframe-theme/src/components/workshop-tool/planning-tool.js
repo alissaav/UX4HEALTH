@@ -24,6 +24,8 @@ function PlanningTool(props) {
         title={props.title}
         location={props.location}
         daysCount={props.daysCount}
+        number={props.number}
+        online={props.online}
       ></DragDrop>
     </DndProvider>
   );
