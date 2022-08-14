@@ -1,5 +1,5 @@
 import { connect, styled } from "frontity";
-import Link from "@frontity/components/link"
+import Link from "@frontity/components/link";
 
 /**
  * Navigation Component
@@ -13,14 +13,17 @@ const Nav = ({ state }) => (
       const data = state.source.get(state.router.link);
       var isCurrentPage = data.route === link;
       const isPost = data.isPost;
-      if(state.router.link.startsWith("/methodology") && link.startsWith("/methodology")) {
+      if (
+        state.router.link.startsWith("/methodology") &&
+        link.startsWith("/methodology")
+      ) {
         isCurrentPage = true;
       }
 
       return (
         <NavItem key={name}>
           {/* If link url is the current page, add `aria-current` for a11y */}
-          <Link link={link} aria-current={isCurrentPage  ? "page" : undefined}>
+          <Link link={link} aria-current={isCurrentPage ? "page" : undefined}>
             {name}
           </Link>
         </NavItem>
@@ -41,46 +44,55 @@ const NavContainer = styled.nav`
   margin: 0;
   z-index: 101;
   align-items: center;
- 
+
+  @media only screen and (max-width: 650px) {
+    width: 100% !important;
+    margin: auto !important;
+  }
 `;
 
 const NavItem = styled.div`
-display: flex;
-align-content: center;
+  shrink: 1;
+  display: flex;
+  align-content: center;
 
-padding: 0;
-color: #fff;
-font-size: 0.9em;
-box-sizing: border-box;
-& > a {
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  text-transform: uppercase;
-  opacity: 0.4;
-  /* Use for semantic approach to style the current link */
-  &[aria-current="page"] {
-    color: #5A48F3;
-    opacity: 1;
+  padding: 0;
+  color: #fff;
+  font-size: 0.9em;
+  box-sizing: border-box;
+  & > a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    /* Use for semantic approach to style the current link */
+    &[aria-current="page"] {
+      color: #5a48f3;
+      opacity: 1;
+    }
   }
-}
 
-& > a:hover {
-  text-decoration: underline;  
-}
+  @media only screen and (max-width: 650px) {
+    & > a {
+      font-size: 3vw !important;
+    }
+  }
 
-&:first-of-type {
-  margin-left: 0;
-}
+  & > a:hover {
+    text-decoration: underline;
+  }
 
-&:last-of-type {
-  margin-right: 0;
+  &:first-of-type {
+    margin-left: 0;
+  }
 
-}
-
+  &:last-of-type {
+    margin-right: 0;
+  }
 `;

@@ -25,7 +25,7 @@ const Home = ({ state }) => {
             <img class="headImage" src={Header} />
           </div>
           <div class="headContent">
-            <div>
+            <div className="beginningText">
               <h1>Willkommen zu dem</h1>
               <h1>UX4Health Toolkit.</h1>
             </div>
@@ -396,6 +396,11 @@ const HeadContent = styled.div`
     justify-content: space-around;
   }
 
+  .demo-content {
+    margin-top: 70px;
+    position: absolute;
+  }
+
   h1 {
     font-size: 54px;
     color: white;
@@ -412,6 +417,7 @@ const HeadContent = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 20px !important;
   }
 
   .viewMethods a {
@@ -429,7 +435,10 @@ const HeadContent = styled.div`
     color: white;
   }
 
-  @media only screen and (max-width: 1110px) {
+  @media only screen and (max-width: 500px) {
+    .viewMethods {
+      margin-top: 0px !important;
+    }
   }
 
   @media only screen and (max-width: 800px) {
@@ -443,7 +452,7 @@ const HeadContent = styled.div`
       height: 190% !important;
       overflow: visible;
       h1 {
-        font-size: 9.5vw;
+        font-size: 8vw;
       }
     }
     p {
@@ -536,6 +545,11 @@ const MainContentHome = styled.div`
 
   .heartTest {
     width: 60%;
+    margin-left: 30px;
+  }
+
+  .heartTest img {
+    width: 70% !important;
     margin-left: 30px;
   }
 

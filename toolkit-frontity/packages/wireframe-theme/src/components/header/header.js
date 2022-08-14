@@ -72,6 +72,13 @@ const HeaderElement = styled.header`
     margin-top: 15%;
   }
 
+  @media only screen and (max-width: 650px) {
+    img,
+    .title {
+      display: none;
+    }
+  }
+
   ul {
     list-style-type: none;
     margin: 0;

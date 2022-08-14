@@ -204,6 +204,16 @@ const FooterElement = styled.footer`
         -webkit-transform: rotate(-45deg);
     }
 
+    @media only screen and (max-width: 500px) {
+    .contact{
+        width: 90%!important;
+    }
+    .getintouch{
+        width: 200%!important;
+
+    }
+    }
+
     
      @media only screen and (max-width: 1050px) {
                 
@@ -226,6 +236,7 @@ const FooterElement = styled.footer`
     .links{
         margin-left: 40px;
     }
+    
 
     
     }
