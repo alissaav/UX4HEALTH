@@ -45,29 +45,74 @@ const NewPlanningTool = (props) => {
     "YYYY-MM-DD HH:mm"
   );
 
-  var pauseIdCounter = 4;
   var pauseInPlan = true;
+  var presentationInPlan = true;
+  var collectInfoInPlan = true;
   
-  const addMethodToBoard = (id) => {
-    posts.map((post, key) => {
-      if (id == key) {
-        post.status = "in-plan";
-        // time.add(props.methoden[key].duration + 5, "m");
-      }
+  const addMethodToBoard = (ids) => {
+    var currentPosts = posts;
+    const addedPosts = [];
+    ids.map(id => {
+        const post = posts.find(post => post.id == id);
+        
+        if(post !== undefined){
+            console.log(currentPosts);
+            currentPosts = currentPosts.filter(post => post.id !== id);
+            
+            console.log(currentPosts);
+            post.status = "in-plan";
+            addedPosts.push(post);
+
+
+        }
+
+        if(id == 0) pauseInPlan = false;
+        if(id == 4) presentationInPlan = false;
+        if(id == 5) collectInfoInPlan = false;
+
     });
+    console.log(currentPosts);
+    console.log(addedPosts);
+    currentPosts.splice(currentPosts.length, 0, ...addedPosts);
 
-    //Pause
-    // if (id == 99) {
-    // board.push({
-    //     id: 99,
-    //     title: "Pause",
-    //     duration: "20",
-    //     isInPlan: true,
-    //     color: { dark: "#82827d", light: "#e3e3e1", main: "#c7c7c7" },
-    // });
+    if(!collectInfoInPlan) {
+        let gather = {
+            id: 5,
+            title: "Sammeln & Strukturieren",
+            duration: "30",
+            tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
+            status: "not-in-plan",
+            color: COLORS.green
+        };
+        currentPosts.splice(0, 0, gather);
+    }
 
-    // time.add(20, "m");
-    // }
+    if(!presentationInPlan) {
+        let prasentation = {
+            id: 4,
+            title: "Präsentation",
+            duration: "45",
+            tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
+            status: "not-in-plan",
+            color: COLORS.green
+        };
+        currentPosts.splice(0, 0, prasentation);
+    }
+
+    if(!pauseInPlan) {
+        let pause = {
+            id: 0,
+            title: "Pause",
+            duration: "15",
+            tip: "Denke daran, genug Pausen einzuplanen!",
+            status: "not-in-plan",
+            color: COLORS.green
+        };
+        currentPosts.splice(0, 0, pause);
+    }
+
+    setPosts(currentPosts);
+
   };
 
   if (initial) {
@@ -75,23 +120,17 @@ const NewPlanningTool = (props) => {
     if (props.goal != 10) {
       setInitial(false);
       if (props.goal == 0) {
-        addMethodToBoard(0);
-        addMethodToBoard(7);
-        addMethodToBoard(13);
+        
+        addMethodToBoard([1, 2, 222, 178, 0, 219, 4, 194, 4, 3 ]);
+
       } else if (props.goal == 1) {
-        addMethodToBoard(0);
-        addMethodToBoard(7);
-        addMethodToBoard(13);
-        addMethodToBoard(5);
-        addMethodToBoard(9);
+        
+        addMethodToBoard([1, 2, 216, 194, 4, 5, 0, 213, 0, 209, 4, 3]);
+        
       } else {
-        addMethodToBoard(0);
-        addMethodToBoard(12);
-        addMethodToBoard(7);
-        addMethodToBoard(5);
-        addMethodToBoard(9);
-        addMethodToBoard(6);
-        addMethodToBoard(1);
+
+        addMethodToBoard([1, 2, 216, 194, 4, 5, 0, 213, 0, 209, 4, 3]);
+        
       }
     }
   }
@@ -211,9 +250,15 @@ const NewPlanningTool = (props) => {
     if ( item.title == "Pause" && status == "in-plan") {
         pauseInPlan = false;
     }
+    if (item.title == "Präsentation" && status == "in-plan") {
+        presentationInPlan = false;
+    }
+    if (item.title == "Sammeln & Strukturieren" && status == "in-plan") {
+        collectInfoInPlan = false;
+    }
     if(!pauseInPlan) {
         let pause = {
-            id: pauseIdCounter,
+            id: 0,
             title: "Pause",
             duration: "15",
             tip: "Denke daran, genug Pausen einzuplanen!",
@@ -221,7 +266,28 @@ const NewPlanningTool = (props) => {
             color: COLORS.green
         };
         posts.splice(0, 0, pause);
-        pauseIdCounter++;
+    }
+    if(!presentationInPlan) {
+        let prasentation = {
+            id: 4,
+            title: "Präsentation",
+            duration: "45",
+            tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
+            status: "not-in-plan",
+            color: COLORS.green
+        };
+        posts.splice(4, 0, prasentation);
+    }
+    if(!collectInfoInPlan) {
+        let gather = {
+            id: 5,
+            title: "Sammeln & Strukturieren",
+            duration: "30",
+            tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
+            status: "not-in-plan",
+            color: COLORS.green
+          };
+        posts.splice(5, 0, gather);
     }
 
         forceUpdate();

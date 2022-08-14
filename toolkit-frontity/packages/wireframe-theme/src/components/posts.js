@@ -2,6 +2,7 @@ import { COLORS } from "./workshop-tool/colors";
 
 export var Posts = (data) => {
 
+  console.log(data);
   var postArray = [];
 
   let pause = {
@@ -43,6 +44,26 @@ export var Posts = (data) => {
     color: COLORS.green
   };
   postArray.push(goodbye);
+
+  let prasentation = {
+    id: 4,
+    title: "Präsentation",
+    duration: "45",
+    tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
+    status: "not-in-plan",
+    color: COLORS.green
+  };
+  postArray.push(prasentation);
+
+  let gather = {
+    id: 5,
+    title: "Sammeln & Strukturieren",
+    duration: "30",
+    tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
+    status: "not-in-plan",
+    color: COLORS.green
+  };
+  postArray.push(gather);
 
   Object.keys(data).map(function (key, index) {
     let post = {
