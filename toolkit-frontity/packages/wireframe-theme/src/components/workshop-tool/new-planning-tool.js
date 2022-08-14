@@ -20,6 +20,8 @@ const NewPlanningTool = props => {
     const [lastItemId, setLastItemId] = useState(-1);
     const [initial, setInitial] = useState(true);
 
+    const [changingOrder, setChangingOrder] = useState(false);
+
     const [data, setData] = useState({
         currentDate: props.date,
         currentTime: props.time,
@@ -157,7 +159,8 @@ const NewPlanningTool = props => {
 
     const onDrop = (item, monitor, status) => {
         // console.log(posts);
-        const newItems = posts
+        if(!changingOrder){
+            const newItems = posts
             .filter(i => i.id !== item.id);
         // console.log(newItems);
         const newItem = item;
@@ -165,9 +168,13 @@ const NewPlanningTool = props => {
         setPosts(newItems.concat(newItem));
         // console.log(newItems);
         // console.log(posts);
+        }
+        
+        
     };
 
     const moveItem = (dragIndex, hoverIndex) => {
+        setChangingOrder(true);
         const item = posts[dragIndex];
         item.index = hoverIndex;
         console.log(posts);
