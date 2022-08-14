@@ -27,8 +27,8 @@ class WorkshopTool extends React.Component {
       question4: 10,
       title: "",
       location: "",
-      date: null,
-      time: null,
+      date: new Date().toISOString().slice(0, 10),
+      time: "08:00",
       daysCount: 1,
     };
 

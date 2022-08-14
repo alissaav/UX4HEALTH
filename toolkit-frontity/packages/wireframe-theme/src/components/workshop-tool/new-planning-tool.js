@@ -30,6 +30,9 @@ const NewPlanningTool = props => {
         currentLocation: props.location,
         currentDaysCount: props.daysCount,
     });
+
+    console.log(data.currentTime);
+
     var time = moment(
         data.currentDate + " " + data.currentTime,
         "YYYY-MM-DD HH:mm"
@@ -38,6 +41,28 @@ const NewPlanningTool = props => {
         data.currentDate + " " + data.currentTime,
         "YYYY-MM-DD HH:mm"
     );
+
+    const addMethodToBoard = (id) => {
+        posts.map((post, key) =>  {
+        if (id == key) {
+                post.status = "in-plan";
+                // time.add(props.methoden[key].duration + 5, "m");
+            }
+        });
+    
+        //Pause
+        // if (id == 99) {
+        // board.push({
+        //     id: 99,
+        //     title: "Pause",
+        //     duration: "20",
+        //     isInPlan: true,
+        //     color: { dark: "#82827d", light: "#e3e3e1", main: "#c7c7c7" },
+        // });
+    
+        // time.add(20, "m");
+        // }
+    };
 
     if (initial) {
         //Methoden des Ziels hinzufügen
@@ -225,7 +250,8 @@ const NewPlanningTool = props => {
                 [name]: value,
                 };
             });
-            };
+        };
+        
 
     return (
         <WorkShopToolkitContainer id="alltoolkit">
