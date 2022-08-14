@@ -8,6 +8,8 @@ import { COLORS } from "./colors";
 import { Posts } from "../posts.js";
 import moment from "Moment";
 import cubes from "../../images/workshopTool/bgcubes2.png";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const NewPlanningTool = props => {
 
@@ -251,6 +253,75 @@ const NewPlanningTool = props => {
                 };
             });
         };
+
+        function printDocument() {
+            let input = document.getElementById("PlanContainer");
+        
+            let titelInhalt = "";
+            let titel = document.getElementById("titleInput");
+            let locationInhalt = "";
+            let location = document.getElementById("locationInput");
+            let useWidth = "";
+            let useHeight = "";
+        
+            if (input != null && input != undefined) {
+              useWidth = input.clientHeight;
+              useHeight = input.clientWidth;
+            }
+        
+            if (titel != null && titel != undefined) {
+              titelInhalt = titel.value;
+            }
+        
+            if (location != null && location != undefined) {
+              locationInhalt = location.value;
+            }
+        
+            // const pdf = new jsPDF("p", "pt", "a3");
+        
+            html2canvas(input, {
+              width: useWidth,
+              height: useHeight,
+            }).then((canvas) => {
+              pdf.setTextColor(112, 112, 112);
+              pdf.setFontSize(34);
+              pdf.text(
+                100,
+                //1310,
+                100,
+                titelInhalt,
+                { align: "left" }
+              );
+        
+              pdf.setFontSize(14);
+              pdf.text(
+                100,
+                //1310,
+                140,
+                "Ort: " + locationInhalt,
+                { align: "left" }
+              );
+        
+              pdf.addImage(canvas.toDataURL("image/png"), "PNG", 145, 180);
+        
+              pdf.text(
+                100,
+                //1310,
+                850,
+                "... erstellt durch das UX4-Health Workshop-Toolkit: https://ux.codeforhealth.de/workshop-tool/",
+                { align: "left" }
+              );
+              pdf.text(
+                100,
+                //1310,
+                890,
+                "Kontakt: alina.huldtgren@hs-duesseldorf.de",
+                { align: "left" }
+              );
+        
+              pdf.save("download.pdf");
+            });
+          }
         
 
     return (
