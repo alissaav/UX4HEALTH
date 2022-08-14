@@ -16,6 +16,10 @@ function WorkshopElement(props) {
     }),
   }));
 
+  function handleChangeDuration(event) {
+    setDuration(event.target.value);
+  }
+
   if (isInPlan == false) {
     return (
       <ElementContainer
@@ -53,8 +57,38 @@ function WorkshopElement(props) {
           }}
         ></ColorAccent>
         <TimeDiv style={{ borderColor: props.color.main }}>
-          <p style={{ color: props.color.dark, marginTop: "0.8em" }}>
-            Dauer: {duration} Minuten
+          <p
+            style={{
+              color: props.color.dark,
+              marginTop: "1.15em",
+              display: "inline",
+            }}
+          >
+            Dauer:
+          </p>
+          <input
+            name="durationInput"
+            className="durationInput"
+            id="durationInput"
+            type="number"
+            min="15"
+            max="500"
+            value={duration}
+            onChange={handleChangeDuration}
+            style={{
+              color: props.color.dark,
+              marginTop: "0.8em",
+              display: "inline",
+            }}
+          ></input>
+          <p
+            style={{
+              color: props.color.dark,
+              marginTop: "1.15em",
+              display: "inline",
+            }}
+          >
+            Minuten
           </p>
         </TimeDiv>
         <h4 style={{ color: props.color.dark }}>{props.title} </h4>
@@ -88,7 +122,7 @@ const ElementInPlanContainer = styled.div`
   display: grid;
   grid-template-columns: 12px 1fr 1.5fr 1.5fr;
   color: #666;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
   column-gap: 2px;
   border-style: dashed;
   border-width: 1px;
@@ -101,11 +135,25 @@ const ElementInPlanContainer = styled.div`
 
 const ColorAccent = styled.div`
   background: grey;
-  height: 100%;
 `;
 const TimeDiv = styled.div`
+  .durationInput {
+    width: 40px;
+    height: 15px;
+    display: inline;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    border-radius: 3px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
   display: flex;
-  flex-direction: column;
+  margin: auto;
+  flex-direction: row;
   justify-content: space-between;
   grid-column-start: 2;
   font-size: 10px;

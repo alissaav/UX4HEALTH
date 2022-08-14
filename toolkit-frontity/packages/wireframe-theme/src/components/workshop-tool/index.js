@@ -161,7 +161,7 @@ class WorkshopTool extends React.Component {
                     </label>
 
                     <label className="label-days-count">
-                      <h3>Anzahl Tage</h3> <br />
+                      <h3>Anzahl der Tage</h3> <br />
                       <select
                         name="daysCount"
                         className="inputDays"
@@ -489,6 +489,7 @@ class WorkshopTool extends React.Component {
         return (
           <div className="toolBackground">
             <div className="toolWhitebox">
+
               <DndProvider backend={HTML5Backend}>
                 {/* <PlanningTool
                   goal={this.state.question1}
@@ -505,13 +506,16 @@ class WorkshopTool extends React.Component {
                   title={this.state.title}
                   location={this.state.location}
                   daysCount={this.state.daysCount}>
+                  number={this.state.question2}
+                  online={this.state.question3}
 
                 </NewPlanningTool>
               </DndProvider>
+
               <button
                 className="backButton"
                 onClick={() => {
-                  this.handleStateChange(1);
+                  this.handleStateChange(0);
                 }}
               >
                 Zurück
@@ -576,7 +580,6 @@ class WorkshopTool extends React.Component {
 export default connect(WorkshopTool);
 
 const WorkshopContainer = styled.div`
-  margin-top:66px;
   min-height: 80vh;
   position: absolut;
 
@@ -606,6 +609,7 @@ const WorkshopContainer = styled.div`
   //beginning
 
   .beginningContainer{
+      margin-top:66px;
     margin: auto!important;
     align-items: center;
   }
@@ -713,6 +717,7 @@ const WorkshopContainer = styled.div`
 
   //data
   .dataContainer {
+      margin-top:66px;
     height: 82vh;
     position: relative;
   }
@@ -824,6 +829,7 @@ const WorkshopContainer = styled.div`
 
   //goal
   .goalContainer {
+      margin-top:66px;
     height: 82vh;
     position: relative;
   }
@@ -900,6 +906,7 @@ const WorkshopContainer = styled.div`
 
   //number
   .numberContainer {
+      margin-top:66px;
     height: 82vh;
     position: relative;
   }
@@ -982,6 +989,7 @@ const WorkshopContainer = styled.div`
   //location
 
   .locationContainer {
+      margin-top:66px;
     height: 82vh;
     position: relative;
   }
@@ -1059,7 +1067,7 @@ const WorkshopContainer = styled.div`
   .toolBackground{
     min-height: 90vh;
     position: relative;
-    margin-top:110px!important;
+
   }
 
   .toolBackground img {
