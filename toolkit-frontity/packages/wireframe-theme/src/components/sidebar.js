@@ -116,10 +116,12 @@ const Main = styled.div`
   li > a:hover {
     text-decoration: underline;
   }
-  @media only screen and (max-width: 1580px) {
+
+  @media only screen and (max-width: 1620px) {
     border-right: none;
   }
-  @media only screen and (max-width: 1620px) {
+
+  @media only screen and (max-width: 1580px) {
     position: relative;
     margin-left: 0px;
     margin-right: 0px;
@@ -128,6 +130,7 @@ const Main = styled.div`
     align-items: center;
     text-align: center;
     width: 100%;
+
     nav {
       padding-bottom: 20px !important;
       border-bottom: 1px solid #c4c4c4 !important;
