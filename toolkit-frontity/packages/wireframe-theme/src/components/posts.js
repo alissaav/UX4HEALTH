@@ -1,22 +1,48 @@
 import { COLORS } from "./workshop-tool/colors";
 
 export var Posts = (data) => {
-  // const data = state.source.get(state.router.link);
 
-  // console.log(data);
-
-  // let proxyPosts = data["posts"];
-
-  // console.log(proxyPosts);
-
-  // let parsedData = JSON.parse(JSON.stringify(data));
-
-  // console.log(parsedData);
-
-  // let posts = parsedData["post"];
-
-  // console.log(posts);
   var postArray = [];
+
+  let pause = {
+    id: 0,
+    title: "Pause",
+    duration: "15",
+    tip: "Denke daran, genug Pausen einzuplanen!",
+    status: "not-in-plan",
+    color: COLORS.green
+  };
+  postArray.push(pause);
+
+  let greeting = {
+    id: 1,
+    title: "Begrüßung",
+    duration: "15",
+    tip: "Erkläre den Teilnehmern den Ablauf und das Ziel des Workshops.",
+    status: "not-in-plan",
+    color: COLORS.green
+  };
+  postArray.push(greeting);
+
+  let icebreaker = {
+    id: 2,
+    title: "Ice-Breaker",
+    duration: "15",
+    tip: "Es ist ratsam, das Eis zu brechen, um die Stimmung optimal für den Workshop vorzubereiten.",
+    status: "not-in-plan",
+    color: COLORS.green
+  };
+  postArray.push(icebreaker);
+
+  let goodbye = {
+    id: 3,
+    title: "Verabschiedung",
+    duration: "15",
+    tip: "Verabschiede die Teilnehmer und bedanke dich herzlich für deren Teilnahme!",
+    status: "not-in-plan",
+    color: COLORS.green
+  };
+  postArray.push(goodbye);
 
   Object.keys(data).map(function (key, index) {
     let post = {
@@ -25,12 +51,12 @@ export var Posts = (data) => {
       duration: data[key].duration,
       tip: data[key].tip == undefined ? "Keine Tips" : data[key].tip,
       status: "not-in-plan",
-      color: getColor(data[key].categories[0]),
-      index: 0
+      color: getColor(data[key].categories[0])
     };
 
     postArray.push(post);
   });
+
   return postArray;
 };
 

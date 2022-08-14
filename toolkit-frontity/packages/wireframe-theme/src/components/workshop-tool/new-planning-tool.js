@@ -21,7 +21,7 @@ const NewPlanningTool = (props) => {
   });
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
-
+  
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
   const [data, setData] = useState({
@@ -45,6 +45,9 @@ const NewPlanningTool = (props) => {
     "YYYY-MM-DD HH:mm"
   );
 
+  var pauseIdCounter = 4;
+  var pauseInPlan = true;
+  
   const addMethodToBoard = (id) => {
     posts.map((post, key) => {
       if (id == key) {
@@ -204,7 +207,24 @@ const NewPlanningTool = (props) => {
 
   const onDrop = (item, monitor, status) => {
     posts.find(i => i.id == item.id).status = status;
-    forceUpdate();
+
+    if ( item.title == "Pause" && status == "in-plan") {
+        pauseInPlan = false;
+    }
+    if(!pauseInPlan) {
+        let pause = {
+            id: pauseIdCounter,
+            title: "Pause",
+            duration: "15",
+            tip: "Denke daran, genug Pausen einzuplanen!",
+            status: "not-in-plan",
+            color: COLORS.green
+        };
+        posts.splice(0, 0, pause);
+        pauseIdCounter++;
+    }
+
+        forceUpdate();
   };
 
   const moveItem = (dragIndex, hoverIndex) => {
