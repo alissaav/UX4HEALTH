@@ -594,8 +594,10 @@ const MainContentHome = styled.div`
   }
 
   #typicalMethods {
-    margin-left: 10px;
-    margin-top: 0.5em;
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 0.5em;
+    margin: auto;
     text-decoration: none;
   }
   @media only screen and (max-width: 1110px) {

@@ -61,6 +61,21 @@ const HeadContent = styled.div`
     position: absolute;
   }
 
+  @media only screen and (max-width: 600px) {
+    .headContent h1 {
+      font-size: 8vw;
+    }
+
+    .headContent p {
+      font-size: 3vw;
+      margin: 20px 20px !important;
+    }
+
+    .head {
+      height: 80vw;
+    }
+  }
+
   h1 {
     margin-left: 64px;
     font-size: 54px;

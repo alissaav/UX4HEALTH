@@ -10,6 +10,9 @@ import block from "../../images/workshopTool/block2.png";
 import praesenz from "../../images/workshopTool/praesenz.jpg";
 import online from "../../images/workshopTool/online.png";
 import bgWild from "../../images/workshopTool/bgWild2.png";
+import product from "../../images/workshopTool/product.png";
+import vision from "../../images/workshopTool/vision.jpeg";
+import idea from "../../images/workshopTool/idea.jpeg";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import NewPlanningTool from "./new-planning-tool";
@@ -52,21 +55,36 @@ class WorkshopTool extends React.Component {
                 <div className="beginningText1">
                   <h2>Das Workshop-Toolkit</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod.<br></br>
-                    <br></br> Tempor invidunt ut labore et dolore magna aliquyam
-                    erat, sed diam voluptua. At vero eos et accusam et justo duo
-                    dolores et ea rebum.
+                    <h3>Wozu dient das Workshop-Toolkit?</h3>
+                    Unser Workshop-Toolkit ist ein digitaler Planer, der dabei
+                    helfen soll Ihren Workshop spannender, strukturierter und
+                    einfacher zu gestalten.
+                    <br />
+                    <h3> Für wen eignet sich das Toolkit? </h3>
+                    Das Toolkit kann sowohl Anfängern als auch Experten von
+                    Nutzen sein. Es bestehen 2 Auswahlmöglichkeiten: <br />
+                    <br />
+                    Benutzer mit Vorerfahrung bei der Organisation von Workshops
+                    werden sofort zu unserem digitalen Planer weitergeleitet. In
+                    diesem werden unterschiedlichste Workshop-Methoden und
+                    Phasen aufgelistet sein, die durch Drag&Drop in den
+                    Tagesplan gezogen und dort bewegt werden können. <br />
+                    <br />
+                    Die Benutzer, die weniger oder gar keine Erfahrung beim
+                    Planen eines Workshops haben, können vorerst einige Fragen
+                    beantworten, mithilfe dieser die passenden Methoden und
+                    dazugehörigen Tipps dargestellt werden. Nach Beantwortung
+                    der Fragen wird ein Workshop-Entwurf vorgeschlagen, der sich
+                    nach Belieben weiter anpassen lässt. <br />
+                    <br />
+                    Am Ende kann der Entwurf als PDF heruntergeladen werden. So
+                    erhalten Sie den fertig strukturierten Plan für Ihren
+                    Workshop!
                   </p>
                 </div>
                 <div className="beginningText2">
                   <p>
-                    Brauchst du Unterstützung dabei <br /> deinen Workshop zu
+                    Brauchen Sie Unterstützung dabei <br /> Ihren Workshop zu
                     planen?
                   </p>
                 </div>
@@ -213,14 +231,13 @@ class WorkshopTool extends React.Component {
                       onClick={() => this.setState({ question1: 0 })}
                     >
                       <div className="goalPic1">
-                        <img src={praesenz} />
+                        <img src={vision} />
                       </div>
                       <div className="goalText1">
-                        <h2>Produktentwicklung</h2>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore et
-                        dolore magna aliquyam erat, sed diam voluptua. At vero
-                        eos et accusam et justo duo dolores et ea rebum.
+                        <h2>Zukunftsvision</h2>
+                        Anhand dieser Workshop-Form können durch kreativen
+                        Austausch Trends und Einflüsse besprochen und zukünftige
+                        Projekte besser gestaltet werden.
                       </div>
                     </div>
                     <div
@@ -233,13 +250,17 @@ class WorkshopTool extends React.Component {
                       onClick={() => this.setState({ question1: 1 })}
                     >
                       <div className="goalPic2">
-                        <img src={praesenz} />
+                        <img src={product} />
                       </div>
                       <div className="goalText2">
-                        <h2>Produkt-Testen</h2>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore et
-                        dolore magna aliquyam erat, sed diam voluptua.
+                        <h2>Produktentwicklung</h2>
+                        Wie der Name schon sagt, wird mithilfe dieser
+                        Workshop-Form ein Produkt entwickelt. Es werden mit
+                        spezifischen Methoden unterschiedliche Ideen gesammelt,
+                        sortiert und anschließend gefiltert. Im Anschluss kann
+                        ein Prototyp entwickelt, getestet und korrigiert werden.
+                        Am Ende erhält man ein Konzept für das zu entwickelnde
+                        Produkt.
                       </div>
                     </div>
                     <div
@@ -252,15 +273,17 @@ class WorkshopTool extends React.Component {
                       onClick={() => this.setState({ question1: 2 })}
                     >
                       <div className="goalPic3">
-                        <img src={praesenz} />
+                        <img src={idea} />
                       </div>
                       <div className="goalText3">
                         <h2>Ideensammlung</h2>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore et
-                        dolore magna aliquyam erat, sed diam voluptua. At vero
-                        eos et accusam et justo duo dolores et ea rebum. Stet
-                        clita kasd gubergren.
+                        Diese Form ist ebenfalls ein beliebtes Verfahren, um
+                        neue Ideen zu generieren. Hierbei werden
+                        unterschiedlichste Ideen zu einer Fragestellung oder
+                        einem Problem gesammelt und besprochen. Dabei gilt: je
+                        mehr, desto besser!Als Ergebnis erhält man viele
+                        inspirierende Ideen aus unterschiedlichsten
+                        Blickwinkeln.
                       </div>
                     </div>
                   </div>
@@ -383,9 +406,28 @@ class WorkshopTool extends React.Component {
                       <div className="locationPic1">
                         <img src={online} />
                       </div>
-                      <h2>Online</h2>
-                      Lorem ipsum dolor sit amet, consetetur dolor sit
-                      sadipscing elitr.
+                      <div className="onlineText">
+                        <h2>Online</h2>
+                        Ein Online-Workshop kann mit ausreichender Planung eine
+                        gute Alternative zu einem Präsenz-Workshop darstellen.
+                        Zu den Vorteilen gehören folgende Punkte:
+                        <br />
+                        <br />
+                        1.Die Planung der Räumlichkeiten fällt weg, sobald man
+                        sich für eine Kommunikationsplattform entschieden hat.
+                        <br />
+                        2.Die Anzahl der Teilnehmer ist variabler.
+                        <br />
+                        3.Es muss kein Material organisiert werden.
+                        <br />
+                        4.Die Dokumentation der Ergebnisse erfolgt mühelos.
+                        <br />
+                        <br /> Jedoch muss hierbei auch bedacht werden, dass die
+                        Einweisung in die Technik sehr zeitintensiv ausfallen
+                        kann. Ebenfalls passieren Unterbrechungen bei dieser
+                        Workshop-Form sehr viel häufiger. Die Gruppendynamik
+                        kann durch den unpersönlicheren Austausch leiden.
+                      </div>
                     </div>
                     <div
                       className="locationOption2"
@@ -399,9 +441,31 @@ class WorkshopTool extends React.Component {
                       <div className="locationPic2">
                         <img src={praesenz} />
                       </div>
-                      <h2>Präsenz</h2>
-                      Lorem ipsum dolor sit amet, consetetur dolor sit
-                      sadipscing elitr.
+                      <div className="praesenzText">
+                        <h2>Präsenz</h2>
+                        Im Allgemeinen lässt sich sagen, dass die Durchführung
+                        des Workshops in Präsenz präferiert werden sollte.
+                        Hierfür gibt es mehrere Gründe:
+                        <br />
+                        <br />
+                        1.Die Teilnehmer lernen sich untereinander schneller
+                        kennen, was die Gruppendynamikfördert und zu einem
+                        intensiveren Ideenaustausch führt.
+                        <br />
+                        2.Die meisten Methoden wurden für
+                        Präsenz-Veranstaltungen entwickelt und lassen
+                        sichunkompliziert umsetzen.
+                        <br />
+                        3.Der Redeanteil der Teilnehmer kann durch die
+                        Moderatoren besser reguliert werden.
+                        <br />
+                        4.Das Risiko für plötzliche Unterbrechungen ist sehr
+                        viel geringer.
+                        <br />
+                        <br />
+                        Hierbei müssen die Räumlichkeiten und Materialien
+                        sorgfältig organisiert werden.
+                      </div>
                     </div>
                   </div>
                   <button
@@ -489,7 +553,6 @@ class WorkshopTool extends React.Component {
         return (
           <div className="toolBackground">
             <div className="toolWhitebox">
-
               <DndProvider backend={HTML5Backend}>
                 {/* <PlanningTool
                   goal={this.state.question1}
@@ -505,15 +568,14 @@ class WorkshopTool extends React.Component {
                   date={this.state.date}
                   title={this.state.title}
                   location={this.state.location}
-                  daysCount={this.state.daysCount}>
                   number={this.state.question2}
                   online={this.state.question3}
-
-                </NewPlanningTool>
+                  days={this.state.daysCount}
+                ></NewPlanningTool>
               </DndProvider>
 
               <button
-                className="backButton"
+                className="backButtonEnd"
                 onClick={() => {
                   this.handleStateChange(0);
                 }}
@@ -609,7 +671,7 @@ const WorkshopContainer = styled.div`
   //beginning
 
   .beginningContainer{
-      margin-top:66px;
+    margin-top:66px;
     margin: auto!important;
     align-items: center;
   }
@@ -626,24 +688,24 @@ const WorkshopContainer = styled.div`
 
   .backgroundScreen0 {
     background-color: white;
-    height: 350px;
+    height: 64vh;
     position: relative;
   }
 
   .beginningWhitebox {
     background-color: white;
     padding: 30px;
-    padding-top: 28px;
+    padding-top: 45px;
     width: 60vw;
     height: 550px;
     position: absolute;
     margin: auto;
-    top: 25vh;
+    top: 28vh;
     left: 18.5vw;
   }
 
   .beginningWhiteboxText {
-    width: 60%;
+    width: 70%;
     margin: auto;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -820,6 +882,13 @@ const WorkshopContainer = styled.div`
     bottom: 0 !important;
   }
 
+    .backButtonEnd {
+    padding: 0 !important
+    margin: 0 !important;
+    margin-bottom: 10vh !important;    
+    bottom: 0 !important;
+  }
+
   .nextButton {
     margin-left: 27vw;
     padding: 0 !important
@@ -870,7 +939,7 @@ const WorkshopContainer = styled.div`
   #goalOption3 {
     background: rgba(245, 245, 245, 0.9);
     width: 28%;
-    height: 40vh;
+    height: 45vh;
     flex: 1;
 
     border-width: 2.5px;
@@ -884,7 +953,7 @@ const WorkshopContainer = styled.div`
   #goalOption3Clicked {
     background: rgba(245, 245, 245, 0.7);
     width: 28%;
-    height: 40vh;
+    height: 45vh;
     box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
     flex: 1;
 
@@ -952,7 +1021,7 @@ const WorkshopContainer = styled.div`
     background: rgba(245, 245, 245, 0.9);
     width: 30%;
     height: 30vh;
-    padding: 0.5%;
+    padding: 0.8%;
     //border: black 2px solid;
     flex: 1;
 
@@ -963,18 +1032,17 @@ const WorkshopContainer = styled.div`
   }
 
     #numberOption4 {
-      margin-bottom: 1,5%;
+      margin-bottom: 3.5%;
   }
 
   #numberOption1Clicked,
   #numberOption2Clicked,
-  #numberOption3Clicked,
-  #numberOption4Clicked {
+  #numberOption3Clicked {
     margin: auto;
     background: rgba(245, 245, 245, 0.7);
     width: 30%;
     height: 30vh;
-    padding: 0.5%;
+    padding: 0.8%;
     //border: black 2px solid;
     flex: 1;
     box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
@@ -983,6 +1051,25 @@ const WorkshopContainer = styled.div`
     border-style: solid;
     border-color: rgba(88, 23, 93, 0.4);
     border-radius: 5px
+
+  }
+
+    #numberOption4Clicked {
+    margin: auto;
+    margin-bottom: 3.5%;
+    background: rgba(245, 245, 245, 0.7);
+    width: 30%;
+    height: 30vh;
+    padding: 0.8%;
+    //border: black 2px solid;
+    flex: 1;
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(88, 23, 93, 0.4);
+    border-radius: 5px
+
 
   }
 
@@ -1026,13 +1113,13 @@ const WorkshopContainer = styled.div`
   }
 
   #locationOption1,
-  #locationOption2,
-  #locationOption3 {
+  #locationOption2 {
     background: rgba(245, 245, 245, 0.9);
     width: 28%;
     height: 40vh;
     //border: black 2px solid;
     flex: 1;
+    overflow:hidden;
 
     border-width: 2.5px;
     border-style: solid;
@@ -1040,14 +1127,63 @@ const WorkshopContainer = styled.div`
     border-radius: 5px
   }
 
-  #locationOption1Clicked,
-  #locationOption2Clicked,
-  #locationOption3Clicked {
-    background: rgba(245, 245, 245, 0.7);
+  #locationOption1:hover {
+    background: rgba(245, 245, 245, 0.97);
+    height: 62vh;
+    position: initial;
+    margin-bottom: 200vh;
+  }
+
+  
+  #locationOption2:hover {
+    background: rgba(245, 245, 245, 0.97);
+    height: 66vh;
+    position: initial;
+    margin-bottom: 200vh;
+
+  }
+
+    #locationOption1Clicked:hover {
+    background: rgba(245, 245, 245, 0.97);
+    height: 62vh;
+    position: initial;
+    margin-bottom: 200vh;
+  }
+
+  
+  #locationOption2Clicked:hover {
+    background: rgba(245, 245, 245, 0.97);
+    height: 66vh;
+    position: initial;
+    margin-bottom: 200vh;
+
+  }
+
+  .onlineText, .praesenzText{
+    padding: 10px;
+  }
+
+  #locationOption1Clicked{
+    background: rgba(245, 245, 245, 0.97);
     width: 28%;
     height: 40vh;
     flex: 1;
     box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+        overflow:hidden;
+
+    border-width: 2.5px;
+    border-style: solid;
+    border-color: rgba(88, 23, 93, 0.4);
+    border-radius: 5px;
+  }
+
+  #locationOption2Clicked {
+    background: rgba(245, 245, 245, 0.97);
+    width: 28%;
+    height: 40vh;
+    flex: 1;
+    box-shadow: 0 0 45px rgba(88, 23, 93, 1.0);
+        overflow:hidden;
 
     border-width: 2.5px;
     border-style: solid;
