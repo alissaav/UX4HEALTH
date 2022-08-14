@@ -34,7 +34,7 @@ const Item = ({ props, item, index, moveItem, status }) => {
             if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
                 return;
             }
-            if (dragIndex > hoverIndex && hoverClientY < hoverMiddleY) {
+            if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
                 return;
             }
             moveItem(dragIndex, hoverIndex);
@@ -47,7 +47,6 @@ const Item = ({ props, item, index, moveItem, status }) => {
         item: () => { 
             return { ...item, index }
         },
-        canDrag: true,
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         })

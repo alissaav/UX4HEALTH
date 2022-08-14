@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Item from "./item";
 import ColumnWrapper from "./column-wrapper";
 import Col from "./column";
@@ -13,9 +13,10 @@ const NewPlanningTool = props => {
     const rawPosts = props.state.source["post"];
     let parsedPosts = JSON.parse(JSON.stringify(rawPosts));
     let postArray = Posts(parsedPosts);
-
     const [posts, setPosts] = useState(postArray);
-    console.log(posts);
+    useEffect(() => {
+        console.log(posts);
+    })
     const [lastItemId, setLastItemId] = useState(-1);
     const [initial, setInitial] = useState(true);
 
@@ -155,36 +156,29 @@ const NewPlanningTool = props => {
     }
 
     const onDrop = (item, monitor, status) => {
-        console.log(posts);
+        // console.log(posts);
         const newItems = posts
             .filter(i => i.id !== item.id);
-        console.log(newItems);
+        // console.log(newItems);
         const newItem = item;
         newItem.status = status;
         setPosts(newItems.concat(newItem));
-        console.log(newItems);
-        console.log(posts);
+        // console.log(newItems);
+        // console.log(posts);
     };
 
     const moveItem = (dragIndex, hoverIndex) => {
-        const post = posts[dragIndex];
-        console.log(post);
-        console.log(hoverIndex);
-        setPosts((prevState) => {
-            // update(prevState, {
-            //     $splice: [
-            //         [dragIndex, 1],
-            //         [hoverIndex, 0, post],
-            //     ],
-            // }),
-            const newItems = prevState
-            .filter((i, idx) => idx !== dragIndex);
-            newItems = newItems.splice(hoverIndex, 0, post);
-            return [...newItems];
+        const item = posts[dragIndex];
+        item.index = hoverIndex;
+        console.log(posts);
 
-            });
-            
-        };
+        const newItems = posts.filter((i, idx) => idx !== dragIndex);
+        console.log(newItems);
+        newItems.splice(hoverIndex, 0, item);
+        console.log(newItems);
+        setPosts([...newItems]);
+        console.log(posts);
+    };
         
     
 
@@ -223,7 +217,10 @@ const NewPlanningTool = props => {
                                 duration="15"
                                 id={102}
                             ></WorkshopElement> */}
-                            {posts.map( (post, key) => {
+                            {
+                                posts.map( (post, key) => {
+                                    {/* console.log(key);
+                                    console.log(posts); */}
                                 if (post.status == "not-in-plan") {
                                     return (
                                         //<div
@@ -232,7 +229,7 @@ const NewPlanningTool = props => {
                                         // }}
                                         //>
                                             <Item
-                                                key={post.id}
+                                                key={key}
                                                 item={post}
                                                 index={key}
                                                 moveItem={moveItem}
