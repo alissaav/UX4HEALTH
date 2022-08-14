@@ -7,6 +7,7 @@ import { connect, styled } from "frontity";
 import { COLORS } from "./colors";
 import { Posts } from "../posts.js";
 import moment from "Moment";
+import cubes from "../../images/workshopTool/bgcubes2.png";
 
 const NewPlanningTool = props => {
 
@@ -176,7 +177,7 @@ const NewPlanningTool = props => {
 
     const onDrop = (item, monitor, status) => {
         // console.log(posts);
-        // if(!changingOrder){
+        if(!changingOrder){
             const newItems = posts
             .filter(i => i.id !== item.id);
             // console.log(newItems);
@@ -186,8 +187,8 @@ const NewPlanningTool = props => {
             
             // console.log(newItems);
             // console.log(posts);
-        // }
-        // setChangingOrder(false);
+        }
+        setChangingOrder(false);
         
         
     };
@@ -216,8 +217,52 @@ const NewPlanningTool = props => {
             }
         }
 
-    return (
+        const handleChange = (event) => {
+            const { name, value } = event.target;
+            setData((prevState) => {
+                return {
+                ...prevState,
+                [name]: value,
+                };
+            });
+            };
 
+    return (
+        <WorkShopToolkitContainer id="alltoolkit">
+            <img src={cubes} className="imgcubes" />
+            <div className="titleBox">
+            <div className="l-title">
+            <h3 style={{ display: "inline", marginRight: "20px" }}>Titel:</h3>
+            <input
+                name="currentTitle"
+                className="titleInput"
+                id="titleInput"
+                type="text"
+                value={data.currentTitle}
+                onChange={handleChange}
+            ></input>
+            </div>
+
+            <div className="l-location">
+            <h3 style={{ display: "inline", marginRight: "20px" }}>Ort:</h3>
+            <input
+                name="currentLocation"
+                className="locationInput"
+                id="locationInput"
+                type="text"
+                value={data.currentLocation}
+                onChange={handleChange}
+            ></input>
+            </div>
+            <button
+            className="saveButton"
+            onClick={() => {
+                printDocument();
+            }}
+            >
+            Als PDF herunterladen
+            </button>
+        </div>
             <PlanningToolContainer>
                 <ElementsContainer key="not-in-plan" className="col-wrapper">
                     <h3>Elemente</h3>
@@ -257,7 +302,7 @@ const NewPlanningTool = props => {
                                     console.log(posts); */}
                                 if (post.status == "not-in-plan") {
                                     return (
-                                    <div
+                                    <div  key={key}
                                     onMouseDown={() => {
                                         updateLastItem(key);
                                     }}
@@ -279,52 +324,120 @@ const NewPlanningTool = props => {
                 </ElementsContainer>
 
             <PlanContainer key="in-plan" className="col-wrapper">
-                <div className="containerTime" id="containerTime">
-                    {displayContainer}
-                </div>
-                    <ColumnWrapper onDrop={onDrop} status="in-plan" >
-                    <Col>
-                        {posts.map( (post, key) => {
-                            if (post.status == "in-plan") {
-                                return (
-                                    
-                                    <div onMouseDown={() => {
-                                        updateLastItem(key);
-                                    }}
-                                    >
-                                        <Item
-                                            key={post.id}
-                                            item={post}
-                                            index={key}
-                                            moveItem={moveItem}
-                                        ></Item>
-                                    </div>
-                                );
-                            }
-                        })}
-                    </Col>
-                </ColumnWrapper>
-                
-                {/* <div className="containerPlan">
+                <div className="dataContainerTool">
+                    <div className="containerTimeSmall">
+                        <label className="l-date">
+                            <h4>Datum:</h4>
+                            <input
+                            name="currentDate"
+                            className="dateInput"
+                            type="date"
+                            value={time.format("yyyy-MM-DD")}
+                            onChange={handleChange}
+                            ></input>
+                        </label>
 
-                    {board.map(function (key) {
-                    return (
-                        <div
-                        onMouseDown={() => {
-                            updateLastItem(key);
-                        }}
-                        >
-                        <WorkshopElement
-                            title={key.title}
-                            color={key.color}
-                            isInPlan={key.isInPlan}
-                            duration={key.duration}
-                            id={key}
-                        ></WorkshopElement>
+                        <label className="l-time">
+                            <h4>Uhrzeit:</h4>
+                            <input
+                            name="currentTime"
+                            className="timeInput"
+                            type="time"
+                            value={time.format("HH:mm")}
+                            onChange={handleChange}
+                            ></input>
+                        </label>
+                    </div>
+                    <div className="containerDays">
+                        <div className="containerDays1">
+                            <label className="label-days">
+                            <h4>Anzahl Tage:</h4>
+                                <select
+                                    name="currentDaysCount"
+                                    className="daysInput"
+                                    value={data.currentDaysCount}
+                                    onChange={handleChange}
+                                >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </label>
+                            <br />
+                            <label className="label-daysSelection">
+                                <h4>Anzeige Tag:</h4>
+                                <select
+                                    name="currentDaysCount"
+                                    className="daysSelectionInput"
+                                    value={data.currentDaysCount}
+                                    onChange={handleChange}
+                                >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </label>    
                         </div>
-                    );
-                    })} 
-                </div> */}
+                        <div className="containerDays2">
+                            <label className="l-number">
+                                <h4>Anzahl Teilnehmer:</h4>
+                                <select
+                                    name="currentNumber"
+                                    className="numberInput"
+                                    value={data.currentNumber}
+                                    onChange={handleChange}
+                                >
+                                    <option value="0">5-10</option>
+                                    <option value="1">10-15</option>
+                                    <option value="2">15-25</option>
+                                    <option value="3">Über 25</option>
+                                </select>
+                                <br />
+                            </label>
+
+                            <label className="l-oline">
+                                <h4>Online o. Präsenz:</h4>
+                                <select
+                                    name="currentOnline"
+                                    className="onlineInput"
+                                    value={data.currentOnline}
+                                    onChange={handleChange}
+                                >
+                                    <option value="0">Online</option>
+                                    <option value="1">Präsenz</option>
+                                </select>
+                                <br />
+                            </label>    
+                        </div>
+                    </div>
+                </div>
+                <div className="timetableWrapper">
+                    <div className="containerTime" id="containerTime">
+                        {displayContainer}
+                        
+                    </div>
+            
+                    <ColumnWrapper onDrop={onDrop} status="in-plan" >
+                        <Col>
+                            {posts.map( (post, key) => {
+                                if (post.status == "in-plan") {
+                                    return (
+                                        
+                                        <div  key={key} onMouseDown={() => {
+                                            updateLastItem(key);
+                                        }}
+                                        >
+                                            <Item
+                                                key={post.id}
+                                                item={post}
+                                                index={key}
+                                                moveItem={moveItem}
+                                            ></Item>
+                                        </div>
+                                    );
+                                }
+                            })}
+                        </Col>
+                    </ColumnWrapper>
+                </div>
             </PlanContainer>
             <TipContainer>
             <h3>Tipps</h3>
@@ -339,71 +452,209 @@ const NewPlanningTool = props => {
             />
             </TipContainer>
         </PlanningToolContainer>
-        
+        </WorkShopToolkitContainer>
     );
 }
 
 export default connect(NewPlanningTool);
 
 
-    const PlanningToolContainer = styled.div`
+const WorkShopToolkitContainer = styled.div`
+h3,
+h4 {
+  margin: 0;
+}
+
+.imgcubes {
+  position: absolute;
+  z-index: -100;
+  margin-top: 0;
+}
+.titleBox {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15vh;
+  gap: 40px;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-title {
+}
+
+.titleInput {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  background-color: #e8f0fe;
+
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.saveButton {
+  margin: 0 !important;
+  padding: 17px;
+  display: flex;
+  width: initial !important;
+  border-style: solid;
+  background-color: whitesmoke;
+  margin: 0 !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border-width: medium;
+  border-color: rgba(175, 175, 175, 0.55);
+  font-size: 12px;
+  width: 60%;
+  height: 60%;
+}
+
+.l-location {
+}
+
+.locationInput {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  background-color: #e8f0fe;
+  font-weight: 700;
+  font-size: 25px;
+}
+`;
+
+const PlanningToolContainer = styled.div`
+display: flex;
+justify-content: space-evenly;
+`;
+
+const ElementsContainer = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
+width: 20%;
+justify-content: center;
+background-color: whitesmoke;
+padding: 8px;
+box-shadow: 0 0 1em grey;
+`;
+
+const PlanContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: 40vw;
+background-color: whitesmoke;
+.timetableWrapper {
     display: flex;
-    justify-content: space-evenly;
-    `;
+}
+.containerTimeSmall {
+    width: 15%;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+}
 
-    const ElementsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 20%;
-    justify-content: center;
-    background-color: whitesmoke;
-    padding: 8px;
-    box-shadow: 0 0 1em grey;
-    `;
-    const PlanContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 48%;
+.containerDays {
+  width: 84%;
+  padding: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 6vh;
+  align-items: center;
+  justify-content: end;
+}
 
-    .containerTime {
-        width: 7%;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 !important;
-        padding: 0 !important;
-        height: 965px;
-        color: lightgrey;
-    }
+.timeInput,
+.dateInput,
+.daysInput,
+.daysSelectionInput,
+.numberInput,
+.onlineInput {
+  width: 6vw;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  border-radius: 3px;
+  background-color: #e8f0fe;
+}
 
-    .containerTime div {
-        width: 90%;
-        height: 30px;
-    }
+.dataContainerTool {
+  background-color: rgba(175, 175, 175, 0.5);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  height: fit-content;
+}
 
-    .displayContainer div:nth-child(odd) {
-        color: darkgrey;
-    }
+.planContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  z-index: 100;
+  flex-wrap: no-wrap;
+}
 
-    .containerPlan {
-        display: flex;
-        flex-direction: column;
-        width: 93%;
-        background-color: whitesmoke;
-        padding: 4px;
-    }
-    `;
+.containerTime {
+  width: 15%;
+  margin: auto !important;
+  padding: 0 !important;
+  height: 965px;
+  color: lightgrey;
+  background-color: white-smoke;
+}
 
-    const TipContainer = styled.div`
-    width: 20%;
-    background-color: whitesmoke;
-    justify-content: center;
-    padding: 8px;
-    box-shadow: 0 0 1em grey;
-    text-align: center;
+.containerTime div {
+  width: 100%;
+  min-height: 30.5px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: dashed;
+  border-width: 1px;
+}
 
-    .tippHinweis {
-        margin-top: 60vh;
-        margin-bottom: 4vh;
-    }
-    `;
+.displayContainer div:nth-child(odd) {
+  color: darkgrey;
+}
+
+.displayContainer {
+  display: flex;
+  flex-direction: column;
+  color: darkgrey;
+  height: 965px;
+}
+
+.containerPlan {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  background-color: whitesmoke;
+  padding: 4px;
+}
+`;
+
+const TipContainer = styled.div`
+width: 20%;
+background-color: whitesmoke;
+justify-content: center;
+padding: 8px;
+box-shadow: 0 0 1em grey;
+text-align: center;
+
+.tippHinweis {
+  margin-top: 60vh;
+  margin-bottom: 4vh;
+}
+`;

@@ -9,7 +9,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import cubes from "../../images/workshopTool/bgcubes2.png";
 import moment from "Moment";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
 
 export default function DragDrop(props) {
   const [board, setBoard] = useState([]);
@@ -287,7 +287,7 @@ export default function DragDrop(props) {
       locationInhalt = location.value;
     }
 
-    const pdf = new jsPDF("p", "pt", "a3");
+    // const pdf = new jsPDF("p", "pt", "a3");
 
     html2canvas(input, {
       width: useWidth,
