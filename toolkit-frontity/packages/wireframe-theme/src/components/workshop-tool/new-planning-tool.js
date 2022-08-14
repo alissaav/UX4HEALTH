@@ -38,15 +38,32 @@ const NewPlanningTool = props => {
         "YYYY-MM-DD HH:mm"
     );
 
-    // function updateLastItem(key) {
-    //     if (key.isInPlan == true) {
-    //         setLastItemId(key.id);
-    //         //console.log(key.id);
-    //     } else {
-    //         setLastItemId(key);
-    //         //console.log(key);
-    //     }
-    // }
+    if (initial) {
+        //Methoden des Ziels hinzufügen
+        if (props.goal != 10) {
+        setInitial(false);
+        if (props.goal == 0) {
+            addMethodToBoard(0);
+            addMethodToBoard(7);
+            addMethodToBoard(13);
+        } else if (props.goal == 1) {
+            addMethodToBoard(0);
+            addMethodToBoard(7);
+            addMethodToBoard(13);
+            addMethodToBoard(5);
+            addMethodToBoard(9);
+        } else {
+            addMethodToBoard(0);
+            addMethodToBoard(12);
+            addMethodToBoard(7);
+            addMethodToBoard(5);
+            addMethodToBoard(9);
+            addMethodToBoard(6);
+            addMethodToBoard(1);
+        }
+        }
+    }
+    
 
     var displayContainer = "";
     if (timeAbbild.isValid()) {
@@ -159,16 +176,18 @@ const NewPlanningTool = props => {
 
     const onDrop = (item, monitor, status) => {
         // console.log(posts);
-        if(!changingOrder){
+        // if(!changingOrder){
             const newItems = posts
             .filter(i => i.id !== item.id);
-        // console.log(newItems);
-        const newItem = item;
-        newItem.status = status;
-        setPosts(newItems.concat(newItem));
-        // console.log(newItems);
-        // console.log(posts);
-        }
+            // console.log(newItems);
+            const newItem = item;
+            newItem.status = status;
+            setPosts(newItems.concat(newItem));
+            
+            // console.log(newItems);
+            // console.log(posts);
+        // }
+        // setChangingOrder(false);
         
         
     };
@@ -187,7 +206,15 @@ const NewPlanningTool = props => {
         console.log(posts);
     };
         
-    
+        function updateLastItem(key) {
+            if (key.isInPlan == true) {
+            setLastItemId(key.id);
+            //console.log(key.id);
+            } else {
+            setLastItemId(key);
+            //console.log(key);
+            }
+        }
 
     return (
 
@@ -230,18 +257,18 @@ const NewPlanningTool = props => {
                                     console.log(posts); */}
                                 if (post.status == "not-in-plan") {
                                     return (
-                                        //<div
-                                        // onMouseDown={() => {
-                                        //     updateLastItem(key);
-                                        // }}
-                                        //>
+                                    <div
+                                    onMouseDown={() => {
+                                        updateLastItem(key);
+                                    }}
+                                    >
                                             <Item
                                                 key={key}
                                                 item={post}
                                                 index={key}
                                                 moveItem={moveItem}
                                             ></Item>
-                                        //</div>
+                                        </div>
                                     );
                                 }
                             })}
@@ -261,17 +288,17 @@ const NewPlanningTool = props => {
                             if (post.status == "in-plan") {
                                 return (
                                     
-                                    // onMouseDown={() => {
-                                    //     updateLastItem(key);
-                                    // }}
-                                    
+                                    <div onMouseDown={() => {
+                                        updateLastItem(key);
+                                    }}
+                                    >
                                         <Item
                                             key={post.id}
                                             item={post}
                                             index={key}
                                             moveItem={moveItem}
                                         ></Item>
-                                    
+                                    </div>
                                 );
                             }
                         })}
