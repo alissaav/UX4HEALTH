@@ -525,7 +525,7 @@ const NewPlanningTool = (props) => {
         <TipContainer>
           <h3>Tipps</h3>
           <br />
-          <div
+          <div className="tippText"
             dangerouslySetInnerHTML={{
               __html:
                 posts[lastItemId] === undefined
@@ -729,13 +729,19 @@ const PlanContainer = styled.div`
 const TipContainer = styled.div`
   width: 20%;
   background-color: whitesmoke;
-  justify-content: center;
   padding: 8px;
   box-shadow: 0 0 1em grey;
   text-align: center;
+  padding: 20px;
+  text-align: start;
 
   .tippHinweis {
     margin-top: 60vh;
     margin-bottom: 4vh;
+    text-align: start !important;
+  }
+  .tippText {
+    text-align: start !important;
+    line-height:24px;
   }
 `;
