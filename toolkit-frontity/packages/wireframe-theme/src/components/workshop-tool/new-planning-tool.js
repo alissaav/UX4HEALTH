@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Item from "./item";
 import ColumnWrapper from "./column-wrapper";
 import Col from "./column";
@@ -8,7 +8,7 @@ import { COLORS } from "./colors";
 import { Posts } from "../posts.js";
 import moment from "Moment";
 import cubes from "../../images/workshopTool/bgcubes2.png";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const NewPlanningTool = (props) => {
@@ -22,7 +22,7 @@ const NewPlanningTool = (props) => {
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
 
-  const [changingOrder, setChangingOrder] = useState(false);
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
   const [data, setData] = useState({
     currentDate: props.date,
@@ -203,22 +203,12 @@ const NewPlanningTool = (props) => {
   }
 
   const onDrop = (item, monitor, status) => {
-    // console.log(posts);
-    if (!changingOrder) {
-      const newItems = posts.filter((i) => i.id !== item.id);
-      // console.log(newItems);
-      const newItem = item;
-      newItem.status = status;
-      setPosts(newItems.concat(newItem));
-
-      // console.log(newItems);
-      // console.log(posts);
-    }
-    setChangingOrder(false);
+    posts.find(i => i.id == item.id).status = status;
+    forceUpdate();
   };
 
   const moveItem = (dragIndex, hoverIndex) => {
-    setChangingOrder(true);
+
     const item = posts[dragIndex];
     item.index = hoverIndex;
     console.log(posts);
