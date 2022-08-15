@@ -1,8 +1,6 @@
 import { connect, styled } from "frontity";
 import React from "react";
-import Question from "./question";
 import WorkshopProgressBar from "./progress";
-import PlanningTool from "./planning-tool";
 import startup from "../../images/workshopTool/startup3.png";
 import book from "../../images/workshopTool/book2.png";
 import hands from "../../images/workshopTool/hands2.png";
