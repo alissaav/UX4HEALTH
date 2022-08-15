@@ -211,6 +211,11 @@ const Item = styled.div`
       min-height: 600px;
     }
   }
+  @media only screen and (max-width: 600px) {
+    .container {
+      min-height: 850px;
+    }
+  }
 `;
 
 export default connect(Method);

@@ -191,7 +191,7 @@ const HeadContent = styled.div`
       position: relative !important;
     }
     .demo-content {
-      margin-top: 30px;
+      margin-top: 0px;
     }
   }
 

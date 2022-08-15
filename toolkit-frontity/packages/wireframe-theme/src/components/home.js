@@ -449,7 +449,7 @@ const HeadContent = styled.div`
       z-index: 50;
     }
     .headContent {
-      height: 190% !important;
+      height: 170% !important;
       overflow: visible;
       h1 {
         font-size: 8vw;
@@ -457,7 +457,7 @@ const HeadContent = styled.div`
     }
     p {
       color: black !important;
-      margin-top: 10vh;
+      margin-top: 3vh;
     }
     .viewMethods a {
       color: black;
