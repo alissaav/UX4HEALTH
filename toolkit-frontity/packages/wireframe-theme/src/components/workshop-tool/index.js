@@ -54,7 +54,7 @@ class WorkshopTool extends React.Component {
               <div className="beginningWhiteboxText">
                 <div className="beginningText1">
                   <h2>Das Workshop-Toolkit</h2>
-                  <p>
+                  <p> 
                     <h3>Wozu dient das Workshop-Toolkit?</h3>
                     Unser Workshop-Toolkit ist ein digitaler Planer, der dabei
                     helfen soll Ihren Workshop spannender, strukturierter und
@@ -79,7 +79,9 @@ class WorkshopTool extends React.Component {
                     <br />
                     Am Ende kann der Entwurf als PDF heruntergeladen werden. So
                     erhalten Sie den fertig strukturierten Plan für Ihren
-                    Workshop!
+                    Workshop! <br/> <br/>
+                    © Dieses Tool wurde im Rahmen eines Projekts der Hochschule Düsseldorf von 
+                    Francesca Vinci, Yevheniia Kubarych, Cornelius Laurenz und Alissa Avtonoshkina entwickelt.
                   </p>
                 </div>
                 <div className="beginningText2">

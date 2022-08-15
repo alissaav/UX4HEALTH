@@ -125,7 +125,7 @@ const NewPlanningTool = (props) => {
     }
   }
 
-  var displayContainer = "";
+  var displayContainer = " ";
   if (timeAbbild.isValid()) {
     displayContainer = (
       <div className="displayContainer">
