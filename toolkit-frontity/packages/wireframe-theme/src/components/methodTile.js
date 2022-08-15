@@ -47,7 +47,6 @@ const Item = styled.div`
   max-width: 50%;
   flex: 50%;
   padding: 10px;
-
   img {
     height: 100px;
     width: 100px;
@@ -57,11 +56,9 @@ const Item = styled.div`
     display: block;
     margin-top: -20px;
   }
-
   div * {
     text-decoration: none;
   }
-
   .container {
     display: block;
     color: black;
@@ -75,33 +72,27 @@ const Item = styled.div`
     margin: 0px;
     font-size: 1rem;
   }
-
   .container:hover {
     background-color: rgb(240, 240, 240);
   }
-
   .text_information {
     justify-content: space-around;
     padding: 15px;
     display: block;
   }
-
   .tags {
     margin-top: 15px;
     margin-bottom: 15px;
   }
-
   .introduction {
     font-size: 0.8rem;
   }
-
   .empathise {
     min-width: 85px;
     text-align: left;
     margin-top: 30px;
     display: inline;
   }
-
   .empathise p {
     background-color: #a9cdd7;
     padding: 5px;
@@ -115,14 +106,12 @@ const Item = styled.div`
     text-transform: uppercase;
     margin-left: 2px;
   }
-
   .define {
     min-width: 85px;
     text-align: left;
     margin-top: 30px;
     display: inline;
   }
-
   .define p {
     background-color: #2c2378;
     padding: 5px;
@@ -136,14 +125,12 @@ const Item = styled.div`
     text-transform: uppercase;
     margin-left: 2px;
   }
-
   .ideate {
     min-width: 85px;
     text-align: left;
     margin-top: 30px;
     display: inline;
   }
-
   .ideate p {
     background-color: #ce1e1e;
     padding: 5px;
@@ -163,7 +150,6 @@ const Item = styled.div`
     margin-top: 30px;
     display: inline;
   }
-
   .prototype p {
     background-color: #584242;
     padding: 5px;
@@ -177,14 +163,12 @@ const Item = styled.div`
     text-transform: uppercase;
     margin-left: 2px;
   }
-
   .test {
     min-width: 85px;
     text-align: right;
     margin-top: 30px;
     display: inline;
   }
-
   .test p {
     background-color: #6fb051;
     padding: 5px;
@@ -198,7 +182,6 @@ const Item = styled.div`
     text-transform: uppercase;
     margin-left: 2px;
   }
-
   & > a {
     display: block;
     margin: 6px 0;
@@ -206,11 +189,9 @@ const Item = styled.div`
     color: steelblue;
     text-decoration: none;
   }
-
   h5 {
     font-size: 1.2em;
   }
-
   img {
     height: 100px;
     width: 100px;
@@ -220,16 +201,19 @@ const Item = styled.div`
     display: block;
     margin-top: -20px;
   }
-
   @media only screen and (max-width: 1450px) {
     img {
       margin-top: 15px;
     }
   }
-
   @media only screen and (max-width: 1000px) {
     .container {
       min-height: 600px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .container {
+      min-height: 850px;
     }
   }
 `;

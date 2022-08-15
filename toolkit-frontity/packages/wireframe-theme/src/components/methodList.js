@@ -43,6 +43,7 @@ const Method = ({ state, post }) => {
 };
 
 const Item = styled.div`
+
   img {
     height: 100px;
     width: 100px;

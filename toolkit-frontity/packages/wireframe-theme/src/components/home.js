@@ -10,6 +10,7 @@ import Prototype from "../images/prototype.png";
 import Ideate from "../images/ideate.png";
 import { useState } from "react";
 import { useEffect } from "react";
+import WorkshopTool from "./workshop-tool";
 
 const Home = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -17,14 +18,14 @@ const Home = ({ state }) => {
   const [selectedPhase, setPhase] = useState(1);
 
   return (
-    <>
+    <Wrapper>
       <HeadContent>
         <div class="head">
           <div class="headImageBox">
             <img class="headImage" src={Header} />
           </div>
           <div class="headContent">
-            <div>
+            <div className="beginningText">
               <h1>Willkommen zu dem</h1>
               <h1>UX4Health Toolkit.</h1>
             </div>
@@ -40,7 +41,7 @@ const Home = ({ state }) => {
           </div>
         </div>
       </HeadContent>
-      <MainContent>
+      <MainContentHome>
         <div class="grid-designThinking">
           <div class="introduction">
             <h2>Der Design Thinking Prozess</h2>
@@ -60,12 +61,13 @@ const Home = ({ state }) => {
               können.
             </p>
           </div>
+
           <div class="bulb">
             <img src={Bulb}></img>
           </div>
         </div>
         <div class="phase-buttons">
-        <button
+          <button
             onClick={() => setPhase(1)}
             opened={selectedPhase == 1 ? "true" : "false"}
           >
@@ -96,14 +98,13 @@ const Home = ({ state }) => {
             Test
           </button>
         </div>
-          
 
         <div opened={selectedPhase == 1 ? "true" : "false"} className="text1">
           {" "}
           <div class="grid-empathise">
             <div class="grid-content">
               <div class="introduction">
-              <div className="numberHeadline">
+                <div className="numberHeadline">
                   <h1 id="number">1</h1>
                   <h2 id="headline">Empathise</h2>
                 </div>
@@ -170,7 +171,7 @@ const Home = ({ state }) => {
           <div class="grid-define">
             <div class="grid-content">
               <div class="introduction">
-              <div className="numberHeadline">
+                <div className="numberHeadline">
                   <h1 id="number">2</h1>
                   <h2 id="headline">Define</h2>
                 </div>
@@ -355,12 +356,18 @@ const Home = ({ state }) => {
             <p></p>
           </div>
         </div>
-      </MainContent>
-    </>
+      </MainContentHome>
+    </Wrapper>
   );
 };
 
 export default connect(Home);
+
+const Wrapper = styled.div`
+  padding: 1em;
+  max-width: 950px;
+  margin: auto;
+`;
 
 const HeadContent = styled.div`
   .head {
@@ -389,6 +396,11 @@ const HeadContent = styled.div`
     justify-content: space-around;
   }
 
+  .demo-content {
+    margin-top: 70px;
+    position: absolute;
+  }
+
   h1 {
     font-size: 54px;
     color: white;
@@ -405,6 +417,7 @@ const HeadContent = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 20px !important;
   }
 
   .viewMethods a {
@@ -422,40 +435,40 @@ const HeadContent = styled.div`
     color: white;
   }
 
-  @media only screen and (max-width: 1110px) {
+  @media only screen and (max-width: 500px) {
+    .viewMethods {
+      margin-top: 0px !important;
+    }
   }
 
   @media only screen and (max-width: 800px) {
-
     .head {
       overflow: visible;
       max-height: 400px;
       text-align: center;
       z-index: 50;
-      
     }
     .headContent {
-      height: 190%!important;
+      height: 170% !important;
       overflow: visible;
       h1 {
-        font-size: 9.5vw;
+        font-size: 8vw;
       }
     }
     p {
-      color: black!important;
-      margin-top: 10vh;
+      color: black !important;
+      margin-top: 3vh;
     }
     .viewMethods a {
       color: black;
     }
     .viewMethods a:hover {
-    color: black;
+      color: black;
     }
   }
 `;
 
-const MainContent = styled.div`
-  
+const MainContentHome = styled.div`
   button {
     background: white;
 
@@ -535,11 +548,15 @@ const MainContent = styled.div`
     margin-left: 30px;
   }
 
+  .heartTest img {
+    width: 70% !important;
+    margin-left: 30px;
+  }
+
   .bulb {
     transform: rotate(-25deg);
     padding: 2%;
   }
-
 
   .heart {
     margin-top: 7em;
@@ -577,8 +594,10 @@ const MainContent = styled.div`
   }
 
   #typicalMethods {
-    margin-left: 10px;
-    margin-top: 0.5em;
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 0.5em;
+    margin: auto;
     text-decoration: none;
   }
   @media only screen and (max-width: 1110px) {
@@ -607,35 +626,32 @@ const MainContent = styled.div`
       display: flex;
       justify-content: space-between;
       padding-top: 10%;
-      
+
       padding-bottom: 5%;
     }
-
   }
   @media only screen and (max-width: 800px) {
     * {
-
     }
-    
 
     .grid-designThinking {
       flex-direction: column-reverse !important;
       align-items: center;
       padding: 0 0 2vw 2vw;
-      margin-top: 100%!important;
+      margin-top: 100% !important;
     }
     .bulb {
       max-width: 200px;
     }
     .introduction {
-      text-align: center; 
+      text-align: center;
     }
     .phase-buttons {
       flex-direction: column;
       width: 100%;
       gap: 2vh !important;
       align-items: center;
-      
+
       padding-bottom: 5%;
     }
     button {
@@ -691,7 +707,7 @@ const MainContent = styled.div`
     justify-content: space-between;
     padding-top: 10%;
     gap: 10px;
-    
+
     padding-bottom: 5%;
   }
 
@@ -710,8 +726,5 @@ const MainContent = styled.div`
     align-items: baseline;
     font-size: 30px;
     width: 100%;
-
-
-    
   }
 `;

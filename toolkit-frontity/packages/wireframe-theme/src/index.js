@@ -1,5 +1,13 @@
 import Root from "./components"
 
+const workshopHandler = {
+  name: "workshop-tool",
+  priority: 10,
+  pattern: "/workshop-tool/",
+  func: ({ state }) => {
+    state.source.data['/workshop-tool/'].isWorkshopTool = true;    
+  }
+}
 
 export default {
   name: "wireframe-theme",
@@ -11,6 +19,9 @@ export default {
   },
   actions: {
     theme: {
+      init: ({ libraries }) => {
+        libraries.source.handlers.push(workshopHandler);
+      },
       beforeSSR: async ({ state, actions }) => {
         await Promise.all([
           // actions.source.fetch("/methodology/usability-test/"),
@@ -19,6 +30,7 @@ export default {
           actions.source.fetch("/page/2")
         ]);
       },
+
     }
   }
 };

@@ -1,5 +1,5 @@
 import { connect, styled } from "frontity";
-import Link from "@frontity/components/link"
+import Link from "@frontity/components/link";
 
 /**
  * Navigation Component
@@ -14,7 +14,7 @@ const Nav = ({ state }) => (
       const isCurrentPage = data.route === link;
 
       return (
-        <NavItem key={name}>
+        <NavItem id="navitem" key={name}>
           {/* If link url is the current page, add `aria-current` for a11y */}
           <Link link={link} aria-current={isCurrentPage ? "page" : undefined}>
             {name}
@@ -39,6 +39,7 @@ const NavContainer = styled.nav`
 
   @media screen and (max-width: 560px) {
     display: none;
+    width: 40vw !important;
   }
 `;
 
