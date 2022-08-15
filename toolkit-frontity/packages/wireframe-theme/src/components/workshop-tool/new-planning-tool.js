@@ -8,7 +8,7 @@ import { COLORS } from "./colors";
 import { Posts } from "../posts.js";
 import moment from "Moment";
 import cubes from "../../images/workshopTool/bgcubes2.png";
-// import jsPDF from "jspdf";
+import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const NewPlanningTool = (props) => {
@@ -21,8 +21,8 @@ const NewPlanningTool = (props) => {
   });
   const [lastItemId, setLastItemId] = useState(-1);
   const [initial, setInitial] = useState(true);
-  
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const [data, setData] = useState({
     currentDate: props.date,
@@ -48,71 +48,67 @@ const NewPlanningTool = (props) => {
   var pauseInPlan = true;
   var presentationInPlan = true;
   var collectInfoInPlan = true;
-  
+
   const addMethodToBoard = (ids) => {
     var currentPosts = posts;
     const addedPosts = [];
-    ids.map(id => {
-        const post = posts.find(post => post.id == id);
-        
-        if(post !== undefined){
-            console.log(currentPosts);
-            currentPosts = currentPosts.filter(post => post.id !== id);
-            
-            console.log(currentPosts);
-            post.status = "in-plan";
-            addedPosts.push(post);
+    ids.map((id) => {
+      const post = posts.find((post) => post.id == id);
 
+      if (post !== undefined) {
+        console.log(currentPosts);
+        currentPosts = currentPosts.filter((post) => post.id !== id);
 
-        }
+        console.log(currentPosts);
+        post.status = "in-plan";
+        addedPosts.push(post);
+      }
 
-        if(id == 0) pauseInPlan = false;
-        if(id == 4) presentationInPlan = false;
-        if(id == 5) collectInfoInPlan = false;
-
+      if (id == 0) pauseInPlan = false;
+      if (id == 4) presentationInPlan = false;
+      if (id == 5) collectInfoInPlan = false;
     });
     console.log(currentPosts);
     console.log(addedPosts);
     currentPosts.splice(currentPosts.length, 0, ...addedPosts);
 
-    if(!collectInfoInPlan) {
-        let gather = {
-            id: 5,
-            title: "Sammeln & Strukturieren",
-            duration: "30",
-            tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
-            status: "not-in-plan",
-            color: COLORS.green
-        };
-        currentPosts.splice(0, 0, gather);
+    if (!collectInfoInPlan) {
+      let gather = {
+        id: 5,
+        title: "Sammeln & Strukturieren",
+        duration: "30",
+        tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
+        status: "not-in-plan",
+        color: COLORS.green,
+      };
+      currentPosts.splice(0, 0, gather);
     }
 
-    if(!presentationInPlan) {
-        let prasentation = {
-            id: 4,
-            title: "Präsentation",
-            duration: "45",
-            tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
-            status: "not-in-plan",
-            color: COLORS.green
-        };
-        currentPosts.splice(0, 0, prasentation);
+    if (!presentationInPlan) {
+      let prasentation = {
+        id: 4,
+        title: "Präsentation",
+        duration: "45",
+        tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
+        status: "not-in-plan",
+        color: COLORS.green,
+      };
+      currentPosts.splice(0, 0, prasentation);
     }
 
-    if(!pauseInPlan) {
-        let pause = {
-            id: 0,
-            title: "Pause",
-            duration: "15",
-            tip: "Denke daran, genug Pausen einzuplanen!",
-            status: "not-in-plan",
-            color: COLORS.green
-        };
-        currentPosts.splice(0, 0, pause);
+    if (!pauseInPlan) {
+      let pause = {
+        id: 0,
+        title: "Pause",
+        duration: "15",
+        tip: "Denke daran, genug Pausen einzuplanen!",
+        status: "not-in-plan",
+        color: COLORS.green,
+      };
+      currentPosts.splice(0, 0, pause);
     }
 
     setPosts(currentPosts);
-
   };
 
   if (initial) {
@@ -120,17 +116,11 @@ const NewPlanningTool = (props) => {
     if (props.goal != 10) {
       setInitial(false);
       if (props.goal == 0) {
-        
-        addMethodToBoard([1, 2, 222, 178, 0, 219, 4, 194, 4, 3 ]);
-
+        addMethodToBoard([1, 2, 222, 178, 0, 219, 4, 194, 4, 3]);
       } else if (props.goal == 1) {
-        
         addMethodToBoard([1, 2, 216, 194, 4, 5, 0, 213, 0, 209, 4, 3]);
-        
       } else {
-
         addMethodToBoard([1, 2, 216, 194, 4, 5, 0, 213, 0, 209, 4, 3]);
-        
       }
     }
   }
@@ -245,56 +235,55 @@ const NewPlanningTool = (props) => {
   }
 
   const onDrop = (item, monitor, status) => {
-    posts.find(i => i.id == item.id).status = status;
+    posts.find((i) => i.id == item.id).status = status;
 
-    if ( item.title == "Pause" && status == "in-plan") {
-        pauseInPlan = false;
+    if (item.title == "Pause" && status == "in-plan") {
+      pauseInPlan = false;
     }
     if (item.title == "Präsentation" && status == "in-plan") {
-        presentationInPlan = false;
+      presentationInPlan = false;
     }
     if (item.title == "Sammeln & Strukturieren" && status == "in-plan") {
-        collectInfoInPlan = false;
+      collectInfoInPlan = false;
     }
-    if(!pauseInPlan) {
-        let pause = {
-            id: 0,
-            title: "Pause",
-            duration: "15",
-            tip: "Denke daran, genug Pausen einzuplanen!",
-            status: "not-in-plan",
-            color: COLORS.green
-        };
-        posts.splice(0, 0, pause);
+    if (!pauseInPlan) {
+      let pause = {
+        id: 0,
+        title: "Pause",
+        duration: "15",
+        tip: "Denke daran, genug Pausen einzuplanen!",
+        status: "not-in-plan",
+        color: COLORS.green,
+      };
+      posts.splice(0, 0, pause);
     }
-    if(!presentationInPlan) {
-        let prasentation = {
-            id: 4,
-            title: "Präsentation",
-            duration: "45",
-            tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
-            status: "not-in-plan",
-            color: COLORS.green
-        };
-        posts.splice(4, 0, prasentation);
+    if (!presentationInPlan) {
+      let prasentation = {
+        id: 4,
+        title: "Präsentation",
+        duration: "45",
+        tip: "Lasse die Teilnehmer gesammelte Daten präsentieren",
+        status: "not-in-plan",
+        color: COLORS.green,
+      };
+      posts.splice(4, 0, prasentation);
     }
-    if(!collectInfoInPlan) {
-        let gather = {
-            id: 5,
-            title: "Sammeln & Strukturieren",
-            duration: "30",
-            tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
-            status: "not-in-plan",
-            color: COLORS.green
-          };
-        posts.splice(5, 0, gather);
+    if (!collectInfoInPlan) {
+      let gather = {
+        id: 5,
+        title: "Sammeln & Strukturieren",
+        duration: "30",
+        tip: "Lasse die Teilnehmer bisher gesammelte Ergebnisse reflektieren und aufarbeiten",
+        status: "not-in-plan",
+        color: COLORS.green,
+      };
+      posts.splice(5, 0, gather);
     }
 
-        forceUpdate();
+    forceUpdate();
   };
 
   const moveItem = (dragIndex, hoverIndex) => {
-
     const item = posts[dragIndex];
     item.index = hoverIndex;
     console.log(posts);
@@ -354,7 +343,7 @@ const NewPlanningTool = (props) => {
 
     html2canvas(input, {
       width: useWidth,
-      height: useHeight,
+      height: useHeight + 500,
     }).then((canvas) => {
       pdf.setTextColor(112, 112, 112);
       pdf.setFontSize(34);
@@ -380,14 +369,14 @@ const NewPlanningTool = (props) => {
       pdf.text(
         100,
         //1310,
-        850,
+        1035,
         "... erstellt durch das UX4-Health Workshop-Toolkit: https://ux.codeforhealth.de/workshop-tool/",
         { align: "left" }
       );
       pdf.text(
         100,
         //1310,
-        890,
+        1075,
         "Kontakt: alina.huldtgren@hs-duesseldorf.de",
         { align: "left" }
       );
@@ -611,7 +600,8 @@ const NewPlanningTool = (props) => {
         <TipContainer>
           <h3>Tipps</h3>
           <br />
-          <div className="tippText"
+          <div
+            className="tippText"
             dangerouslySetInnerHTML={{
               __html:
                 posts[lastItemId] === undefined
@@ -828,6 +818,6 @@ const TipContainer = styled.div`
   }
   .tippText {
     text-align: start !important;
-    line-height:24px;
+    line-height: 24px;
   }
 `;
